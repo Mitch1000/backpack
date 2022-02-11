@@ -730,7 +730,7 @@ call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 " Generic statement
 hi! link Statement BackpackStainYellow
 " Function name
-hi! link Function BackpackPurpleBold
+hi! link Function BackpackExtraLightBlue
 " if, then, else, endif, swicth, etc.
 hi! link Conditional BackpackStainYellow
 " for, do, while, etc.
@@ -987,7 +987,7 @@ call s:HL('BufTabLineHidden', s:bg4, s:bg1)
 call s:HL('BufTabLineFill', s:bg0, s:bg0)
 
 " }}}
-" Asynchronous Lint Engine: {{{
+" esynchronous Lint Engine: {{{
 
 call s:HL('ALEError', s:none, s:none, s:undercurl, s:red)
 call s:HL('ALEWarning', s:none, s:none, s:undercurl, s:green)
@@ -1336,9 +1336,9 @@ hi! link javascriptObjectMethod     BackpackExtraLightBlue
 hi! link javascriptMethodName       BackpackExtraLightBlue
 hi! link javascriptMethodName       BackpackExtraLightBlue
 hi! link javascriptMethodAccessor   BackpackExtraLightBlue
-hi! link javascriptMethodName       BackpackExtraLightBlue
+hi! link javascriptMethodName       BackpackExtraLightBlue 
 hi! link javascriptMethod       BackpackExtraLightBlue
-hi! link javascriptFuncCall       BackpackExtraLightBlue
+hi! link javascriptFuncCall  BackpackExtraLightBlue     
 
 
 " }}}
@@ -1376,7 +1376,7 @@ hi! link jsFuncArgs BackpackFg5
 hi! link jsVariableDef BackpackFg1
 hi! link jsObjectKey BackpackFg2
 hi! link jsFuncBlock BackpackFg1
-"jsFuncBlocks is THREE.Scene()  the defined object before the .
+hi! link jsAsyncKeyword BackpackBlue
 
 
 " }}}
@@ -1436,6 +1436,8 @@ hi! link coffeeBracket BackpackBabyBlue
 hi! link rubyStringDelimiter BackpackPurple
 hi! link rubyFunction BackpackBlue
 hi! link rubyInterpolationDelimiter BackpackNeonBlue
+hi! link rubyInstanceVariable BackpackBlue
+hi! link rubyBlockParameterList BackpackBabyBlue 
 
 " }}}
 " ObjectiveC: {{{
@@ -1584,7 +1586,6 @@ hi! link haskellChar BackpackPurple
 
 " }}}
 " Json: {{{
-
 hi! link jsonKeyword BackpackPurple
 hi! link jsonQuote BackpackPurple
 hi! link jsonBraces BackpackFg1
