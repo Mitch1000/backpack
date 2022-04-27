@@ -8,16 +8,10 @@ Feedback is appreciated!
 
 1. Typeface from screenshots below is [Monaco Nerd Font](https://github.com/Karmenzind/monaco-nerd-fonts)
 
-Screenshots
------------
-
-Refer [Gallery][] for more syntax-specific screenshots.
-
-   [Gallery]: https://github.com/mitch1000/backpack/wiki/Gallery
 
 ### Dark mode
 
-![Screenshot Dark](http://i.imgur.com/GkIl8Fn.png)
+![Screenshot Dark](https://imgur.com/iOzJuHU)
 
 Installation Method
 -------------
