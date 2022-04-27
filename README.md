@@ -11,7 +11,7 @@ Feedback is appreciated!
 
 ### Dark mode
 
-<img width="1128" alt="Screen Shot 2022-04-27 at 11 19 02 AM" src="https://user-images.githubusercontent.com/19654528/165554857-8d11994b-e454-4c96-9444-f0a5589e73db.png">
+<img width="1781" alt="Screen Shot 2022-04-27 at 11 24 28 AM" src="https://user-images.githubusercontent.com/19654528/165554966-64e02997-4993-4024-868d-a3ba8c7d0d52.png">
 
 
 
