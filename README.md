@@ -11,7 +11,9 @@ Feedback is appreciated!
 
 ### Dark mode
 
-![Screenshot Dark](https://imgur.com/iOzJuHU)
+<img width="1128" alt="Screen Shot 2022-04-27 at 11 19 02 AM" src="https://user-images.githubusercontent.com/19654528/165554857-8d11994b-e454-4c96-9444-f0a5589e73db.png">
+
+
 
 Installation Method
 -------------
