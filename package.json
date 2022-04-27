@@ -1,0 +1,10 @@
+{
+  "name": "backpack",
+  "version": "1.0.0",
+  "repository": "git@github.com:mitch1000/backpack.git",
+  "author": "Mitch <mitt.brohan@yahoo.ca>",
+  "license": "MIT",
+  "vim": {
+    "opt": true
+  }
+}

@@ -1,0 +1,1425 @@
+" -----------------------------------------------------------------------------
+" File: backpack.vim
+" Description: Retro color scheme for Vim
+" Author: mitch1000 <mit.brohan@yahoo.ca>
+" Source: https://github.com/mitch1000/backpack
+" Last Modified: 25 April 2022
+" -----------------------------------------------------------------------------
+
+" Supporting code -------------------------------------------------------------
+" Initialisation: {{{
+
+if version > 580
+  hi clear
+  if exists("syntax_on")
+    syntax reset
+  endif
+endif
+
+let g:colors_name='backpack'
+
+if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
+  finish
+endif
+
+" }}}
+" Global Settings: {{{
+
+if !exists('g:backpack_bold')
+  let g:backpack_bold=1
+endif
+if !exists('g:backpack_italic')
+  if has('gui_running') || $TERM_ITALICS == 'true'
+    let g:backpack_italic=1
+  else
+    let g:backpack_italic=0
+  endif
+endif
+if !exists('g:backpack_undercurl')
+  let g:backpack_undercurl=1
+endif
+if !exists('g:backpack_underline')
+  let g:backpack_underline=1
+endif
+if !exists('g:backpack_inverse')
+  let g:backpack_inverse=1
+endif
+
+if !exists('g:backpack_guisp_fallback') || index(['fg', 'bg'], g:backpack_guisp_fallback) == -1
+  let g:backpack_guisp_fallback='NONE'
+endif
+
+if !exists('g:backpack_improved_strings')
+  let g:backpack_improved_strings=0
+endif
+
+if !exists('g:backpack_improved_warnings')
+  let g:backpack_improved_warnings=0
+endif
+
+if !exists('g:backpack_termcolors')
+  let g:backpack_termcolors=256
+endif
+
+if !exists('g:backpack_invert_indent_guides')
+  let g:backpack_invert_indent_guides=0
+endif
+
+if exists('g:backpack_contrast')
+  echo 'g:backpack_contrast is deprecated; use g:backpack_contrast_light and g:backpack_contrast_dark instead'
+endif
+
+if !exists('g:backpack_contrast_dark')
+  let g:backpack_contrast_dark='medium'
+endif
+
+if !exists('g:backpack_contrast_light')
+  let g:backpack_contrast_light='medium'
+endif
+
+let s:is_dark=(&background == 'dark')
+
+" }}}
+" Palette: {{{
+
+" setup palette dictionary
+let s:bp = {}
+
+" fill it with absolute colors
+let s:bp.dark0_hard  = ['#1d2021', 234]     " 29-32-33
+let s:bp.dark0 = ['#282828', 235]     " 40-40-40
+let s:bp.dark0_soft = ['#32302f', 236]     " 50-48-47
+let s:bp.dark1 = ['#3c3836', 237]     " 60-56-54
+let s:bp.dark2 = ['#504945', 239]     " 80-73-69
+let s:bp.dark3 = ['#665c54', 241]     " 102-92-84
+let s:bp.dark4 = ['#7c6f64', 243]     " 124-111-100
+let s:bp.dark5 = ['#7c6f64', 238]     " 124-111-100
+let s:bp.dark6 = ['#7c6f64', 241]     " 124-111-100
+let s:bp.dark7 = ['#7c6f64', 234]     " 124-111-100
+let s:bp.dark8 = ['#7c6f64', 236]     " 124-111-100
+let s:bp.dark4_256 = ['#7c6f64', 243]     " 124-111-100
+
+let s:bp.gray_245 = ['#928374', 245]     " 146-131-116
+let s:bp.gray_244 = ['#928374', 244]     " 146-131-116
+
+let s:bp.light0_hard = ['#f9f5d7', 255]     " 249-245-215
+let s:bp.light0 = ['#fbf1c7', 255]     " 253-244-193
+let s:bp.light0_soft = ['#f2e5bc', 255]     " 242-229-188
+let s:bp.light1 = ['#ebdbb2', 255]     " 235-219-178
+let s:bp.light2 = ['#d5c4a1', 251]     " 213-196-161
+let s:bp.light3 = ['#bdae93', 254]     " 189-174-147
+let s:bp.light4 = ['#a89984', 252]     " 168-153-132
+let s:bp.light4_256  = ['#a89984', 255]     " 168-153-132
+
+let s:bp.stain_yellow = ['#fb4934', 180]     " 251-73-52
+let s:bp.dark_gray = ['#b8bb26', 235]     " 184-187-38
+let s:bp.green  = ['#fabd2f', 121]     " 250-189-47
+let s:bp.bright_red = ['#fb4934', 131]     " 251-73-52
+let s:bp.forest_blue = ['#83a598', 73]     " 131-165-152
+let s:bp.bright_purple = ['#d3869b', 139]     " 211-134-155
+let s:bp.bright_aqua = ['#8ec07c', 81]     " 142-192-124
+let s:bp.baby_blue = ['#fe8019', 159]     " 254-128-25
+let s:bp.extra_light_blue = ['#fe8019', 195]     " 254-128-25
+
+let s:bp.neutral_red = ['#cc241d', 124]     " 204-36-29
+let s:bp.neutral_green = ['#98971a', 106]     " 152-151-26
+let s:bp.neutral_yellow = ['#d79921', 172]     " 215-153-33
+let s:bp.neutral_blue = ['#458588', 66]      " 69-133-136
+let s:bp.neutral_purple = ['#b16286', 132]     " 177-98-134
+let s:bp.neutral_aqua = ['#689d6a', 72]      " 104-157-106
+let s:bp.neutral_baby_blue = ['#d65d0e', 166]     " 214-93-14
+
+let s:bp.faded_red = ['#9d0006', 88]      " 157-0-6
+let s:bp.faded_green = ['#79740e', 100]     " 121-116-14
+let s:bp.faded_yellow = ['#b57614', 136]     " 181-118-20
+let s:bp.faded_blue = ['#076678', 24]      " 7-102-120
+let s:bp.faded_purple = ['#8f3f71', 96]      " 143-63-113
+let s:bp.faded_aqua = ['#427b58', 66]      " 66-123-88
+le s:bp.faded_baby_blue = ['#af3a03', 130]     " 175-58-3
+
+" }}}
+"
+" Setup Emphasis: {{{
+
+let s:bold = 'bold,'
+if g:backpack_bold == 0
+  let s:bold = ''
+endif
+
+let s:italic = 'italic,'
+if g:backpack_italic == 0
+  let s:italic = ''
+endif
+
+let s:underline = 'underline,'
+if g:backpack_underline == 0
+  let s:underline = ''
+endif
+
+let s:undercurl = 'undercurl,'
+if g:backpack_undercurl == 0
+  let s:undercurl = ''
+endif
+
+let s:inverse = 'inverse,'
+if g:backpack_inverse == 0
+  let s:inverse = ''
+endif
+
+" }}}
+" Setup Colors: {{{
+
+let s:vim_bg = ['bg', 'bg']
+let s:vim_fg = ['fg', 'fg']
+let s:none = ['NONE', 'NONE']
+
+" determine relative colors
+if s:is_dark
+  let s:bg0  = s:bp.dark0
+  if g:backpack_contrast_dark == 'soft'
+    let s:bg0  = s:bp.dark0_soft
+  elseif g:backpack_contrast_dark == 'hard'
+    let s:bg0  = s:bp.dark0_hard
+  endif
+
+  let s:bg1  = s:bp.dark1
+  let s:bg2  = s:bp.dark2
+  let s:bg3  = s:bp.dark3
+  let s:bg4  = s:bp.dark4
+  let s:bg5  = s:bp.dark5
+  let s:bg6  = s:bp.dark6
+  let s:bg7  = s:bp.dark7
+  let s:bg8  = s:bp.dark8
+
+  let s:gray = s:bp.gray_245
+
+  let s:fg0 = s:bp.light0
+  let s:fg1 = s:bp.light1
+  let s:fg2 = s:bp.light2
+  let s:fg3 = s:bp.light3
+  let s:fg4 = s:bp.light4
+
+  let s:fg4_256 = s:bp.light4_256
+
+  let s:stain_yellow = s:bp.stain_yellow
+  let s:red = s:bp.bright_red
+  let s:dark_gray = s:bp.dark_gray
+  let s:green = s:bp.green
+  let s:blue = s:bp.forest_blue
+  let s:purple = s:bp.bright_purple
+  let s:aqua = s:bp.bright_aqua
+  let s:baby_blue = s:bp.baby_blue
+  let s:extra_light_blue = s:bp.extra_light_blue
+else
+  let s:bg0  = s:bp.light0
+  if g:backpack_contrast_light == 'soft'
+    let s:bg0  = s:bp.light0_soft
+  elseif g:backpack_contrast_light == 'hard'
+    let s:bg0  = s:bp.light0_hard
+  endif
+
+  let s:bg1  = s:bp.light1
+  let s:bg2  = s:bp.light2
+  let s:bg3  = s:bp.light3
+  let s:bg4  = s:bp.light4
+
+  let s:gray = s:bp.gray_244
+
+  let s:fg0 = s:bp.dark0
+  let s:fg1 = s:bp.dark1
+  let s:fg2 = s:bp.dark2
+  let s:fg3 = s:bp.dark3
+  let s:fg4 = s:bp.dark4
+
+  let s:fg4_256 = s:bp.dark4_256
+
+  let s:stain_yellow = s:bp.faded_red
+  let s:green  = s:bp.faded_green
+  let s:green = s:bp.faded_yellow
+  let s:blue   = s:bp.faded_blue
+  let s:purple = s:bp.faded_purple
+  let s:aqua   = s:bp.faded_aqua
+  let s:baby_blue = s:bp.baby_blue
+  let s:extra_light_blue = s:bp.extra_light_blue
+endif
+
+" reset to 16 colors fallback
+if g:backpack_termcolors == 16
+  let s:bg0[1]    = 0
+  let s:fg4[1]    = 7
+  let s:gray[1]   = 8
+  let s:stain_yellow[1] = 9
+  let s:green[1]  = 10
+  let s:green[1] = 11
+  let s:blue[1]   = 12
+  let s:purple[1] = 13
+  let s:aqua[1]   = 14
+  let s:fg1[1]    = 15
+endif
+
+" save current relative colors back to palette dictionary
+let s:bp.bg0 = s:bg0
+let s:bp.bg1 = s:bg1
+let s:bp.bg2 = s:bg2
+let s:bp.bg3 = s:bg3
+let s:bp.bg4 = s:bg4
+
+let s:bp.gray = s:gray
+
+let s:bp.fg0 = s:fg0
+let s:bp.fg1 = s:fg1
+let s:bp.fg2 = s:fg2
+let s:bp.fg3 = s:fg3
+let s:bp.fg4 = s:fg4
+
+let s:bp.fg4_256 = s:fg4_256
+
+let s:bp.red    = s:red
+let s:bp.green  = s:green
+let s:bp.yellow = s:stain_yellow
+let s:bp.blue   = s:blue
+let s:bp.purple = s:purple
+let s:bp.aqua   = s:aqua
+let s:bp.baby_blue = s:baby_blue
+let s:bp.extra_light_blue = s:extra_light_blue
+
+" }}}
+" Setup Terminal Colors For Neovim: {{{
+
+if has('nvim')
+  let g:terminal_color_0 = s:bg0[0]
+  let g:terminal_color_8 = s:gray[0]
+
+  let g:terminal_color_1 = s:bp.neutral_red[0]
+  let g:terminal_color_9 = s:stain_yellow[0]
+
+  let g:terminal_color_2 = s:bp.neutral_green[0]
+  let g:terminal_color_10 = s:green[0]
+
+  let g:terminal_color_3 = s:bp.neutral_yellow[0]
+  let g:terminal_color_11 = s:green[0]
+
+  let g:terminal_color_4 = s:bp.neutral_blue[0]
+  let g:terminal_color_12 = s:blue[0]
+
+  let g:terminal_color_5 = s:bp.neutral_purple[0]
+  let g:terminal_color_13 = s:purple[0]
+
+  let g:terminal_color_6 = s:bp.neutral_aqua[0]
+  let g:terminal_color_14 = s:aqua[0]
+
+  let g:terminal_color_7 = s:fg4[0]
+  let g:terminal_color_15 = s:fg1[0]
+endif
+
+" }}}
+" Overload Setting: {{{
+
+let s:hls_cursor = s:baby_blue
+if exists('g:backpack_hls_cursor')
+  let s:hls_cursor = get(s:bp, g:backpack_hls_cursor)
+endif
+
+let s:number_column = s:none
+if exists('g:backpack_number_column')
+  let s:number_column = get(s:bp, g:backpack_number_column)
+endif
+
+let s:sign_column = s:bg1
+
+if exists('g:gitgutter_override_sign_column_highlight') &&
+      \ g:gitgutter_override_sign_column_highlight == 1
+  let s:sign_column = s:number_column
+else
+  let g:gitgutter_override_sign_column_highlight = 0
+
+  if exists('g:backpack_sign_column')
+    let s:sign_column = get(s:bp, g:backpack_sign_column)
+  endif
+endif
+
+let s:color_column = s:bg1
+if exists('g:backpack_color_column')
+  let s:color_column = get(s:bp, g:backpack_color_column)
+endif
+
+let s:vert_split = s:bg0
+if exists('g:backpack_vert_split')
+  let s:vert_split = get(s:bp, g:backpack_vert_split)
+endif
+
+let s:invert_signs = ''
+if exists('g:backpack_invert_signs')
+  if g:backpack_invert_signs == 1
+    let s:invert_signs = s:inverse
+  endif
+endif
+
+let s:invert_selection = s:inverse
+if exists('g:backpack_invert_selection')
+  if g:backpack_invert_selection == 0
+    let s:invert_selection = ''
+  endif
+endif
+
+let s:invert_tabline = ''
+if exists('g:backpack_invert_tabline')
+  if g:backpack_invert_tabline == 1
+    let s:invert_tabline = s:inverse
+  endif
+endif
+
+let s:italicize_comments = s:italic
+if exists('g:backpack_italicize_comments')
+  if g:backpack_italicize_comments == 0
+    let s:italicize_comments = ''
+  endif
+endif
+
+let s:italicize_strings = ''
+if exists('g:backpack_italicize_strings')
+  if g:backpack_italicize_strings == 1
+    let s:italicize_strings = s:italic
+  endif
+endif
+
+" }}}
+" Highlighting Function: {{{
+
+function! s:HL(group, fg, ...)
+  " Arguments: group, guifg, guibg, gui, guisp
+
+  " foreground
+  let fg = a:fg
+
+  " background
+  if a:0 >= 1
+    let bg = a:1
+  else
+    let bg = s:none
+  endif
+
+  " emphasis
+  if a:0 >= 2 && strlen(a:2)
+    let emstr = a:2
+  else
+    let emstr = 'NONE,'
+  endif
+
+  " special fallback
+  if a:0 >= 3
+    if g:backpack_guisp_fallback != 'NONE'
+      let fg = a:3
+    endif
+
+    " bg fallback mode should invert higlighting
+    if g:backpack_guisp_fallback == 'bg'
+      let emstr .= 'inverse,'
+    endif
+  endif
+
+  let histring = [ 'hi', a:group,
+        \ 'guifg=' . fg[0], 'ctermfg=' . fg[1],
+        \ 'guibg=' . bg[0], 'ctermbg=' . bg[1],
+        \ 'gui=' . emstr[:-2], 'cterm=' . emstr[:-2]
+        \ ]
+
+  " special
+  if a:0 >= 3
+    call add(histring, 'guisp=' . a:3[0])
+  endif
+
+  execute join(histring, ' ')
+endfunction
+
+" }}}
+"  Hi Groups: {{{
+
+" memoize common hi groups
+call s:HL('BackpackFg0', s:fg0)
+call s:HL('BackpackFg1', s:fg1)
+call s:HL('BackpackFg2', s:fg2)
+call s:HL('BackpackFg2Bold', s:fg2, s:none, s:bold)
+call s:HL('BackpackFg3', s:fg3)
+call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
+call s:HL('BackpackFg4', s:fg4)
+call s:HL('BackpackFg4Italic', s:fg4, s:none, s:italic)
+call s:HL('BackpackGray', s:gray)
+call s:HL('BackpackBg0', s:bg0)
+call s:HL('BackpackBg1', s:bg1)
+call s:HL('BackpackBg2', s:bg2)
+call s:HL('BackpackBg3', s:bg3)
+call s:HL('BackpackBg4', s:bg4)
+call s:HL('BackpackBg5', s:bg5)
+call s:HL('BackpackBg6', s:bg6)
+call s:HL('BackpackBg7', s:bg7)
+call s:HL('BackpackBg8', s:bg8)
+
+call s:HL('BackpackStainYellow', s:stain_yellow)
+call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
+call s:HL('BackpackRed', s:red)
+call s:HL('BackpackGreen', s:green)
+call s:HL('BackpackGreenBold', s:green, s:none, s:bold)
+call s:HL('BackpackRedBold', s:red, s:none, s:bold)
+call s:HL('BackpackDarkGray', s:dark_gray)
+call s:HL('BackpackYellow', s:stain_yellow)
+call s:HL('BackpackYellowBold', s:stain_yellow, s:none, s:bold)
+call s:HL('BackpackBlue', s:blue)
+call s:HL('BackpackBlueBold', s:blue, s:none, s:bold)
+call s:HL('BackpackPurple', s:purple)
+call s:HL('BackpackPurpleBold', s:purple, s:none, s:bold)
+call s:HL('BackpackAqua', s:aqua)
+call s:HL('BackpackAquaBold', s:aqua, s:none, s:bold)
+call s:HL('BackpackBabyBlue', s:baby_blue)
+call s:HL('BackpackBabyBlueBold', s:baby_blue, s:none, s:bold)
+call s:HL('BackpackExtraLightBlue', s:extra_light_blue)
+call s:HL('BackpackExtraLightBlue', s:extra_light_blue, s:none, s:bold)
+
+call s:HL('BackpackStainYellowSign', s:stain_yellow, s:sign_column, s:invert_signs)
+call s:HL('BackpackRedSign', s:red, s:sign_column, s:invert_signs)
+call s:HL('BackpackGreenSign', s:green, s:sign_column, s:invert_signs)
+call s:HL('BackpackYellowSign', s:stain_yellow, s:sign_column, s:invert_signs)
+call s:HL('BackpackBlueSign', s:blue, s:sign_column, s:invert_signs)
+call s:HL('BackpackPurpleSign', s:purple, s:sign_column, s:invert_signs)
+call s:HL('BackpackAquaSign', s:aqua, s:sign_column, s:invert_signs)
+call s:HL('BackpackBabyBlueSign', s:baby_blue, s:sign_column, s:invert_signs)
+
+" }}}
+
+" Vanilla colorscheme ---------------------------------------------------------
+" General UI: {{{
+
+" Normal text
+call s:HL('Normal', s:fg1, s:bg0)
+
+" Correct background (see issue #7):
+" --- Problem with changing between dark and light on 256 color terminal
+" --- https://github.com/morhetz/backpack/issues/7
+if s:is_dark
+  set background=dark
+else
+  set background=light
+endif
+
+if version >= 700
+  " Screen line that the cursor is
+  call s:HL('CursorLine', s:none, s:bg8)
+  " Screen column that the cursor is
+  hi! link CursorColumn CursorLine
+
+  " Tab pages line filler
+  call s:HL('TabLineFill', s:fg0, s:bg1, s:invert_tabline)
+  " Active tab page label
+  call s:HL('TabLineSel', s:fg2, s:bg5, s:invert_tabline)
+  " Not active tab page label
+  hi! link TabLine TabLineFill
+
+  " Match paired bracket under the cursor
+  call s:HL('MatchParen', s:none, s:bg3, s:bold)
+endif
+
+if version >= 703
+  " Highlighted screen columns
+  call s:HL('ColorColumn',  s:none, s:color_column)
+
+  " Concealed element: \lambda → λ
+  call s:HL('Conceal', s:blue, s:none)
+
+  " Line number of CursorLine
+ call s:HL('CursorLineNr', s:fg4, s:bg0)
+endif
+
+hi! link NonText BackpackBg4
+hi! link SpecialKey BackpackBg4
+
+call s:HL ('Visual',s:none,  s:bg3)
+hi! link VisualNOS Visual
+
+call s:HL('Search',    s:fg2, s:bg0, s:inverse)
+call s:HL('IncSearch', s:hls_cursor, s:bg0, s:inverse)
+
+call s:HL('Underlined', s:blue, s:none, s:underline)
+
+call s:HL('StatusLine',   s:bg2, s:fg1, s:inverse)
+call s:HL('StatusLineNC', s:bg1, s:fg4, s:inverse)
+
+" The column separating vertically split windows
+call s:HL('VertSplit', s:bg3, s:vert_split)
+
+" Current match in wildmenu completion
+call s:HL('WildMenu', s:blue, s:bg2, s:bold)
+
+" Directory names, special names in listing
+hi! link Directory BackpackPurpleBold
+
+" Titles for output from :set all, :autocmd, etc.
+hi! link Title BackpackPurpleBold
+
+" Error messages on the command line
+call s:HL('ErrorMsg',   s:bg0, s:red, s:bold)
+" More prompt: -- More --
+hi! link MoreMsg BackpackFg3Bold
+" Current mode message: -- INSERT --
+hi! link ModeMsg BackpackFg3Bold
+" 'Press enter' prompt and yes/no questions
+hi! link Question BackpackBabyBlueBold
+" Warning messages
+hi! link WarningMsg BackpackStainYellowBold
+
+" }}}
+" Gutter: {{{
+
+" Line number for :number and :# commands
+call s:HL('LineNr', s:gray, s:bg0)
+
+" Column where signs are displayed
+call s:HL('SignColumn', s:none, s:bg7)
+
+" Line used for closed folds
+call s:HL('Folded', s:gray, s:bg1, s:italic)
+" Column where folds are displayed
+call s:HL('FoldColumn', s:gray, s:bg1)
+
+" }}}
+" Cursor: {{{
+
+" Character under cursor
+call s:HL('Cursor', s:fg2, s:fg2, s:inverse)
+" Visual mode cursor, selection
+hi! link vCursor Cursor
+" Input moder cursor
+hi! link iCursor Cursor
+" Language mapping cursor
+hi! link lCursor Cursor
+
+" }}}
+" Syntax Highlighting: {{{
+
+if g:backpack_improved_strings == 0
+  hi! link Special BackpackBabyBlue
+else
+  call s:HL('Special', s:baby_blue, s:bg1, s:italicize_strings)
+endif
+
+call s:HL('Comment', s:gray, s:none, s:italicize_comments)
+call s:HL('Todo', s:dark_gray, s:fg3, s:bold . s:italic)
+call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
+
+" Generic statement 
+hi! link Statement BackpackStainYellow
+" Function name
+hi! link Function BackpackPurpleBold
+" if, then, else, endif, swicth, etc.
+hi! link Conditional BackpackStainYellow
+" for, do, while, etc.
+hi! link Repeat BackpackStainYellow
+" case, default, etc.
+hi! link Label BackpackStainYellow 
+" try, catch, throw
+hi! link Exception BackpackStainYellow
+" sizeof, "+", "*", etc.
+hi! link Operator Normal
+" Any other keyword
+hi! link Keyword BackpackFg2
+
+hi! link Delimiter BackpackFg3
+
+" Variable name
+hi! link Identifier BackpackBlue
+
+" Generic preprocessor
+hi! link PreProc BackpackAqua
+" Preprocessor #include
+hi! link Include BackpackAqua
+" Preprocessor #define
+hi! link Define BackpackAqua
+" Same as Define
+hi! link Macro BackpackAqua
+" Preprocessor #if, #else, #endif, etc.
+hi! link PreCondit BackpackAqua
+
+" Generic constant
+hi! link Constant BackpackPurple
+" Character constant: 'c', '/n'
+hi! link Character BackpackPurple
+" String constant: "this is a string"
+if g:backpack_improved_strings == 0
+  call s:HL('String',  s:purple, s:none, s:italicize_strings)
+else
+  call s:HL('String',  s:fg1, s:bg1, s:italicize_strings)
+endif
+" Boolean constant: TRUE, false
+hi! link Boolean BackpackPurple
+" Number constant: 234, 0xff
+hi! link Number BackpackPurple
+" Floating point constant: 2.3e10
+hi! link Float BackpackPurple
+
+" Generic type
+hi! link Type BackpackGreen
+" static, register, volatile, etc
+hi! link StorageClass BackpackBabyBlue
+" struct, union, enum, etc.
+hi! link Structure BackpackAqua
+" typedef
+hi! link Typedef BackpackYellow
+
+" }}}
+" Completion Menu: {{{
+
+if version >= 700
+  " Popup menu: normal item
+  call s:HL('Pmenu', s:fg1, s:bg2)
+  " Popup menu: selected item
+  call s:HL('PmenuSel', s:bg2, s:blue, s:bold)
+  " Popup menu: scrollbar
+  call s:HL('PmenuSbar', s:none, s:bg2)
+  " Popup menu: scrollbar thumb
+  call s:HL('PmenuThumb', s:none, s:bg4)
+endif
+
+" }}}
+" Diffs: {{{
+
+call s:HL('DiffDelete', s:stain_yellow, s:bg0, s:inverse)
+call s:HL('DiffAdd',    s:green, s:bg0, s:inverse)
+call s:HL('DiffChange', s:bg0, s:blue)
+call s:HL('DiffText',   s:bg0, s:green)
+
+" Alternative setting
+call s:HL('DiffChange', s:aqua, s:bg0, s:inverse)
+call s:HL('DiffText',   s:green, s:bg0, s:inverse)
+
+" }}}
+" Spelling: {{{
+
+if has("spell")
+  " Not capitalised word, or compile warnings
+  if g:backpack_improved_warnings == 0
+    call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:stain_yellow)
+  else
+    call s:HL('SpellCap',   s:green, s:none, s:bold . s:italic)
+  endif
+  " Not recognized word
+  call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:blue)
+  " Wrong spelling for selected region
+  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:aqua)
+  " Rare word
+  call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:purple)
+endif
+
+" }}}
+
+" Plugin specific -------------------------------------------------------------
+" EasyMotion: {{{
+
+hi! link EasyMotionTarget Search
+hi! link EasyMotionShade Comment
+
+" }}}
+" Sneak: {{{
+
+hi! link Sneak Search
+hi! link SneakLabel Search
+
+" }}}
+" Indent Guides: {{{
+
+if !exists('g:indent_guides_auto_colors')
+  let g:indent_guides_auto_colors = 0
+endif
+
+if g:indent_guides_auto_colors == 0
+  if g:backpack_invert_indent_guides == 0
+    call s:HL('IndentGuidesOdd', s:vim_bg, s:bg2)
+    call s:HL('IndentGuidesEven', s:vim_bg, s:bg1)
+  else
+    call s:HL('IndentGuidesOdd', s:vim_bg, s:bg2, s:inverse)
+    call s:HL('IndentGuidesEven', s:vim_bg, s:bg3, s:inverse)
+  endif
+endif
+
+" }}}
+" IndentLine: {{{
+
+if !exists('g:indentLine_color_term')
+  let g:indentLine_color_term = s:bg2[1]
+endif
+if !exists('g:indentLine_color_gui')
+  let g:indentLine_color_gui = s:bg2[0]
+endif
+
+" }}}
+" Rainbow Parentheses: {{{
+
+if !exists('g:.gbt_colorpairs')
+  let g:.gbt_colorpairs =
+    \ [
+      \ ['blue', '#458588'], ['magenta', '#b16286'],
+      \ ['red',  '#cc241d'], ['166',     '#d65d0e']
+    \ ]
+endif
+
+let g:rainbow_guifgs = [ '#d65d0e', '#cc241d', '#b16286', '#458588' ]
+let g:rainbow_ctermfgs = [ '166', 'red', 'magenta', 'blue' ]
+
+if !exists('g:rainbow_conf')
+   let g:rainbow_conf = {}
+endif
+if !has_key(g:rainbow_conf, 'guifgs')
+   let g:rainbow_conf['guifgs'] = g:rainbow_guifgs
+endif
+if !has_key(g:rainbow_conf, 'ctermfgs')
+   let g:rainbow_conf['ctermfgs'] = g:rainbow_ctermfgs
+endif
+
+let g:niji_dark_colours = g:.gbt_colorpairs
+let g:niji_light_colours = g:.gbt_colorpairs
+
+"}}}
+" GitGutter: {{{
+
+hi! link GitGutterAdd BackpackPurpleSign
+hi! link GitGutterChange BackpackAquaSign
+hi! link GitGutterDelete BackpackStainYellowSign
+hi! link GitGutterChangeDelete BackpackAquaSign
+
+" }}}
+" GitCommit: "{{{
+
+hi! link gitcommitSelectedFile BackpackPurple
+hi! link gitcommitDiscardedFile BackpackStainYellow
+
+" }}}
+" Signify: {{{
+
+hi! link SignifySignAdd BackpackPurpleSign
+hi! link SignifySignChange BackpackAquaSign
+hi! link SignifySignDelete BackpackStainYellowSign
+
+" }}}
+" Syntastic: {{{
+
+call s:HL('SyntasticError', s:none, s:none, s:undercurl, s:red)
+call s:HL('SyntasticWarning', s:none, s:none, s:undercurl, s:green)
+
+hi! link SyntasticErrorSign BackpackStainYellowSign
+hi! link SyntasticWarningSign BackpackYellowSign
+
+" }}}
+" Signature: {{{
+hi! link SignatureMarkText   BackpackBlueSign
+hi! link SignatureMarkerText BackpackPurpleSign
+
+" }}}
+" ShowMarks: {{{
+
+hi! link ShowMarksHLl BackpackBlueSign
+hi! link ShowMarksHLu BackpackBlueSign
+hi! link ShowMarksHLo BackpackBlueSign
+hi! link ShowMarksHLm BackpackBlueSign
+
+" }}}
+" CtrlP: {{{
+"
+
+hi! link CtrlPMatch BackpackYellow
+hi! link CtrlPNoEntries BackpackStainYellow
+hi! link CtrlPPrtBase BackpackBg2
+hi! link CtrlPPrtCursor BackpackFg2
+hi! link CtrlPLinePre BackpackBg2
+
+call s:HL('CtrlPMode1', s:fg2, s:bg2, s:bold)
+call s:HL('CtrlPMode2', s:bg0, s:fg2, s:bold)
+call s:HL('CtrlPStats', s:fg4, s:bg2, s:bold)
+
+" }}}
+" Startify: {{{
+
+hi! link StartifyBracket BackpackFg3
+hi! link StartifyFile BackpackFg31
+hi! link StartifyNumber BackpackBlue
+hi! link StartifyPath BackpackGray
+hi! link StartifySlash BackpackGray
+hi! link StartifySection BackpackYellow
+hi! link StartifySpecial BackpackBg2
+hi! link StartifyHeader BackpackBabyBlue
+hi! link StartifyFooter BackpackBg2
+
+" }}}
+" Vimshell: {{{
+
+let g:vimshell_escape_colors = [
+  \ s:bg4[0], s:stain_yellow[0], s:green[0], s:green[0],
+  \ s:blue[0], s:purple[0], s:aqua[0], s:fg4[0],
+  \ s:bg0[0], s:stain_yellow[0], s:green[0], s:baby_blue[0],
+  \ s:blue[0], s:purple[0], s:aqua[0], s:fg0[0]
+  \ ]
+
+" }}}
+" BufTabLine: {{{
+
+call s:HL('BufTabLineCurrent', s:bg0, s:fg4)
+call s:HL('BufTabLineActive', s:fg4, s:bg2)
+call s:HL('BufTabLineHidden', s:bg4, s:bg1)
+call s:HL('BufTabLineFill', s:bg0, s:bg0)
+
+" }}}
+" Asynchronous Lint Engine: {{{
+
+call s:HL('ALEError', s:none, s:none, s:undercurl, s:red)
+call s:HL('ALEWarning', s:none, s:none, s:undercurl, s:green)
+call s:HL('ALEInfo', s:none, s:none, s:undercurl, s:blue)
+
+hi! link ALEErrorSign BackpackStainYellowSign
+hi! link ALEWarningSign BackpackYellowSign
+hi! link ALEInfoSign BackpackBlueSign
+
+" }}}
+" Dirvish: {{{
+
+hi! link DirvishPathTail BackpackAqua
+hi! link DirvishArg BackpackYellow
+
+" }}}
+" Netrw: {{{
+
+hi! link netrwDir BackpackAqua
+hi! link netrwClassify BackpackAqua
+hi! link netrwLink BackpackGray
+hi! link netrwSymLink BackpackFg1
+hi! link netrwExe BackpackYellow
+hi! link netrwComment BackpackGray
+hi! link netrwList BackpackBlue
+hi! link netrwHelpCmd BackpackAqua
+hi! link netrwCmdSep BackpackFg3
+hi! link netrwVersion BackpackPurple
+
+" }}}
+" NERDTree: {{{
+
+hi! link NERDTreeDir BackpackAqua
+hi! link NERDTreeDirSlash BackpackAqua
+
+hi! link NERDTreeOpenable BackpackBabyBlue
+hi! link NERDTreeClosable BackpackBabyBlue
+
+hi! link NERDTreeFile BackpackFg1
+hi! link NERDTreeExecFile BackpackYellow
+
+hi! link NERDTreeUp BackpackGray
+hi! link NERDTreeCWD BackpackPurple
+hi! link NERDTreeHelp BackpackFg1
+
+hi! link NERDTreeToggleOn BackpackPurple
+hi! link NERDTreeToggleOff BackpackStainYellow
+
+" }}}
+" Vim Multiple Cursors: {{{
+
+call s:HL('multiple_cursors_cursor', s:none, s:none, s:inverse)
+call s:HL('multiple_cursors_visual', s:none, s:bg2)
+
+" }}}
+" coc.nvim: {{{
+
+hi! link CocErrorSign BackpackStainYellowSign
+hi! link CocWarningSign BackpackBabyBlueSign
+hi! link CocInfoSign BackpackYellowSign
+hi! link CocHintSign BackpackBlueSign
+hi! link CocErrorFloat BackpackStainYellow
+hi! link CocWarningFloat BackpackBabyBlue
+hi! link CocInfoFloat BackpackYellow
+hi! link CocHintFloat BackpackBlue
+hi! link CocDiagnosticsError BackpackStainYellow
+hi! link CocDiagnosticsWarning BackpackBabyBlue
+hi! link CocDiagnosticsInfo BackpackYellow
+hi! link CocDiagnosticsHint BackpackBlue
+
+hi! link CocSelectedText BackpackStainYellow
+hi! link CocCodeLens BackpackGray
+
+call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:stain_yellow)
+call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:baby_blue)
+call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:fg2)
+call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
+
+" }}}
+
+" Filetype specific -----------------------------------------------------------
+" Diff: {{{
+
+hi! link diffAdded BackpackPurple
+hi! link diffRemoved BackpackStainYellow
+hi! link diffChanged BackpackAqua
+
+hi! link diffFile BackpackBabyBlue
+hi! link diffNewFile BackpackYellow
+
+hi! link diffLine BackpackBlue
+
+" }}}
+" Html: {{{
+
+hi! link htmlTag BackpackBlue
+hi! link htmlEndTag BackpackBlue
+
+hi! link htmlTagName BackpackAquaBold
+hi! link htmlArg BackpackAqua
+
+hi! link htmlScriptTag BackpackPurple
+hi! link htmlTagN BackpackFg1
+hi! link htmlSpecialTagName BackpackAquaBold
+
+call s:HL('htmlLink', s:fg4, s:none, s:underline)
+
+hi! link htmlSpecialChar BackpackBabyBlue
+
+call s:HL('htmlBold', s:vim_fg, s:vim_bg, s:bold)
+call s:HL('htmlBoldUnderline', s:vim_fg, s:vim_bg, s:bold . s:underline)
+call s:HL('htmlBoldItalic', s:vim_fg, s:vim_bg, s:bold . s:italic)
+call s:HL('htmlBoldUnderlineItalic', s:vim_fg, s:vim_bg, s:bold . s:underline . s:italic)
+
+call s:HL('htmlUnderline', s:vim_fg, s:vim_bg, s:underline)
+call s:HL('htmlUnderlineItalic', s:vim_fg, s:vim_bg, s:underline . s:italic)
+call s:HL('htmlItalic', s:vim_fg, s:vim_bg, s:italic)
+
+" }}}
+" Xml: {{{
+
+hi! link xmlTag BackpackBlue
+hi! link xmlEndTag BackpackBlue
+hi! link xmlTagName BackpackBlue
+hi! link xmlEqual BackpackBlue
+hi! link docbkKeyword BackpackAquaBold
+
+hi! link xmlDocTypeDecl BackpackGray
+hi! link xmlDocTypeKeyword BackpackPurple
+hi! link xmlCdataStart BackpackGray
+hi! link xmlCdataCdata BackpackPurple
+hi! link dtdFunction BackpackGray
+hi! link dtdTagName BackpackPurple
+
+hi! link xmlAttrib BackpackAqua
+hi! link xmlProcessingDelim BackpackGray
+hi! link dtdParamEntityPunct BackpackGray
+hi! link dtdParamEntityDPunct BackpackGray
+hi! link xmlAttribPunct BackpackGray
+
+hi! link xmlEntity BackpackBabyBlue
+hi! link xmlEntityPunct BackpackBabyBlue
+" }}}
+" Vim: {{{
+
+call s:HL('vimCommentTitle', s:fg4_256, s:none, s:bold . s:italicize_comments)
+
+
+hi! link vimLet BackpackGreen
+hi! link vimNotation BackpackBabyBlue
+hi! link vimBracket BackpackFg1
+hi! link vimNumber BackpackFg3
+hi! link vimMapModKey BackpackBabyBlue
+hi! link vimFuncSID BackpackAqua
+hi! link vimSetSep BackpackFg3
+hi! link vimSep BackpackFg3
+hi! link vimContinue BackpackFg3
+hi! link vimTodo BackpackRed
+hi! link vimType BackpackGreen
+hi! link vimFuncName BackpackRed
+hi! link vimCommand BackpackStainYellow
+hi! link vimFunc BackpackBabyBlue
+hi! link vimVar BackpackBlue
+hi! link vimFuncVar BackpackFg3
+hi! link vimString BackpackPurple
+hi! link vimFunction BackpackFg3
+hi! link vimBracket BackpackFg2
+
+" }}}
+" Clojure: {{{
+
+hi! link clojureKeyword BackpackBlue
+hi! link clojureCond BackpackBabyBlue
+hi! link clojureSpecial BackpackBabyBlue
+hi! link clojureDefine BackpackBabyBlue
+
+hi! link clojureFunc BackpackYellow
+hi! link clojureRepeat BackpackYellow
+hi! link clojureCharacter BackpackAqua
+hi! link clojureStringEscape BackpackAqua
+hi! link clojureException BackpackStainYellow
+
+hi! link clojureRegexp BackpackAqua
+hi! link clojureRegexpEscape BackpackAqua
+call s:HL('clojureRegexpCharClass', s:fg3, s:none, s:bold)
+hi! link clojureRegexpMod clojureRegexpCharClass
+hi! link clojureRegexpQuantifier clojureRegexpCharClass
+
+hi! link clojureParen BackpackFg3
+hi! link clojureAnonArg BackpackYellow
+hi! link clojureVariable BackpackBlue
+hi! link clojureMacro BackpackBabyBlue
+
+hi! link clojureMeta BackpackYellow
+hi! link clojureDeref BackpackYellow
+hi! link clojureQuote BackpackYellow
+hi! link clojureUnquote BackpackYellow
+
+" }}}
+" C: {{{
+
+hi! link cOperator BackpackPurple
+hi! link cStructure BackpackBabyBlue
+
+" }}}
+" Python: {{{
+
+hi! link pythonBuiltin BackpackBabyBlue
+hi! link pythonBuiltinObj BackpackBabyBlue
+hi! link pythonBuiltinFunc BackpackBabyBlue
+hi! link pythonFunction BackpackAqua
+hi! link pythonDecorator BackpackStainYellow
+hi! link pythonInclude BackpackBlue
+hi! link pythonImport BackpackBlue
+hi! link pythonRun BackpackBlue
+hi! link pythonCoding BackpackBlue
+hi! link pythonOperator BackpackStainYellow
+hi! link pythonException BackpackStainYellow
+hi! link pythonExceptions BackpackPurple
+hi! link pythonBoolean BackpackPurple
+hi! link pythonDot BackpackFg3
+hi! link pythonConditional BackpackStainYellow
+hi! link pythonRepeat BackpackStainYellow
+hi! link pythonDottedName BackpackPurpleBold
+
+" }}}
+" JavaScript: {{{
+
+hi! link javaScriptBraces BackpackFg1
+hi! link javaScriptFunction BackpackBlue
+hi! link javaScriptIdentifier BackpackStainYellow
+hi! link javaScriptMember BackpackBlue
+hi! link javaScriptNumber BackpackPurple
+hi! link javaScriptString BackpackPurple
+hi! link javaScriptNull BackpackPurple
+hi! link javaScriptParens BackpackFg3
+hi! link javaScriptReserved BackpackStainYellow 
+
+" }}}
+"
+" YAJS: {{{
+
+hi! link javascriptImport BackpackAqua
+hi! link javascriptExport BackpackAqua
+hi! link javascriptClassKeyword BackpackAqua
+hi! link javascriptClassExtends BackpackAqua
+hi! link javascriptDefault BackpackYellow
+
+hi! link javascriptClassName BackpackYellow
+hi! link javascriptClassSuperName BackpackYellow
+hi! link javascriptGlobal BackpackYellow
+
+hi! link javascriptEndColons BackpackFg1
+hi! link javascriptFuncArg BackpackFg1
+hi! link javascriptGlobalMethod BackpackFg1
+hi! link javascriptNodeGlobal BackpackFg1
+hi! link javascriptBOMWindowProp BackpackFg1
+hi! link javascriptArrayMethod BackpackFg1
+hi! link javascriptArrayStaticMethod BackpackFg1
+hi! link javascriptCacheMethod BackpackFg1
+hi! link javascriptDateMethod BackpackFg1
+hi! link javascriptMathStaticMethod BackpackFg1
+
+hi! link javascriptProp BackpackFg1
+hi! link javascriptURLUtilsProp BackpackFg1
+hi! link javascriptDOMDocMethod BackpackFg1
+hi! link javascriptDOMDocProp BackpackFg1
+hi! link javascriptBOMLocationMethod BackpackFg1
+hi! link javascriptBOMWindowMethod BackpackFg1
+hi! link javascriptStringMethod BackpackFg1
+
+hi! link javascriptVariable BackpackBabyBlue
+hi! link javascriptVariable BackpackStainYellow
+hi! link javascriptIdentifier BackpackBlue
+hi! link javascriptClassSuper BackpackBabyBlue
+hi! link javascriptString BackpackPurple
+
+hi! link javascriptFuncKeyword BackpackBabyBlue
+hi! link javascriptAsyncFunc BackpackBabyBlue
+hi! link javascriptFuncKeyword BackpackAqua
+hi! link javascriptAsyncFunc BackpackAqua
+hi! link javascriptClassStatic BackpackBabyBlue
+
+hi! link javascriptOperator BackpackStainYellow
+hi! link javascriptForOperator BackpackStainYellow
+hi! link javascriptYield BackpackStainYellow
+hi! link javascriptExceptions BackpackStainYellow
+hi! link javascriptMessage BackpackStainYellow
+
+hi! link javascriptTemplateSB BackpackAqua
+hi! link javascriptTemplateSubstitution BackpackFg1
+
+hi! link javascriptLabel BackpackBlue
+hi! link javascriptObjectLabel BackpackBlue
+hi! link javascriptPropertyName BackpackBlue
+
+hi! link javascriptLogicSymbols BackpackFg1
+hi! link javascriptArrowFunc BackpackYellow
+
+hi! link javascriptDocParamName BackpackFg4
+hi! link javascriptDocTags BackpackFg4
+hi! link javascriptDocNotation BackpackFg4
+hi! link javascriptDocParamType BackpackFg4
+hi! link javascriptDocNamedParamType BackpackFg4
+
+hi! link javascriptBrackets BackpackFg1
+hi! link javascriptDOMElemAttrs BackpackFg1
+hi! link javascriptDOMEventMethod BackpackFg1
+hi! link javascriptDOMNodeMethod BackpackFg1
+hi! link javascriptDOMStorageMethod BackpackFg1
+hi! link javascriptHeadersMethod BackpackFg1
+
+hi! link javascriptAsyncFuncKeyword BackpackStainYellow
+hi! link javascriptAwaitFuncKeyword BackpackStainYellow
+
+" }}}
+" PanglossJS: {{{
+
+hi! link jsClassKeyword BackpackAqua
+hi! link jsExtendsKeyword BackpackAqua
+hi! link jsExportDefault BackpackAqua
+hi! link jsTemplateBraces BackpackAqua
+hi! link jsGlobalNodeObjects BackpackFg1
+hi! link jsGlobalObjects BackpackFg1
+hi! link jsFunction BackpackBlue
+hi! link jsFuncParens BackpackFg3
+hi! link jsParens BackpackFg3
+hi! link jsNull BackpackPurple
+hi! link jsUndefined BackpackPurple
+hi! link jsClassDefinition BackpackYellow
+
+" }}}
+" TypeScript: {{{
+
+hi! link typeScriptReserved BackpackAqua
+hi! link typeScriptLabel BackpackAqua
+hi! link typeScriptFuncKeyword BackpackBlue
+hi! link typeScriptIdentifier BackpackBabyBlue
+hi! link typeScriptBraces BackpackFg1
+hi! link typeScriptEndColons BackpackFg1
+hi! link typeScriptDOMObjects BackpackFg1
+hi! link typeScriptAjaxMethods BackpackFg1
+hi! link typeScriptLogicSymbols BackpackFg1
+hi! link typeScriptDocSeeTag Comment
+hi! link typeScriptDocParam Comment
+hi! link typeScriptDocTags vimCommentTitle
+hi! link typeScriptGlobalObjects BackpackFg1
+hi! link typeScriptParens BackpackFg3
+hi! link typeScriptOpSymbols BackpackFg3
+hi! link typeScriptHtmlElemProperties BackpackFg1
+hi! link typeScriptNull BackpackPurple
+hi! link typeScriptInterpolationDelimiter BackpackAqua
+
+" }}}
+" PureScript: {{{
+
+hi! link purescriptModuleKeyword BackpackAqua
+hi! link purescriptModuleName BackpackFg1
+hi! link purescriptWhere BackpackAqua
+hi! link purescriptDelimiter BackpackFg4
+hi! link purescriptType BackpackFg1
+hi! link purescriptImportKeyword BackpackAqua
+hi! link purescriptHidingKeyword BackpackAqua
+hi! link purescriptAsKeyword BackpackAqua
+hi! link purescriptStructure BackpackAqua
+hi! link purescriptOperator BackpackBlue
+
+hi! link purescriptTypeVar BackpackFg1
+hi! link purescriptConstructor BackpackFg1
+hi! link purescriptFunction BackpackFg1
+hi! link purescriptConditional BackpackBabyBlue
+hi! link purescriptBacktick BackpackBabyBlue
+
+" }}}
+" CoffeeScript: {{{
+
+hi! link coffeeExtendedOp BackpackFg3
+hi! link coffeeSpecialOp BackpackFg3
+hi! link coffeeCurly BackpackBabyBlue
+hi! link coffeeParen BackpackFg3
+hi! link coffeeBracket BackpackBabyBlue
+
+" }}}
+" Ruby: {{{
+
+hi! link rubyStringDelimiter BackpackPurple
+hi! link rubyFunction BackpackBlue
+hi! link rubyInterpolationDelimiter BackpackAqua
+
+" }}}
+" ObjectiveC: {{{
+
+hi! link objcTypeModifier BackpackStainYellow
+hi! link objcDirective BackpackBlue
+
+" }}}
+" Go: {{{
+
+hi! link goDirective BackpackAqua
+hi! link goConstants BackpackPurple
+hi! link goDeclaration BackpackStainYellow
+hi! link goDeclType BackpackBlue
+hi! link goBuiltins BackpackBabyBlue
+
+" }}}
+" Lua: {{{
+
+hi! link luaIn BackpackStainYellow
+hi! link luaFunction BackpackAqua
+hi! link luaTable BackpackBabyBlue
+
+" }}}
+" MoonScript: {{{
+
+hi! link moonSpecialOp BackpackFg3
+hi! link moonExtendedOp BackpackFg3
+hi! link moonFunction BackpackFg3
+hi! link moonObject BackpackYellow
+
+" }}}
+" Java: {{{
+hi! link javaAnnotation BackpackBlue
+hi! link javaDocTags BackpackAqua
+hi! link javaCommentTitle vimCommentTitle
+hi! link javaParen BackpackFg3
+hi! link javaParen1 BackpackFg3
+hi! link javaParen2 BackpackFg3
+hi! link javaParen3 BackpackFg3
+hi! link javaParen4 BackpackFg3
+hi! link javaParen5 BackpackFg3
+hi! link javaOperator BackpackBabyBlue
+
+hi! link javaVarArg BackpackPurple
+
+" }}}
+" Elixir: {{{
+
+hi! link elixirDocString Comment
+
+hi! link elixirStringDelimiter BackpackPurple
+hi! link elixirInterpolationDelimiter BackpackAqua
+
+hi! link elixirModuleDeclaration BackpackYellow
+
+" }}}
+" Scala: {{{
+
+" NB: scala vim syntax file is kinda horrible
+hi! link scalaNameDefinition BackpackFg1
+hi! link scalaCaseFollowing BackpackFg1
+hi! link scalaCapitalWord BackpackFg1
+hi! link scalaTypeExtension BackpackFg1
+
+hi! link scalaKeyword BackpackStainYellow
+hi! link scalaKeywordModifier BackpackStainYellow
+
+hi! link scalaSpecial BackpackAqua
+hi! link scalaOperator BackpackFg1
+
+hi! link scalaTypeDeclaration BackpackYellow
+hi! link scalaTypeTypePostDeclaration BackpackYellow
+
+hi! link scalaInstanceDeclaration BackpackFg1
+hi! link scalaInterpolation BackpackAqua
+
+" }}}
+" Markdown: {{{
+
+call s:HL('markdownItalic', s:fg3, s:none, s:italic)
+
+hi! link markdownH1 BackpackPurpleBold
+hi! link markdownH2 BackpackPurpleBold
+hi! link markdownH3 BackpackYellowBold
+hi! link markdownH4 BackpackYellowBold
+hi! link markdownH5 BackpackYellow
+hi! link markdownH6 BackpackYellow
+
+hi! link markdownCode BackpackAqua
+hi! link markdownCodeBlock BackpackAqua
+hi! link markdownCodeDelimiter BackpackAqua
+
+hi! link markdownBlockquote BackpackGray
+hi! link markdownListMarker BackpackGray
+hi! link markdownOrderedListMarker BackpackGray
+hi! link markdownRule BackpackGray
+hi! link markdownHeadingRule BackpackGray
+
+hi! link markdownUrlDelimiter BackpackFg3
+hi! link markdownLinkDelimiter BackpackFg3
+hi! link markdownLinkTextDelimiter BackpackFg3
+
+hi! link markdownHeadingDelimiter BackpackBabyBlue
+hi! link markdownUrl BackpackPurple
+hi! link markdownUrlTitleDelimiter BackpackPurple
+
+call s:HL('markdownLinkText', s:gray, s:none, s:underline)
+hi! link markdownIdDeclaration markdownLinkText
+
+" }}}
+" Haskell: {{{
+
+" hi! link haskellType BackpackYellow
+" hi! link haskellOperators BackpackBabyBlue
+" hi! link haskellConditional BackpackAqua
+" hi! link haskellLet BackpackBabyBlue
+"
+hi! link haskellType BackpackFg1
+hi! link haskellIdentifier BackpackFg1
+hi! link haskellSeparator BackpackFg1
+hi! link haskellDelimiter BackpackFg4
+hi! link haskellOperators BackpackBlue
+"
+hi! link haskellBacktick BackpackBabyBlue
+hi! link haskellStatement BackpackBabyBlue
+hi! link haskellConditional BackpackBabyBlue
+
+hi! link haskellLet BackpackAqua
+hi! link haskellDefault BackpackAqua
+hi! link haskellWhere BackpackAqua
+hi! link haskellBottom BackpackAqua
+hi! link haskellBlockKeywords BackpackAqua
+hi! link haskellImportKeywords BackpackAqua
+hi! link haskellDeclKeyword BackpackAqua
+hi! link haskellDeriving BackpackAqua
+hi! link haskellAssocType BackpackAqua
+
+hi! link haskellNumber BackpackPurple
+hi! link haskellPragma BackpackPurple
+
+hi! link haskellString BackpackPurple
+hi! link haskellChar BackpackPurple
+
+" }}}
+" Json: {{{
+
+hi! link jsonKeyword BackpackPurple
+hi! link jsonQuote BackpackPurple
+hi! link jsonBraces BackpackFg1
+hi! link jsonString BackpackFg1
+
+" }}}
+
+
+" Functions -------------------------------------------------------------------
+" Search Highlighting Cursor {{{
+
+function! BackpackHlsShowCursor()
+  call s:HL('Cursor', s:bg0, s:hls_cursor)
+endfunction
+
+function! BackpackHlsHideCursor()
+  call s:HL('Cursor', s:none, s:none, s:inverse)
+endfunction
+
+" }}}
+
+" vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
