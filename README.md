@@ -19,24 +19,24 @@ Installation Method
 -------------
 
     Pathogen
-        git clone https://github.com/morhetz/gruvbox.git ~/.vim/bundle/gruvbox
+        git clone https://github.com/Mitch1000/backpack.git ~/.vim/bundle/backpack
 
     Vundle
-        Add Plugin 'morhetz/gruvbox' to your .vimrc and run :PluginInstall
+        Add Plugin 'Mitch1000/backpack' to your .vimrc and run :PluginInstall
 
     Dein
         Add the following to your .vimrc, and run call dein#install():
 
-    call dein#add('morhetz/gruvbox')
+    call dein#add('Mitch1000/backpack')
 
     vim-plug
-        Add Plug 'morhetz/gruvbox' to your .vimrc and run :PlugInstall
+        Add Plug 'Mitch1000/backpack to your .vimrc and run :PlugInstall
 
     Vim-8
-        git clone https://github.com/morhetz/gruvbox.git ~/.vim/pack/default/start/gruvbox
+        git clone https://github.com/Mitch1000/backpack.git ~/.vim/pack/default/start/backpack
 
     VIM - Vi IMproved 8.x MS-Windows 64-bit console version
-        git clone https://github.com/morhetz/gruvbox.git "~\vimfiles\pack\default\start\gruvbox"
+        git clone https://github.com/Mitch1000/backpack.git "~\vimfiles\pack\default\start\backpack"
 
 
 Then add `colorscheme backpack` to your vimrc file.
