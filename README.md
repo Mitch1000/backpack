@@ -13,7 +13,7 @@ Feedback is appreciated!
 
 <img width="1781" alt="Screen Shot 2022-04-27 at 11 24 28 AM" src="https://user-images.githubusercontent.com/19654528/165554966-64e02997-4993-4024-868d-a3ba8c7d0d52.png">
 
-
+<img width="1768" alt="Screen Shot 2022-05-03 at 2 03 34 PM" src="https://user-images.githubusercontent.com/19654528/166514807-6e795a27-49ea-44b7-bbe5-4aaa5fe33751.png">
 
 Installation Method
 -------------
