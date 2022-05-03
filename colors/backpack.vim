@@ -1101,11 +1101,13 @@ hi! link cStructure BackpackBabyBlue
 " }}}
 " Python: {{{
 
-hi! link pythonBuiltin BackpackBabyBlue
+hi! link pythonBuiltin BackpackRed
+hi! link pythonStatement BackpackYellow
 hi! link pythonBuiltinObj BackpackBabyBlue
 hi! link pythonBuiltinFunc BackpackBabyBlue
 hi! link pythonFunction BackpackAqua
-hi! link pythonDecorator BackpackStainYellow
+hi! link pythonDecorator BackpackBabyBlue
+hi! link pythonDecoratorName BackpackBabyBlue
 hi! link pythonInclude BackpackBlue
 hi! link pythonImport BackpackBlue
 hi! link pythonRun BackpackBlue
