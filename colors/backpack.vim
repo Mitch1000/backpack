@@ -126,7 +126,7 @@ let s:bp.bright_purple = ['#d3869b', 139]     " 211-134-155
 let s:bp.bright_aqua = ['#8ec07c', 81]     " 142-192-124
 let s:bp.baby_blue = ['#fe8019', 159]     " 254-128-25
 let s:bp.extra_light_blue = ['#fe8019', 195]     " 254-128-25
-let s:bp.orange = ['#fe8019', 215]     " 142-192-124
+let s:bp.orange = ['#fe8019', 224]     " 142-192-124
 
 let s:bp.neutral_red = ['#cc241d', 124]     " 204-36-29
 let s:bp.neutral_green = ['#98971a', 106]     " 152-151-26
@@ -142,7 +142,7 @@ let s:bp.faded_yellow = ['#b57614', 136]     " 181-118-20
 let s:bp.faded_blue = ['#076678', 24]      " 7-102-120
 let s:bp.faded_purple = ['#8f3f71', 96]      " 143-63-113
 let s:bp.faded_aqua = ['#427b58', 66]      " 66-123-88
-le s:bp.faded_baby_blue = ['#af3a03', 130]     " 175-58-3
+let s:bp.faded_baby_blue = ['#af3a03', 130]     " 175-58-3
 
 " }}}
 "
@@ -628,6 +628,7 @@ if &filetype != 'vue'
     call s:HL('Special', s:baby_blue, s:bg1, s:italicize_strings)
   endif
 endif
+autocmd FileType vue hi! link Special BackpackOrange
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
 call s:HL('Todo', s:dark_gray, s:fg3, s:bold . s:italic)
