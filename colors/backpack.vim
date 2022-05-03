@@ -102,24 +102,31 @@ let s:bp.dark4_256 = ['#7c6f64', 243]     " 124-111-100
 let s:bp.gray_245 = ['#928374', 245]     " 146-131-116
 let s:bp.gray_244 = ['#928374', 244]     " 146-131-116
 
-let s:bp.light0_hard = ['#f9f5d7', 255]     " 249-245-215
+let s:bp.light0_hard = ['#f9f5d7', 231]     " 249-245-215
 let s:bp.light0 = ['#fbf1c7', 255]     " 253-244-193
-let s:bp.light0_soft = ['#f2e5bc', 255]     " 242-229-188
+let s:bp.light0_soft = ['#f2e5bc', 254]     " 242-229-188
 let s:bp.light1 = ['#ebdbb2', 255]     " 235-219-178
 let s:bp.light2 = ['#d5c4a1', 251]     " 213-196-161
 let s:bp.light3 = ['#bdae93', 254]     " 189-174-147
 let s:bp.light4 = ['#a89984', 252]     " 168-153-132
+let s:bp.light5 = ['#a89984', 249]     " 168-153-132
+let s:bp.light6 = ['#a89984', 246]     " 168-153-132
+let s:bp.light7 = ['#a89984', 253]     " 168-153-132
+let s:bp.light8 = ['#a89984', 251]     " 168-153-132
 let s:bp.light4_256  = ['#a89984', 255]     " 168-153-132
 
 let s:bp.stain_yellow = ['#fb4934', 180]     " 251-73-52
+let s:bp.bright_yellow = ['#fb4934', 180]     " 251-73-52
 let s:bp.dark_gray = ['#b8bb26', 235]     " 184-187-38
 let s:bp.green  = ['#fabd2f', 121]     " 250-189-47
 let s:bp.bright_red = ['#fb4934', 131]     " 251-73-52
 let s:bp.forest_blue = ['#83a598', 73]     " 131-165-152
+let s:bp.bright_blue = ['#83a598', 73]     " 131-165-152
 let s:bp.bright_purple = ['#d3869b', 139]     " 211-134-155
 let s:bp.bright_aqua = ['#8ec07c', 81]     " 142-192-124
 let s:bp.baby_blue = ['#fe8019', 159]     " 254-128-25
 let s:bp.extra_light_blue = ['#fe8019', 195]     " 254-128-25
+let s:bp.orange = ['#fe8019', 215]     " 142-192-124
 
 let s:bp.neutral_red = ['#cc241d', 124]     " 204-36-29
 let s:bp.neutral_green = ['#98971a', 106]     " 152-151-26
@@ -202,6 +209,8 @@ if s:is_dark
   let s:fg4_256 = s:bp.light4_256
 
   let s:stain_yellow = s:bp.stain_yellow
+  let s:yellow = s:bp.stain_yellow
+  let s:orange = s:bp.orange
   let s:red = s:bp.bright_red
   let s:dark_gray = s:bp.dark_gray
   let s:green = s:bp.green
@@ -222,6 +231,10 @@ else
   let s:bg2  = s:bp.light2
   let s:bg3  = s:bp.light3
   let s:bg4  = s:bp.light4
+  let s:bg5  = s:bp.light5
+  let s:bg6  = s:bp.light6
+  let s:bg7  = s:bp.light7
+  let s:bg8  = s:bp.light8
 
   let s:gray = s:bp.gray_244
 
@@ -233,12 +246,15 @@ else
 
   let s:fg4_256 = s:bp.dark4_256
 
-  let s:stain_yellow = s:bp.faded_red
-  let s:green  = s:bp.faded_green
-  let s:green = s:bp.faded_yellow
-  let s:blue   = s:bp.faded_blue
-  let s:purple = s:bp.faded_purple
-  let s:aqua   = s:bp.faded_aqua
+  let s:stain_yellow = s:bp.stain_yellow
+  let s:yellow = s:bp.stain_yellow
+  let s:orange = s:bp.orange
+  let s:red = s:bp.bright_red
+  let s:dark_gray = s:bp.dark_gray
+  let s:green = s:bp.green
+  let s:blue = s:bp.forest_blue
+  let s:purple = s:bp.bright_purple
+  let s:aqua = s:bp.bright_aqua
   let s:baby_blue = s:bp.baby_blue
   let s:extra_light_blue = s:bp.extra_light_blue
 endif
@@ -463,6 +479,8 @@ call s:HL('BackpackGreenBold', s:green, s:none, s:bold)
 call s:HL('BackpackRedBold', s:red, s:none, s:bold)
 call s:HL('BackpackDarkGray', s:dark_gray)
 call s:HL('BackpackYellow', s:stain_yellow)
+call s:HL('BackpackOrange', s:orange)
+call s:HL('BackpackOrangeBold', s:orange, s:none, s:bold)
 call s:HL('BackpackYellowBold', s:stain_yellow, s:none, s:bold)
 call s:HL('BackpackBlue', s:blue)
 call s:HL('BackpackBlueBold', s:blue, s:none, s:bold)
@@ -570,7 +588,14 @@ hi! link WarningMsg BackpackStainYellowBold
 " Gutter: {{{
 
 " Line number for :number and :# commands
-call s:HL('LineNr', s:gray, s:bg0)
+if !exists('g:backpack_yellow_line_numbers')
+  let g:backpack_yellow_line_numbers = 0
+endif
+if g:backpack_yellow_line_numbers == 1
+  call s:HL('LineNr', s:stain_yellow, s:bg0)
+else
+  call s:HL('LineNr', s:gray, s:bg0)
+endif
 
 " Column where signs are displayed
 call s:HL('SignColumn', s:none, s:bg7)
@@ -595,10 +620,13 @@ hi! link lCursor Cursor
 " }}}
 " Syntax Highlighting: {{{
 
-if g:backpack_improved_strings == 0
-  hi! link Special BackpackBabyBlue
-else
-  call s:HL('Special', s:baby_blue, s:bg1, s:italicize_strings)
+filetype detect
+if &filetype != 'vue'
+  if g:backpack_improved_strings == 0
+      hi! link Special BackpackBabyBlue
+  else
+    call s:HL('Special', s:baby_blue, s:bg1, s:italicize_strings)
+  endif
 endif
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
@@ -964,12 +992,12 @@ hi! link diffLine BackpackBlue
 hi! link htmlTag BackpackBlue
 hi! link htmlEndTag BackpackBlue
 
-hi! link htmlTagName BackpackAquaBold
-hi! link htmlArg BackpackAqua
+hi! link htmlTagName BackpackYellow
+hi! link htmlArg BackpackGreen
 
 hi! link htmlScriptTag BackpackPurple
 hi! link htmlTagN BackpackFg1
-hi! link htmlSpecialTagName BackpackAquaBold
+hi! link htmlSpecialTagName BackpackYellowBold
 
 call s:HL('htmlLink', s:fg4, s:none, s:underline)
 
@@ -1094,15 +1122,17 @@ hi! link pythonDottedName BackpackPurpleBold
 " }}}
 " JavaScript: {{{
 
+call s:HL('javaScriptComment', s:blue, s:none, s:italic . s:italicize_comments)
+
 hi! link javaScriptBraces BackpackFg1
 hi! link javaScriptFunction BackpackBlue
 hi! link javaScriptIdentifier BackpackStainYellow
-hi! link javaScriptMember BackpackBlue
+hi! link javaScriptMember BackpackStainYellow
 hi! link javaScriptNumber BackpackPurple
 hi! link javaScriptString BackpackPurple
 hi! link javaScriptNull BackpackPurple
 hi! link javaScriptParens BackpackFg3
-hi! link javaScriptReserved BackpackStainYellow 
+hi! link javaScriptReserved BackpackYellow
 
 " }}}
 "
@@ -1158,9 +1188,9 @@ hi! link javascriptMessage BackpackStainYellow
 hi! link javascriptTemplateSB BackpackAqua
 hi! link javascriptTemplateSubstitution BackpackFg1
 
-hi! link javascriptLabel BackpackBlue
-hi! link javascriptObjectLabel BackpackBlue
-hi! link javascriptPropertyName BackpackBlue
+hi! link javascriptLabel BackpackBlueBold
+hi! link javascriptObjectLabel BackpackStainYellow
+hi! link javascriptPropertyName BackpackYellow
 
 hi! link javascriptLogicSymbols BackpackFg1
 hi! link javascriptArrowFunc BackpackYellow
