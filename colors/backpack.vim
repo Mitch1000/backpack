@@ -99,6 +99,7 @@ let s:bp.dark7 = ['#7c6f64', 234]     " 124-111-100
 let s:bp.dark8 = ['#7c6f64', 236]     " 124-111-100
 let s:bp.dark4_256 = ['#7c6f64', 243]     " 124-111-100
 
+let s:bp.gray_246 = ['#928374', 246]     " 146-131-116
 let s:bp.gray_245 = ['#928374', 245]     " 146-131-116
 let s:bp.gray_244 = ['#928374', 244]     " 146-131-116
 
@@ -198,13 +199,17 @@ if s:is_dark
   let s:bg7  = s:bp.dark7
   let s:bg8  = s:bp.dark8
 
-  let s:gray = s:bp.gray_245
+  let s:gray = s:bp.gray_244
+  let s:light_gray = s:bp.gray_245
 
   let s:fg0 = s:bp.light0
   let s:fg1 = s:bp.light1
   let s:fg2 = s:bp.light2
   let s:fg3 = s:bp.light3
   let s:fg4 = s:bp.light4
+  let s:fg5 = s:bp.light5
+  let s:fg6 = s:bp.light6
+  let s:fg7 = s:bp.light7
 
   let s:fg4_256 = s:bp.light4_256
 
@@ -594,7 +599,7 @@ endif
 if g:backpack_yellow_line_numbers == 1
   call s:HL('LineNr', s:stain_yellow, s:bg0)
 else
-  call s:HL('LineNr', s:gray, s:bg0)
+  call s:HL('LineNr', s:light_gray, s:bg0)
 endif
 
 " Column where signs are displayed
@@ -621,7 +626,7 @@ hi! link lCursor Cursor
 " Syntax Highlighting: {{{
 
 filetype detect
-if &filetype != 'vue'
+if &filetype != 'vue' && &filetype != 'html'
   if g:backpack_improved_strings == 0
       hi! link Special BackpackBabyBlue
   else
@@ -1392,9 +1397,11 @@ hi! link markdownLinkTextDelimiter BackpackFg3
 
 hi! link markdownHeadingDelimiter BackpackBabyBlue
 hi! link markdownUrl BackpackPurple
-hi! link markdownUrlTitleDelimiter BackpackPurple
+hi! link markdownUrlTitleDelimiter BackpackGray
+hi! link markdownUrlTitle BackpackGray
 
-call s:HL('markdownLinkText', s:gray, s:none, s:underline)
+call s:HL('markdownLinkText', s:green, s:none, s:underline)
+call s:HL('markdownUrlTitle', s:gray, s:none, s:italic)
 hi! link markdownIdDeclaration markdownLinkText
 
 " }}}
