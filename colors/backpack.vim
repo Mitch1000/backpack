@@ -120,21 +120,23 @@ let s:bp.stain_yellow = ['#fb4934', 180]     " 251-73-52
 let s:bp.bright_yellow = ['#fb4934', 180]     " 251-73-52
 let s:bp.dark_gray = ['#b8bb26', 235]     " 184-187-38
 let s:bp.green  = ['#fabd2f', 121]     " 250-189-47
-let s:bp.bright_red = ['#fb4934', 131]     " 251-73-52
+let s:bp.dark_red = ['#fb4934', 131]     " 251-73-52
+let s:bp.bright_red = ['#fb4934', 168]     " 251-73-52
 let s:bp.forest_blue = ['#83a598', 73]     " 131-165-152
 let s:bp.bright_blue = ['#83a598', 73]     " 131-165-152
 let s:bp.bright_purple = ['#d3869b', 139]     " 211-134-155
-let s:bp.bright_aqua = ['#8ec07c', 81]     " 142-192-124
+let s:bp.bright_neon_blue = ['#8ec07c', 81]     " 142-192-124
 let s:bp.baby_blue = ['#fe8019', 159]     " 254-128-25
 let s:bp.extra_light_blue = ['#fe8019', 195]     " 254-128-25
 let s:bp.orange = ['#fe8019', 224]     " 142-192-124
+let s:bp.rust = ['#fe8019', 209]     " 142-192-124
 
 let s:bp.neutral_red = ['#cc241d', 124]     " 204-36-29
 let s:bp.neutral_green = ['#98971a', 106]     " 152-151-26
 let s:bp.neutral_yellow = ['#d79921', 172]     " 215-153-33
 let s:bp.neutral_blue = ['#458588', 66]      " 69-133-136
 let s:bp.neutral_purple = ['#b16286', 132]     " 177-98-134
-let s:bp.neutral_aqua = ['#689d6a', 72]      " 104-157-106
+let s:bp.neutral_neon_blue = ['#689d6a', 72]      " 104-157-106
 let s:bp.neutral_baby_blue = ['#d65d0e', 166]     " 214-93-14
 
 let s:bp.faded_red = ['#9d0006', 88]      " 157-0-6
@@ -142,7 +144,7 @@ let s:bp.faded_green = ['#79740e', 100]     " 121-116-14
 let s:bp.faded_yellow = ['#b57614', 136]     " 181-118-20
 let s:bp.faded_blue = ['#076678', 24]      " 7-102-120
 let s:bp.faded_purple = ['#8f3f71', 96]      " 143-63-113
-let s:bp.faded_aqua = ['#427b58', 66]      " 66-123-88
+let s:bp.faded_neon_blue = ['#427b58', 66]      " 66-123-88
 let s:bp.faded_baby_blue = ['#af3a03', 130]     " 175-58-3
 
 " }}}
@@ -216,12 +218,14 @@ if s:is_dark
   let s:stain_yellow = s:bp.stain_yellow
   let s:yellow = s:bp.stain_yellow
   let s:orange = s:bp.orange
-  let s:red = s:bp.bright_red
+  let s:rust = s:bp.rust
+  let s:red = s:bp.dark_red
+  let s:bright_red = s:bp.bright_red
   let s:dark_gray = s:bp.dark_gray
   let s:green = s:bp.green
   let s:blue = s:bp.forest_blue
   let s:purple = s:bp.bright_purple
-  let s:aqua = s:bp.bright_aqua
+  let s:neon_blue = s:bp.bright_neon_blue
   let s:baby_blue = s:bp.baby_blue
   let s:extra_light_blue = s:bp.extra_light_blue
 else
@@ -254,12 +258,12 @@ else
   let s:stain_yellow = s:bp.stain_yellow
   let s:yellow = s:bp.stain_yellow
   let s:orange = s:bp.orange
-  let s:red = s:bp.bright_red
+  let s:red = s:bp.dark_red
   let s:dark_gray = s:bp.dark_gray
   let s:green = s:bp.green
   let s:blue = s:bp.forest_blue
   let s:purple = s:bp.bright_purple
-  let s:aqua = s:bp.bright_aqua
+  let s:neon_blue = s:bp.bright_neon_blue
   let s:baby_blue = s:bp.baby_blue
   let s:extra_light_blue = s:bp.extra_light_blue
 endif
@@ -274,7 +278,7 @@ if g:backpack_termcolors == 16
   let s:green[1] = 11
   let s:blue[1]   = 12
   let s:purple[1] = 13
-  let s:aqua[1]   = 14
+  let s:neon_blue[1]   = 14
   let s:fg1[1]    = 15
 endif
 
@@ -300,7 +304,7 @@ let s:bp.green  = s:green
 let s:bp.yellow = s:stain_yellow
 let s:bp.blue   = s:blue
 let s:bp.purple = s:purple
-let s:bp.aqua   = s:aqua
+let s:bp.neon_blue   = s:neon_blue
 let s:bp.baby_blue = s:baby_blue
 let s:bp.extra_light_blue = s:extra_light_blue
 
@@ -326,8 +330,8 @@ if has('nvim')
   let g:terminal_color_5 = s:bp.neutral_purple[0]
   let g:terminal_color_13 = s:purple[0]
 
-  let g:terminal_color_6 = s:bp.neutral_aqua[0]
-  let g:terminal_color_14 = s:aqua[0]
+  let g:terminal_color_6 = s:bp.neutral_neon_blue[0]
+  let g:terminal_color_14 = s:neon_blue[0]
 
   let g:terminal_color_7 = s:fg4[0]
   let g:terminal_color_15 = s:fg1[0]
@@ -478,33 +482,38 @@ call s:HL('BackpackBg8', s:bg8)
 
 call s:HL('BackpackStainYellow', s:stain_yellow)
 call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
-call s:HL('BackpackRed', s:red)
+call s:HL('BackpackDarkRed', s:red)
+call s:HL('BackpackDarkRedBold', s:red, s:none, s:bold)
+call s:HL('BackpackBrightRed', s:bright_red)
+call s:HL('BackpackBrightRedBold', s:bright_red, s:none, s:bold)
 call s:HL('BackpackGreen', s:green)
 call s:HL('BackpackGreenBold', s:green, s:none, s:bold)
-call s:HL('BackpackRedBold', s:red, s:none, s:bold)
+call s:HL('BackpackDarkRedBold', s:red, s:none, s:bold)
 call s:HL('BackpackDarkGray', s:dark_gray)
 call s:HL('BackpackYellow', s:stain_yellow)
 call s:HL('BackpackOrange', s:orange)
 call s:HL('BackpackOrangeBold', s:orange, s:none, s:bold)
+call s:HL('BackpackRust', s:rust)
+call s:HL('BackpackRustBold', s:rust, s:none, s:bold)
 call s:HL('BackpackYellowBold', s:stain_yellow, s:none, s:bold)
 call s:HL('BackpackBlue', s:blue)
 call s:HL('BackpackBlueBold', s:blue, s:none, s:bold)
 call s:HL('BackpackPurple', s:purple)
 call s:HL('BackpackPurpleBold', s:purple, s:none, s:bold)
-call s:HL('BackpackAqua', s:aqua)
-call s:HL('BackpackAquaBold', s:aqua, s:none, s:bold)
+call s:HL('BackpackNeonBlue', s:neon_blue)
+call s:HL('BackpackNeonBlueBold', s:neon_blue, s:none, s:bold)
 call s:HL('BackpackBabyBlue', s:baby_blue)
 call s:HL('BackpackBabyBlueBold', s:baby_blue, s:none, s:bold)
 call s:HL('BackpackExtraLightBlue', s:extra_light_blue)
-call s:HL('BackpackExtraLightBlue', s:extra_light_blue, s:none, s:bold)
+call s:HL('BackpackExtraLightBlueBold', s:extra_light_blue, s:none, s:bold)
 
 call s:HL('BackpackStainYellowSign', s:stain_yellow, s:sign_column, s:invert_signs)
-call s:HL('BackpackRedSign', s:red, s:sign_column, s:invert_signs)
+call s:HL('BackpackDarkRedSign', s:red, s:sign_column, s:invert_signs)
 call s:HL('BackpackGreenSign', s:green, s:sign_column, s:invert_signs)
 call s:HL('BackpackYellowSign', s:stain_yellow, s:sign_column, s:invert_signs)
 call s:HL('BackpackBlueSign', s:blue, s:sign_column, s:invert_signs)
 call s:HL('BackpackPurpleSign', s:purple, s:sign_column, s:invert_signs)
-call s:HL('BackpackAquaSign', s:aqua, s:sign_column, s:invert_signs)
+call s:HL('BackpackNeonBlueSign', s:neon_blue, s:sign_column, s:invert_signs)
 call s:HL('BackpackBabyBlueSign', s:baby_blue, s:sign_column, s:invert_signs)
 
 " }}}
@@ -662,15 +671,15 @@ hi! link Delimiter BackpackFg3
 hi! link Identifier BackpackBlue
 
 " Generic preprocessor
-hi! link PreProc BackpackAqua
+hi! link PreProc BackpackNeonBlue
 " Preprocessor #include
-hi! link Include BackpackAqua
+hi! link Include BackpackNeonBlue
 " Preprocessor #define
-hi! link Define BackpackAqua
+hi! link Define BackpackNeonBlue
 " Same as Define
-hi! link Macro BackpackAqua
+hi! link Macro BackpackNeonBlue
 " Preprocessor #if, #else, #endif, etc.
-hi! link PreCondit BackpackAqua
+hi! link PreCondit BackpackNeonBlue
 
 " Generic constant
 hi! link Constant BackpackPurple
@@ -694,7 +703,7 @@ hi! link Type BackpackGreen
 " static, register, volatile, etc
 hi! link StorageClass BackpackBabyBlue
 " struct, union, enum, etc.
-hi! link Structure BackpackAqua
+hi! link Structure BackpackNeonBlue
 " typedef
 hi! link Typedef BackpackYellow
 
@@ -721,7 +730,7 @@ call s:HL('DiffChange', s:bg0, s:blue)
 call s:HL('DiffText',   s:bg0, s:green)
 
 " Alternative setting
-call s:HL('DiffChange', s:aqua, s:bg0, s:inverse)
+call s:HL('DiffChange', s:neon_blue, s:bg0, s:inverse)
 call s:HL('DiffText',   s:green, s:bg0, s:inverse)
 
 " }}}
@@ -737,7 +746,7 @@ if has("spell")
   " Not recognized word
   call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:blue)
   " Wrong spelling for selected region
-  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:aqua)
+  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:neon_blue)
   " Rare word
   call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:purple)
 endif
@@ -814,9 +823,9 @@ let g:niji_light_colours = g:.gbt_colorpairs
 " GitGutter: {{{
 
 hi! link GitGutterAdd BackpackPurpleSign
-hi! link GitGutterChange BackpackAquaSign
+hi! link GitGutterChange BackpackNeonBlueSign
 hi! link GitGutterDelete BackpackStainYellowSign
-hi! link GitGutterChangeDelete BackpackAquaSign
+hi! link GitGutterChangeDelete BackpackNeonBlueSign
 
 " }}}
 " GitCommit: "{{{
@@ -828,7 +837,7 @@ hi! link gitcommitDiscardedFile BackpackStainYellow
 " Signify: {{{
 
 hi! link SignifySignAdd BackpackPurpleSign
-hi! link SignifySignChange BackpackAquaSign
+hi! link SignifySignChange BackpackNeonBlueSign
 hi! link SignifySignDelete BackpackStainYellowSign
 
 " }}}
@@ -885,9 +894,9 @@ hi! link StartifyFooter BackpackBg2
 
 let g:vimshell_escape_colors = [
   \ s:bg4[0], s:stain_yellow[0], s:green[0], s:green[0],
-  \ s:blue[0], s:purple[0], s:aqua[0], s:fg4[0],
+  \ s:blue[0], s:purple[0], s:neon_blue[0], s:fg4[0],
   \ s:bg0[0], s:stain_yellow[0], s:green[0], s:baby_blue[0],
-  \ s:blue[0], s:purple[0], s:aqua[0], s:fg0[0]
+  \ s:blue[0], s:purple[0], s:neon_blue[0], s:fg0[0]
   \ ]
 
 " }}}
@@ -912,28 +921,28 @@ hi! link ALEInfoSign BackpackBlueSign
 " }}}
 " Dirvish: {{{
 
-hi! link DirvishPathTail BackpackAqua
+hi! link DirvishPathTail BackpackNeonBlue
 hi! link DirvishArg BackpackYellow
 
 " }}}
 " Netrw: {{{
 
-hi! link netrwDir BackpackAqua
-hi! link netrwClassify BackpackAqua
+hi! link netrwDir BackpackNeonBlue
+hi! link netrwClassify BackpackNeonBlue
 hi! link netrwLink BackpackGray
 hi! link netrwSymLink BackpackFg1
 hi! link netrwExe BackpackYellow
 hi! link netrwComment BackpackGray
 hi! link netrwList BackpackBlue
-hi! link netrwHelpCmd BackpackAqua
+hi! link netrwHelpCmd BackpackNeonBlue
 hi! link netrwCmdSep BackpackFg3
 hi! link netrwVersion BackpackPurple
 
 " }}}
 " NERDTree: {{{
 
-hi! link NERDTreeDir BackpackAqua
-hi! link NERDTreeDirSlash BackpackAqua
+hi! link NERDTreeDir BackpackNeonBlue
+hi! link NERDTreeDirSlash BackpackNeonBlue
 
 hi! link NERDTreeOpenable BackpackBabyBlue
 hi! link NERDTreeClosable BackpackBabyBlue
@@ -985,7 +994,7 @@ call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
 
 hi! link diffAdded BackpackPurple
 hi! link diffRemoved BackpackStainYellow
-hi! link diffChanged BackpackAqua
+hi! link diffChanged BackpackNeonBlue
 
 hi! link diffFile BackpackBabyBlue
 hi! link diffNewFile BackpackYellow
@@ -1025,7 +1034,7 @@ hi! link xmlTag BackpackBlue
 hi! link xmlEndTag BackpackBlue
 hi! link xmlTagName BackpackBlue
 hi! link xmlEqual BackpackBlue
-hi! link docbkKeyword BackpackAquaBold
+hi! link docbkKeyword BackpackNeonBlueBold
 
 hi! link xmlDocTypeDecl BackpackGray
 hi! link xmlDocTypeKeyword BackpackPurple
@@ -1034,7 +1043,7 @@ hi! link xmlCdataCdata BackpackPurple
 hi! link dtdFunction BackpackGray
 hi! link dtdTagName BackpackPurple
 
-hi! link xmlAttrib BackpackAqua
+hi! link xmlAttrib BackpackNeonBlue
 hi! link xmlProcessingDelim BackpackGray
 hi! link dtdParamEntityPunct BackpackGray
 hi! link dtdParamEntityDPunct BackpackGray
@@ -1053,13 +1062,13 @@ hi! link vimNotation BackpackBabyBlue
 hi! link vimBracket BackpackFg1
 hi! link vimNumber BackpackFg3
 hi! link vimMapModKey BackpackBabyBlue
-hi! link vimFuncSID BackpackAqua
+hi! link vimFuncSID BackpackNeonBlue
 hi! link vimSetSep BackpackFg3
 hi! link vimSep BackpackFg3
 hi! link vimContinue BackpackFg3
-hi! link vimTodo BackpackRed
+hi! link vimTodo BackpackDarkRed
 hi! link vimType BackpackGreen
-hi! link vimFuncName BackpackRed
+hi! link vimFuncName BackpackDarkRed
 hi! link vimCommand BackpackStainYellow
 hi! link vimFunc BackpackBabyBlue
 hi! link vimVar BackpackBlue
@@ -1078,12 +1087,12 @@ hi! link clojureDefine BackpackBabyBlue
 
 hi! link clojureFunc BackpackYellow
 hi! link clojureRepeat BackpackYellow
-hi! link clojureCharacter BackpackAqua
-hi! link clojureStringEscape BackpackAqua
+hi! link clojureCharacter BackpackNeonBlue
+hi! link clojureStringEscape BackpackNeonBlue
 hi! link clojureException BackpackStainYellow
 
-hi! link clojureRegexp BackpackAqua
-hi! link clojureRegexpEscape BackpackAqua
+hi! link clojureRegexp BackpackNeonBlue
+hi! link clojureRegexpEscape BackpackNeonBlue
 call s:HL('clojureRegexpCharClass', s:fg3, s:none, s:bold)
 hi! link clojureRegexpMod clojureRegexpCharClass
 hi! link clojureRegexpQuantifier clojureRegexpCharClass
@@ -1111,7 +1120,7 @@ hi! link pythonBuiltin BackpackGreen
 hi! link pythonStatement BackpackYellow
 hi! link pythonBuiltinObj BackpackBabyBlue
 hi! link pythonBuiltinFunc BackpackBabyBlue
-hi! link pythonFunction BackpackAqua
+hi! link pythonFunction BackpackNeonBlue
 hi! link pythonDecorator BackpackBabyBlue
 hi! link pythonDecoratorName BackpackBabyBlue
 hi! link pythonInclude BackpackBlue
@@ -1146,10 +1155,10 @@ hi! link javaScriptReserved BackpackYellow
 "
 " YAJS: {{{
 
-hi! link javascriptImport BackpackAqua
-hi! link javascriptExport BackpackAqua
-hi! link javascriptClassKeyword BackpackAqua
-hi! link javascriptClassExtends BackpackAqua
+hi! link javascriptImport BackpackNeonBlue
+hi! link javascriptExport BackpackNeonBlue
+hi! link javascriptClassKeyword BackpackNeonBlue
+hi! link javascriptClassExtends BackpackNeonBlue
 hi! link javascriptDefault BackpackYellow
 
 hi! link javascriptClassName BackpackYellow
@@ -1183,8 +1192,8 @@ hi! link javascriptString BackpackPurple
 
 hi! link javascriptFuncKeyword BackpackBabyBlue
 hi! link javascriptAsyncFunc BackpackBabyBlue
-hi! link javascriptFuncKeyword BackpackAqua
-hi! link javascriptAsyncFunc BackpackAqua
+hi! link javascriptFuncKeyword BackpackNeonBlue
+hi! link javascriptAsyncFunc BackpackNeonBlue
 hi! link javascriptClassStatic BackpackBabyBlue
 
 hi! link javascriptOperator BackpackStainYellow
@@ -1193,7 +1202,7 @@ hi! link javascriptYield BackpackStainYellow
 hi! link javascriptExceptions BackpackStainYellow
 hi! link javascriptMessage BackpackStainYellow
 
-hi! link javascriptTemplateSB BackpackAqua
+hi! link javascriptTemplateSB BackpackNeonBlue
 hi! link javascriptTemplateSubstitution BackpackFg1
 
 hi! link javascriptLabel BackpackBlueBold
@@ -1221,25 +1230,44 @@ hi! link javascriptAwaitFuncKeyword BackpackStainYellow
 
 " }}}
 " PanglossJS: {{{
-
-hi! link jsClassKeyword BackpackAqua
-hi! link jsExtendsKeyword BackpackAqua
-hi! link jsExportDefault BackpackAqua
-hi! link jsTemplateBraces BackpackAqua
+hi! link jsImport BackpackYellow
+hi! link jsExport BackpackYellow
+hi! link jsFrom BackpackNeonBlue
+hi! link jsObjectProp BackpackYellow
+hi! link jsArrowFunction BackpackOrange
+hi! link jsClassKeyword BackpackYellow
+hi! link jsExtendsKeyword BackpackGreen
+hi! link jsExportDefault BackpackYellow
+hi! link jsTemplateBraces BackpackNeonBlue
 hi! link jsGlobalNodeObjects BackpackFg1
 hi! link jsGlobalObjects BackpackFg1
 hi! link jsFunction BackpackBlue
 hi! link jsFuncParens BackpackFg3
 hi! link jsParens BackpackFg3
 hi! link jsNull BackpackPurple
-hi! link jsUndefined BackpackPurple
-hi! link jsClassDefinition BackpackYellow
+hi! link jsUndefined BackpackDarkRed
+hi! link jsObjectFuncName BackpackOrange 
+hi! link jsFuncName BackpackPurple
+hi! link jsReturn BackpackYellow
+hi! link jsFuncName BackpackGreen
+hi! link jsFuncCall BackpackExtraLightBlue
+hi! link jsClassKeyword  BackpackGreen 
+hi! link jsLet BackpackBlue
+hi! link jsStorageClass BackpackYellow
+hi! link jsObject BackpackBabyBlue
+hi! link jsObjectFuncName BackpackFg1
+hi! link jsSpecial BackpackGreen
+hi! link jsOperatorKeyword BackpackBrightRed
+hi! link jsThis BackpackBlue
+hi! link jsFuncArgs BackpackFg1
+
+
 
 " }}}
 " TypeScript: {{{
 
-hi! link typeScriptReserved BackpackAqua
-hi! link typeScriptLabel BackpackAqua
+hi! link typeScriptReserved BackpackNeonBlue
+hi! link typeScriptLabel BackpackNeonBlue
 hi! link typeScriptFuncKeyword BackpackBlue
 hi! link typeScriptIdentifier BackpackBabyBlue
 hi! link typeScriptBraces BackpackFg1
@@ -1255,20 +1283,20 @@ hi! link typeScriptParens BackpackFg3
 hi! link typeScriptOpSymbols BackpackFg3
 hi! link typeScriptHtmlElemProperties BackpackFg1
 hi! link typeScriptNull BackpackPurple
-hi! link typeScriptInterpolationDelimiter BackpackAqua
+hi! link typeScriptInterpolationDelimiter BackpackNeonBlue
 
 " }}}
 " PureScript: {{{
 
-hi! link purescriptModuleKeyword BackpackAqua
+hi! link purescriptModuleKeyword BackpackNeonBlue
 hi! link purescriptModuleName BackpackFg1
-hi! link purescriptWhere BackpackAqua
+hi! link purescriptWhere BackpackNeonBlue
 hi! link purescriptDelimiter BackpackFg4
 hi! link purescriptType BackpackFg1
-hi! link purescriptImportKeyword BackpackAqua
-hi! link purescriptHidingKeyword BackpackAqua
-hi! link purescriptAsKeyword BackpackAqua
-hi! link purescriptStructure BackpackAqua
+hi! link purescriptImportKeyword BackpackDarkRed
+hi! link purescriptHidingKeyword BackpackNeonBlue
+hi! link purescriptAsKeyword BackpackNeonBlue
+hi! link purescriptStructure BackpackNeonBlue
 hi! link purescriptOperator BackpackBlue
 
 hi! link purescriptTypeVar BackpackFg1
@@ -1291,7 +1319,7 @@ hi! link coffeeBracket BackpackBabyBlue
 
 hi! link rubyStringDelimiter BackpackPurple
 hi! link rubyFunction BackpackBlue
-hi! link rubyInterpolationDelimiter BackpackAqua
+hi! link rubyInterpolationDelimiter BackpackNeonBlue
 
 " }}}
 " ObjectiveC: {{{
@@ -1302,7 +1330,7 @@ hi! link objcDirective BackpackBlue
 " }}}
 " Go: {{{
 
-hi! link goDirective BackpackAqua
+hi! link goDirective BackpackNeonBlue
 hi! link goConstants BackpackPurple
 hi! link goDeclaration BackpackStainYellow
 hi! link goDeclType BackpackBlue
@@ -1312,7 +1340,7 @@ hi! link goBuiltins BackpackBabyBlue
 " Lua: {{{
 
 hi! link luaIn BackpackStainYellow
-hi! link luaFunction BackpackAqua
+hi! link luaFunction BackpackNeonBlue
 hi! link luaTable BackpackBabyBlue
 
 " }}}
@@ -1326,7 +1354,7 @@ hi! link moonObject BackpackYellow
 " }}}
 " Java: {{{
 hi! link javaAnnotation BackpackBlue
-hi! link javaDocTags BackpackAqua
+hi! link javaDocTags BackpackNeonBlue
 hi! link javaCommentTitle vimCommentTitle
 hi! link javaParen BackpackFg3
 hi! link javaParen1 BackpackFg3
@@ -1344,7 +1372,7 @@ hi! link javaVarArg BackpackPurple
 hi! link elixirDocString Comment
 
 hi! link elixirStringDelimiter BackpackPurple
-hi! link elixirInterpolationDelimiter BackpackAqua
+hi! link elixirInterpolationDelimiter BackpackNeonBlue
 
 hi! link elixirModuleDeclaration BackpackYellow
 
@@ -1360,14 +1388,14 @@ hi! link scalaTypeExtension BackpackFg1
 hi! link scalaKeyword BackpackStainYellow
 hi! link scalaKeywordModifier BackpackStainYellow
 
-hi! link scalaSpecial BackpackAqua
+hi! link scalaSpecial BackpackNeonBlue
 hi! link scalaOperator BackpackFg1
 
 hi! link scalaTypeDeclaration BackpackYellow
 hi! link scalaTypeTypePostDeclaration BackpackYellow
 
 hi! link scalaInstanceDeclaration BackpackFg1
-hi! link scalaInterpolation BackpackAqua
+hi! link scalaInterpolation BackpackNeonBlue
 
 " }}}
 " Markdown: {{{
@@ -1381,9 +1409,9 @@ hi! link markdownH4 BackpackYellowBold
 hi! link markdownH5 BackpackYellow
 hi! link markdownH6 BackpackYellow
 
-hi! link markdownCode BackpackAqua
-hi! link markdownCodeBlock BackpackAqua
-hi! link markdownCodeDelimiter BackpackAqua
+hi! link markdownCode BackpackNeonBlue
+hi! link markdownCodeBlock BackpackNeonBlue
+hi! link markdownCodeDelimiter BackpackNeonBlue
 
 hi! link markdownBlockquote BackpackGray
 hi! link markdownListMarker BackpackGray
@@ -1409,7 +1437,7 @@ hi! link markdownIdDeclaration markdownLinkText
 
 " hi! link haskellType BackpackYellow
 " hi! link haskellOperators BackpackBabyBlue
-" hi! link haskellConditional BackpackAqua
+" hi! link haskellConditional BackpackNeonBlue
 " hi! link haskellLet BackpackBabyBlue
 "
 hi! link haskellType BackpackFg1
@@ -1422,15 +1450,15 @@ hi! link haskellBacktick BackpackBabyBlue
 hi! link haskellStatement BackpackBabyBlue
 hi! link haskellConditional BackpackBabyBlue
 
-hi! link haskellLet BackpackAqua
-hi! link haskellDefault BackpackAqua
-hi! link haskellWhere BackpackAqua
-hi! link haskellBottom BackpackAqua
-hi! link haskellBlockKeywords BackpackAqua
-hi! link haskellImportKeywords BackpackAqua
-hi! link haskellDeclKeyword BackpackAqua
-hi! link haskellDeriving BackpackAqua
-hi! link haskellAssocType BackpackAqua
+hi! link haskellLet BackpackNeonBlue
+hi! link haskellDefault BackpackNeonBlue
+hi! link haskellWhere BackpackNeonBlue
+hi! link haskellBottom BackpackNeonBlue
+hi! link haskellBlockKeywords BackpackNeonBlue
+hi! link haskellImportKeywords BackpackNeonBlue
+hi! link haskellDeclKeyword BackpackNeonBlue
+hi! link haskellDeriving BackpackNeonBlue
+hi! link haskellAssocType BackpackNeonBlue
 
 hi! link haskellNumber BackpackPurple
 hi! link haskellPragma BackpackPurple
