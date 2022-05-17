@@ -469,6 +469,9 @@ call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg4', s:fg4)
 call s:HL('BackpackFg4Italic', s:fg4, s:none, s:italic)
+call s:HL('BackpackFg5', s:fg5)
+call s:HL('BackpackFg6', s:fg6)
+call s:HL('BackpackFg7', s:fg7)
 call s:HL('BackpackGray', s:gray)
 call s:HL('BackpackBg0', s:bg0)
 call s:HL('BackpackBg1', s:bg1)
@@ -1155,6 +1158,10 @@ hi! link javaScriptReserved BackpackYellow
 "
 " YAJS: {{{
 
+hi! link javascriptFuncName BackpackGreen
+hi! link javascriptFuncArg BackpackExtraLightBlue 
+hi! link javascriptFuncCall BackpackExtraLightBlue 
+hi! link javascriptMethod BackpackExtraLightBlue 
 hi! link javascriptImport BackpackNeonBlue
 hi! link javascriptExport BackpackNeonBlue
 hi! link javascriptClassKeyword BackpackNeonBlue
@@ -1166,10 +1173,9 @@ hi! link javascriptClassSuperName BackpackYellow
 hi! link javascriptGlobal BackpackYellow
 
 hi! link javascriptEndColons BackpackFg1
-hi! link javascriptFuncArg BackpackFg1
 hi! link javascriptGlobalMethod BackpackFg1
 hi! link javascriptNodeGlobal BackpackFg1
-hi! link javascriptBOMWindowProp BackpackFg1
+hi! link javascriptBOMWindowProp BackpackExtraFg1
 hi! link javascriptArrayMethod BackpackFg1
 hi! link javascriptArrayStaticMethod BackpackFg1
 hi! link javascriptCacheMethod BackpackFg1
@@ -1186,17 +1192,18 @@ hi! link javascriptStringMethod BackpackFg1
 
 hi! link javascriptVariable BackpackBabyBlue
 hi! link javascriptVariable BackpackStainYellow
-hi! link javascriptIdentifier BackpackBlue
+hi! link javascripttdentifier BackpackBlue
+hi! link javascriptIdentifierName BackpackOrange
 hi! link javascriptClassSuper BackpackBabyBlue
 hi! link javascriptString BackpackPurple
 
 hi! link javascriptFuncKeyword BackpackBabyBlue
 hi! link javascriptAsyncFunc BackpackBabyBlue
-hi! link javascriptFuncKeyword BackpackNeonBlue
+hi! link javascriptFuncKeyword BackpackBlue
 hi! link javascriptAsyncFunc BackpackNeonBlue
 hi! link javascriptClassStatic BackpackBabyBlue
 
-hi! link javascriptOperator BackpackStainYellow
+hi! link javascriptOperator BackpackBrightRed
 hi! link javascriptForOperator BackpackStainYellow
 hi! link javascriptYield BackpackStainYellow
 hi! link javascriptExceptions BackpackStainYellow
@@ -1206,17 +1213,18 @@ hi! link javascriptTemplateSB BackpackNeonBlue
 hi! link javascriptTemplateSubstitution BackpackFg1
 
 hi! link javascriptLabel BackpackBlueBold
-hi! link javascriptObjectLabel BackpackStainYellow
+hi! link javascriptObjectLabel BackpackFg2
 hi! link javascriptPropertyName BackpackYellow
 
 hi! link javascriptLogicSymbols BackpackFg1
-hi! link javascriptArrowFunc BackpackYellow
+hi! link javascriptArrowFunc BackpackOrange
 
 hi! link javascriptDocParamName BackpackFg4
 hi! link javascriptDocTags BackpackFg4
 hi! link javascriptDocNotation BackpackFg4
 hi! link javascriptDocParamType BackpackFg4
 hi! link javascriptDocNamedParamType BackpackFg4
+
 
 hi! link javascriptBrackets BackpackFg1
 hi! link javascriptDOMElemAttrs BackpackFg1
@@ -1227,6 +1235,21 @@ hi! link javascriptHeadersMethod BackpackFg1
 
 hi! link javascriptAsyncFuncKeyword BackpackStainYellow
 hi! link javascriptAwaitFuncKeyword BackpackStainYellow
+
+hi! link javascriptImport BackpackYellow
+hi! link javascriptExport BackpackNeonBlue
+hi! link javascriptPropertyName BackpackYellow
+hi! link javascriptProp BackpackYellow
+hi! link javascriptClassKeyword BackpackGreen 
+hi! link javascriptObjectMethodName BackpackExtraLightBlue
+hi! link javascriptObjectMethod     BackpackExtraLightBlue
+hi! link javascriptMethodName       BackpackExtraLightBlue
+hi! link javascriptMethodName       BackpackExtraLightBlue
+hi! link javascriptMethodAccessor   BackpackExtraLightBlue
+hi! link javascriptMethodName       BackpackExtraLightBlue
+hi! link javascriptMethod       BackpackExtraLightBlue
+hi! link javascriptFuncCall       BackpackExtraLightBlue
+
 
 " }}}
 " PanglossJS: {{{
@@ -1239,28 +1262,29 @@ hi! link jsClassKeyword BackpackYellow
 hi! link jsExtendsKeyword BackpackGreen
 hi! link jsExportDefault BackpackYellow
 hi! link jsTemplateBraces BackpackNeonBlue
-hi! link jsGlobalNodeObjects BackpackFg1
-hi! link jsGlobalObjects BackpackFg1
 hi! link jsFunction BackpackBlue
 hi! link jsFuncParens BackpackFg3
-hi! link jsParens BackpackFg3
+hi! link jsParens BackpackFg1
 hi! link jsNull BackpackPurple
 hi! link jsUndefined BackpackDarkRed
 hi! link jsObjectFuncName BackpackOrange 
 hi! link jsFuncName BackpackPurple
 hi! link jsReturn BackpackYellow
 hi! link jsFuncName BackpackGreen
-hi! link jsFuncCall BackpackExtraLightBlue
 hi! link jsClassKeyword  BackpackGreen 
+hi! link jsClassFuncName  BackpackGreen 
 hi! link jsLet BackpackBlue
 hi! link jsStorageClass BackpackYellow
 hi! link jsObject BackpackBabyBlue
 hi! link jsObjectFuncName BackpackFg1
 hi! link jsSpecial BackpackGreen
-hi! link jsOperatorKeyword BackpackBrightRed
 hi! link jsThis BackpackBlue
-hi! link jsFuncArgs BackpackFg1
-
+hi! link jsGlobalNodeObjects BackpackNeonBlue 
+hi! link jsOperatorKeyword BackpackBrightRed
+hi! link jsGlobalObjects BackpackNeonBlue
+hi! link jsIdentifierName BackpackDarkRed
+hi! link jsFuncCall BackpackFg5
+hi! link jsFuncArgs BackpackExtraLightBlue
 
 
 " }}}
