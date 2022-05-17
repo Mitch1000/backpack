@@ -1153,7 +1153,7 @@ hi! link javaScriptReserved BackpackYellow
 hi! link javaScriptFunction BackpackBlue 
 hi! link javaScriptIdentifier BackpackBlue
 hi! link javaScriptGlobal BackpackNeonBlue
-hi! link javaScriptStatement BackpackDarkRed
+hi! link javaScriptStatement BackpackYellow
 hi! link javaScriptType BackpackGreen
 
 " }}}
