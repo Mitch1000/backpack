@@ -1287,6 +1287,8 @@ hi! link jsGlobalObjects BackpackNeonBlue
 hi! link jsIdentifierName BackpackDarkRed
 hi! link jsFuncCall BackpackFg5
 hi! link jsFuncArgs BackpackExtraLightBlue
+hi! link jsOperator BackpackBabyBlue
+hi! link jsVariableDef BackpackFg1
 
 
 " }}}
