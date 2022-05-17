@@ -1144,12 +1144,17 @@ call s:HL('javaScriptComment', s:blue, s:none, s:italic . s:italicize_comments)
 hi! link javaScriptBraces BackpackFg1
 hi! link javaScriptFunction BackpackBlue
 hi! link javaScriptIdentifier BackpackStainYellow
-hi! link javaScriptMember BackpackStainYellow
+hi! link javaScriptMember BackpackNeonBlue
 hi! link javaScriptNumber BackpackPurple
 hi! link javaScriptString BackpackPurple
 hi! link javaScriptNull BackpackPurple
 hi! link javaScriptParens BackpackFg3
 hi! link javaScriptReserved BackpackYellow
+hi! link javaScriptFunction BackpackBlue 
+hi! link javaScriptIdentifier BackpackBlue
+hi! link javaScriptGlobal BackpackNeonBlue
+hi! link javaScriptStatement BackpackDarkRed
+hi! link javaScriptType BackpackGreen
 
 " }}}
 "
