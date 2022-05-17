@@ -85,18 +85,18 @@ let s:is_dark=(&background == 'dark')
 " setup palette dictionary
 let s:bp = {}
 
-" fill it with absolute colors
-let s:bp.dark0_hard  = ['#1d2021', 234]     " 29-32-33
-let s:bp.dark0 = ['#282828', 235]     " 40-40-40
-let s:bp.dark0_soft = ['#32302f', 236]     " 50-48-47
-let s:bp.dark1 = ['#3c3836', 237]     " 60-56-54
-let s:bp.dark2 = ['#504945', 239]     " 80-73-69
-let s:bp.dark3 = ['#665c54', 241]     " 102-92-84
-let s:bp.dark4 = ['#7c6f64', 243]     " 124-111-100
-let s:bp.dark5 = ['#7c6f64', 238]     " 124-111-100
-let s:bp.dark6 = ['#7c6f64', 241]     " 124-111-100
-let s:bp.dark7 = ['#7c6f64', 234]     " 124-111-100
-let s:bp.dark8 = ['#7c6f64', 236]     " 124-111-100
+" fill it with colors
+let s:bp.dark0_hard  = ['#1d2021', 234] 
+let s:bp.dark0 = ['#282828', 235]
+let s:bp.dark0_soft = ['#32302f', 236]
+let s:bp.dark1 = ['#3c3836', 237]
+let s:bp.dark2 = ['#504945', 239]
+let s:bp.dark3 = ['#665c54', 241]
+let s:bp.dark4 = ['#7c6f64', 243]
+let s:bp.dark5 = ['#7c6f64', 238]
+let s:bp.dark6 = ['#7c6f64', 241]
+let s:bp.dark7 = ['#7c6f64', 234]
+let s:bp.dark8 = ['#7c6f64', 236]
 let s:bp.dark4_256 = ['#7c6f64', 243]     " 124-111-100
 
 let s:bp.gray_246 = ['#928374', 246]     " 146-131-116
@@ -1269,7 +1269,6 @@ hi! link jsFuncParens BackpackFg3
 hi! link jsParens BackpackFg1
 hi! link jsNull BackpackPurple
 hi! link jsUndefined BackpackDarkRed
-hi! link jsObjectFuncName BackpackRose 
 hi! link jsFuncName BackpackPurple
 hi! link jsReturn BackpackYellow
 hi! link jsFuncName BackpackGreen
@@ -1278,7 +1277,7 @@ hi! link jsClassFuncName  BackpackGreen
 hi! link jsLet BackpackBlue
 hi! link jsStorageClass BackpackYellow
 hi! link jsObject BackpackBabyBlue
-hi! link jsObjectFuncName BackpackFg1
+hi! link jsObjectFuncName BackpackGreen
 hi! link jsSpecial BackpackGreen
 hi! link jsThis BackpackBlue
 hi! link jsGlobalNodeObjects BackpackNeonBlue 
@@ -1289,6 +1288,8 @@ hi! link jsFuncCall BackpackFg5
 hi! link jsFuncArgs BackpackExtraLightBlue
 hi! link jsOperator BackpackBabyBlue
 hi! link jsVariableDef BackpackFg1
+hi! link jsObjectKey BackpackDarkRed
+
 
 
 " }}}
