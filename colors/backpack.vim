@@ -104,7 +104,7 @@ let s:bp.gray_245 = ['#928374', 245]     " 146-131-116
 let s:bp.gray_244 = ['#928374', 244]     " 146-131-116
 
 let s:bp.light0_hard = ['#f9f5d7', 231]     " 249-245-215
-let s:bp.light0 = ['#fbf1c7', 255]     " 253-244-193
+let s:bp.light0 = ['#fbf1c7', 231]     " 253-244-193
 let s:bp.light0_soft = ['#f2e5bc', 254]     " 242-229-188
 let s:bp.light1 = ['#ebdbb2', 255]     " 235-219-178
 let s:bp.light2 = ['#d5c4a1', 251]     " 213-196-161
@@ -116,36 +116,31 @@ let s:bp.light7 = ['#a89984', 253]     " 168-153-132
 let s:bp.light8 = ['#a89984', 251]     " 168-153-132
 let s:bp.light4_256  = ['#a89984', 255]     " 168-153-132
 
-let s:bp.stain_yellow = ['#fb4934', 180]     " 251-73-52
-let s:bp.bright_yellow = ['#fb4934', 180]     " 251-73-52
-let s:bp.dark_gray = ['#b8bb26', 235]     " 184-187-38
-let s:bp.green  = ['#fabd2f', 121]     " 250-189-47
-let s:bp.dark_red = ['#fb4934', 131]     " 251-73-52
-let s:bp.bright_red = ['#fb4934', 168]     " 251-73-52
-let s:bp.forest_blue = ['#83a598', 73]     " 131-165-152
-let s:bp.bright_blue = ['#83a598', 73]     " 131-165-152
-let s:bp.bright_purple = ['#d3869b', 139]     " 211-134-155
-let s:bp.bright_neon_blue = ['#8ec07c', 81]     " 142-192-124
-let s:bp.baby_blue = ['#fe8019', 159]     " 254-128-25
-let s:bp.extra_light_blue = ['#fe8019', 195]     " 254-128-25
-let s:bp.orange = ['#fe8019', 224]     " 142-192-124
-let s:bp.rust = ['#fe8019', 209]     " 142-192-124
+let s:bp.stain_yellow = ['#fb4934', 180]
+let s:bp.dark_gray = ['#b8bb26', 235]
+let s:bp.green  = ['#fabd2f', 121]
+let s:bp.dark_red = ['#fb4934', 131]
+let s:bp.bright_red = ['#fb4934', 168]
+let s:bp.forest_blue = ['#83a598', 73]
+let s:bp.bright_purple = ['#d3869b', 139]
+let s:bp.bright_neon_blue = ['#8ec07c', 81]
+let s:bp.baby_blue = ['#fe8019', 159]
+let s:bp.extra_light_blue = ['#fe8019', 195]
+let s:bp.rose = ['#fe8019', 224]
 
-let s:bp.neutral_red = ['#cc241d', 124]     " 204-36-29
-let s:bp.neutral_green = ['#98971a', 106]     " 152-151-26
-let s:bp.neutral_yellow = ['#d79921', 172]     " 215-153-33
-let s:bp.neutral_blue = ['#458588', 66]      " 69-133-136
-let s:bp.neutral_purple = ['#b16286', 132]     " 177-98-134
-let s:bp.neutral_neon_blue = ['#689d6a', 72]      " 104-157-106
-let s:bp.neutral_baby_blue = ['#d65d0e', 166]     " 214-93-14
+let s:bp.dark_stain_yellow = ['#fb4934', 172]
+let s:bp.dark_dark_gray = ['#b8bb26', 234]
+let s:bp.dark_green  = ['#fabd2f', 23]
+let s:bp.dark_dark_red = ['#fb4934', 131]
+let s:bp.dark_bright_red = ['#fb4934', 168]
+let s:bp.dark_forest_blue = ['#83a598', 30]
+let s:bp.dark_bright_purple = ['#d3869b', 55]
+let s:bp.dark_bright_neon_blue = ['#8ec07c', 33]
+let s:bp.dark_baby_blue = ['#fe8019', 159]
+let s:bp.dark_extra_light_blue = ['#fe8019', 238]
+let s:bp.dark_rose = ['#fe8019', 212]
 
-let s:bp.faded_red = ['#9d0006', 88]      " 157-0-6
-let s:bp.faded_green = ['#79740e', 100]     " 121-116-14
-let s:bp.faded_yellow = ['#b57614', 136]     " 181-118-20
-let s:bp.faded_blue = ['#076678', 24]      " 7-102-120
-let s:bp.faded_purple = ['#8f3f71', 96]      " 143-63-113
-let s:bp.faded_neon_blue = ['#427b58', 66]      " 66-123-88
-let s:bp.faded_baby_blue = ['#af3a03', 130]     " 175-58-3
+
 
 " }}}
 "
@@ -217,8 +212,7 @@ if s:is_dark
 
   let s:stain_yellow = s:bp.stain_yellow
   let s:yellow = s:bp.stain_yellow
-  let s:orange = s:bp.orange
-  let s:rust = s:bp.rust
+  let s:rose = s:bp.rose
   let s:red = s:bp.dark_red
   let s:bright_red = s:bp.bright_red
   let s:dark_gray = s:bp.dark_gray
@@ -252,20 +246,25 @@ else
   let s:fg2 = s:bp.dark2
   let s:fg3 = s:bp.dark3
   let s:fg4 = s:bp.dark4
+  let s:fg5 = s:bp.dark5
+  let s:fg6 = s:bp.dark6
+  let s:fg7 = s:bp.dark7
 
   let s:fg4_256 = s:bp.dark4_256
+  let s:light_gray = s:bp.dark6
 
-  let s:stain_yellow = s:bp.stain_yellow
-  let s:yellow = s:bp.stain_yellow
-  let s:orange = s:bp.orange
-  let s:red = s:bp.dark_red
-  let s:dark_gray = s:bp.dark_gray
-  let s:green = s:bp.green
-  let s:blue = s:bp.forest_blue
-  let s:purple = s:bp.bright_purple
-  let s:neon_blue = s:bp.bright_neon_blue
-  let s:baby_blue = s:bp.baby_blue
-  let s:extra_light_blue = s:bp.extra_light_blue
+  let s:stain_yellow = s:bp.dark_stain_yellow
+  let s:bright_red = s:bp.dark_bright_red
+  let s:yellow = s:bp.dark_stain_yellow
+  let s:rose = s:bp.dark_rose
+  let s:red = s:bp.dark_dark_red
+  let s:dark_gray = s:bp.dark_dark_gray
+  let s:green = s:bp.dark_green
+  let s:blue = s:bp.dark_forest_blue
+  let s:purple = s:bp.dark_bright_purple
+  let s:neon_blue = s:bp.dark_bright_neon_blue
+  let s:baby_blue = s:bp.dark_baby_blue
+  let s:extra_light_blue = s:bp.dark_extra_light_blue
 endif
 
 " reset to 16 colors fallback
@@ -494,10 +493,8 @@ call s:HL('BackpackGreenBold', s:green, s:none, s:bold)
 call s:HL('BackpackDarkRedBold', s:red, s:none, s:bold)
 call s:HL('BackpackDarkGray', s:dark_gray)
 call s:HL('BackpackYellow', s:stain_yellow)
-call s:HL('BackpackOrange', s:orange)
-call s:HL('BackpackOrangeBold', s:orange, s:none, s:bold)
-call s:HL('BackpackRust', s:rust)
-call s:HL('BackpackRustBold', s:rust, s:none, s:bold)
+call s:HL('BackpackRose', s:rose)
+call s:HL('BackpackRoseBold', s:rose, s:none, s:bold)
 call s:HL('BackpackYellowBold', s:stain_yellow, s:none, s:bold)
 call s:HL('BackpackBlue', s:blue)
 call s:HL('BackpackBlueBold', s:blue, s:none, s:bold)
@@ -645,7 +642,7 @@ if &filetype != 'vue' && &filetype != 'html'
     call s:HL('Special', s:baby_blue, s:bg1, s:italicize_strings)
   endif
 endif
-autocmd FileType vue hi! link Special BackpackOrange
+autocmd FileType vue hi! link Special BackpackRose
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
 call s:HL('Todo', s:dark_gray, s:fg3, s:bold . s:italic)
@@ -1193,7 +1190,7 @@ hi! link javascriptStringMethod BackpackFg1
 hi! link javascriptVariable BackpackBabyBlue
 hi! link javascriptVariable BackpackStainYellow
 hi! link javascripttdentifier BackpackBlue
-hi! link javascriptIdentifierName BackpackOrange
+hi! link javascriptIdentifierName BackpackRose
 hi! link javascriptClassSuper BackpackBabyBlue
 hi! link javascriptString BackpackPurple
 
@@ -1217,7 +1214,7 @@ hi! link javascriptObjectLabel BackpackFg2
 hi! link javascriptPropertyName BackpackYellow
 
 hi! link javascriptLogicSymbols BackpackFg1
-hi! link javascriptArrowFunc BackpackOrange
+hi! link javascriptArrowFunc BackpackRose
 
 hi! link javascriptDocParamName BackpackFg4
 hi! link javascriptDocTags BackpackFg4
@@ -1257,7 +1254,7 @@ hi! link jsImport BackpackYellow
 hi! link jsExport BackpackYellow
 hi! link jsFrom BackpackNeonBlue
 hi! link jsObjectProp BackpackYellow
-hi! link jsArrowFunction BackpackOrange
+hi! link jsArrowFunction BackpackRose
 hi! link jsClassKeyword BackpackYellow
 hi! link jsExtendsKeyword BackpackGreen
 hi! link jsExportDefault BackpackYellow
@@ -1267,7 +1264,7 @@ hi! link jsFuncParens BackpackFg3
 hi! link jsParens BackpackFg1
 hi! link jsNull BackpackPurple
 hi! link jsUndefined BackpackDarkRed
-hi! link jsObjectFuncName BackpackOrange 
+hi! link jsObjectFuncName BackpackRose 
 hi! link jsFuncName BackpackPurple
 hi! link jsReturn BackpackYellow
 hi! link jsFuncName BackpackGreen
