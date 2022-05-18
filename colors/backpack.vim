@@ -1258,7 +1258,7 @@ hi! link javascriptFuncCall       BackpackExtraLightBlue
 hi! link jsImport BackpackYellow
 hi! link jsExport BackpackYellow
 hi! link jsFrom BackpackNeonBlue
-hi! link jsObjectProp BackpackYellow
+hi! link jsObjectProp BackpackFg1
 hi! link jsArrowFunction BackpackRose
 hi! link jsClassKeyword BackpackYellow
 hi! link jsExtendsKeyword BackpackGreen
@@ -1283,13 +1283,13 @@ hi! link jsThis BackpackBlue
 hi! link jsGlobalNodeObjects BackpackNeonBlue 
 hi! link jsOperatorKeyword BackpackBrightRed
 hi! link jsGlobalObjects BackpackNeonBlue
-hi! link jsIdentifierName BackpackDarkRed
-hi! link jsFuncCall BackpackFg5
-hi! link jsFuncArgs BackpackExtraLightBlue
+hi! link jsFuncCall BackpackExtraLightBlue
+hi! link jsFuncArgs BackpackFg5
 hi! link jsOperator BackpackBabyBlue
 hi! link jsVariableDef BackpackFg1
-hi! link jsObjectKey BackpackDarkRed
-
+hi! link jsObjectKey BackpackFg2
+hi! link jsFuncBlock BackpackFg1
+"jsFuncBlocks is THREE.Scene()  the defined object before the .
 
 
 " }}}
