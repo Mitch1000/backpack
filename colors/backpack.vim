@@ -86,8 +86,8 @@ let s:is_dark=(&background == 'dark')
 let s:bp = {}
 
 " fill it with colors
-let s:bp.dark0_hard  = ['#1d2021', 234] 
-let s:bp.dark0 = ['#282828', 235]
+let s:bp.dark0_hard  = ['#1d2021', 234]
+let s:bp.dark0 = ['#262626', 235]
 let s:bp.dark0_soft = ['#32302f', 236]
 let s:bp.dark1 = ['#3c3836', 237]
 let s:bp.dark2 = ['#504945', 239]
@@ -97,24 +97,24 @@ let s:bp.dark5 = ['#7c6f64', 238]
 let s:bp.dark6 = ['#7c6f64', 241]
 let s:bp.dark7 = ['#7c6f64', 234]
 let s:bp.dark8 = ['#7c6f64', 236]
-let s:bp.dark4_256 = ['#7c6f64', 243]     " 124-111-100
+let s:bp.dark4_256 = ['#7c6f64', 243]
 
-let s:bp.gray_246 = ['#928374', 246]     " 146-131-116
-let s:bp.gray_245 = ['#928374', 245]     " 146-131-116
-let s:bp.gray_244 = ['#928374', 244]     " 146-131-116
+let s:bp.gray_246 = ['#928374', 246]
+let s:bp.gray_245 = ['#928374', 245]
+let s:bp.gray_244 = ['#928374', 244]
 
-let s:bp.light0_hard = ['#f9f5d7', 231]     " 249-245-215
-let s:bp.light0 = ['#fbf1c7', 231]     " 253-244-193
-let s:bp.light0_soft = ['#f2e5bc', 254]     " 242-229-188
-let s:bp.light1 = ['#ebdbb2', 255]     " 235-219-178
-let s:bp.light2 = ['#d5c4a1', 251]     " 213-196-161
-let s:bp.light3 = ['#bdae93', 254]     " 189-174-147
-let s:bp.light4 = ['#a89984', 252]     " 168-153-132
-let s:bp.light5 = ['#a89984', 249]     " 168-153-132
-let s:bp.light6 = ['#a89984', 246]     " 168-153-132
-let s:bp.light7 = ['#a89984', 253]     " 168-153-132
-let s:bp.light8 = ['#a89984', 251]     " 168-153-132
-let s:bp.light4_256  = ['#a89984', 255]     " 168-153-132
+let s:bp.light0_hard = ['#f9f5d7', 231]
+let s:bp.light0 = ['#fbf1c7', 231]
+let s:bp.light0_soft = ['#f2e5bc', 254]
+let s:bp.light1 = ['#ebdbb2', 255]
+let s:bp.light2 = ['#d5c4a1', 251]
+let s:bp.light3 = ['#bdae93', 254]
+let s:bp.light4 = ['#a89984', 252]
+let s:bp.light5 = ['#a89984', 249]
+let s:bp.light6 = ['#a89984', 246]
+let s:bp.light7 = ['#a89984', 253]
+let s:bp.light8 = ['#a89984', 251]
+let s:bp.light4_256  = ['#a89984', 255]
 
 let s:bp.stain_yellow = ['#fb4934', 180]
 let s:bp.dark_gray = ['#b8bb26', 235]
@@ -524,9 +524,6 @@ call s:HL('BackpackBabyBlueSign', s:baby_blue, s:sign_column, s:invert_signs)
 " Normal text
 call s:HL('Normal', s:fg1, s:bg0)
 
-" Correct background (see issue #7):
-" --- Problem with changing between dark and light on 256 color terminal
-" --- https://github.com/morhetz/backpack/issues/7
 if s:is_dark
   set background=dark
 else
@@ -648,7 +645,7 @@ call s:HL('Comment', s:gray, s:none, s:italicize_comments)
 call s:HL('Todo', s:dark_gray, s:fg3, s:bold . s:italic)
 call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 
-" Generic statement 
+" Generic statement
 hi! link Statement BackpackStainYellow
 " Function name
 hi! link Function BackpackPurpleBold
@@ -657,7 +654,7 @@ hi! link Conditional BackpackStainYellow
 " for, do, while, etc.
 hi! link Repeat BackpackStainYellow
 " case, default, etc.
-hi! link Label BackpackStainYellow 
+hi! link Label BackpackStainYellow
 " try, catch, throw
 hi! link Exception BackpackStainYellow
 " sizeof, "+", "*", etc.
@@ -1150,7 +1147,7 @@ hi! link javaScriptString BackpackPurple
 hi! link javaScriptNull BackpackPurple
 hi! link javaScriptParens BackpackFg3
 hi! link javaScriptReserved BackpackYellow
-hi! link javaScriptFunction BackpackBlue 
+hi! link javaScriptFunction BackpackBlue
 hi! link javaScriptIdentifier BackpackBlue
 hi! link javaScriptGlobal BackpackNeonBlue
 hi! link javaScriptStatement BackpackYellow
@@ -1161,9 +1158,9 @@ hi! link javaScriptType BackpackGreen
 " YAJS: {{{
 
 hi! link javascriptFuncName BackpackGreen
-hi! link javascriptFuncArg BackpackExtraLightBlue 
-hi! link javascriptFuncCall BackpackExtraLightBlue 
-hi! link javascriptMethod BackpackExtraLightBlue 
+hi! link javascriptFuncArg BackpackExtraLightBlue
+hi! link javascriptFuncCall BackpackExtraLightBlue
+hi! link javascriptMethod BackpackExtraLightBlue
 hi! link javascriptImport BackpackNeonBlue
 hi! link javascriptExport BackpackNeonBlue
 hi! link javascriptClassKeyword BackpackNeonBlue
@@ -1242,7 +1239,7 @@ hi! link javascriptImport BackpackYellow
 hi! link javascriptExport BackpackNeonBlue
 hi! link javascriptPropertyName BackpackYellow
 hi! link javascriptProp BackpackYellow
-hi! link javascriptClassKeyword BackpackGreen 
+hi! link javascriptClassKeyword BackpackGreen
 hi! link javascriptObjectMethodName BackpackExtraLightBlue
 hi! link javascriptObjectMethod     BackpackExtraLightBlue
 hi! link javascriptMethodName       BackpackExtraLightBlue
@@ -1272,15 +1269,15 @@ hi! link jsUndefined BackpackDarkRed
 hi! link jsFuncName BackpackPurple
 hi! link jsReturn BackpackYellow
 hi! link jsFuncName BackpackGreen
-hi! link jsClassKeyword  BackpackGreen 
-hi! link jsClassFuncName  BackpackGreen 
+hi! link jsClassKeyword  BackpackGreen
+hi! link jsClassFuncName  BackpackGreen
 hi! link jsLet BackpackBlue
 hi! link jsStorageClass BackpackYellow
 hi! link jsObject BackpackBabyBlue
 hi! link jsObjectFuncName BackpackGreen
 hi! link jsSpecial BackpackGreen
 hi! link jsThis BackpackBlue
-hi! link jsGlobalNodeObjects BackpackNeonBlue 
+hi! link jsGlobalNodeObjects BackpackNeonBlue
 hi! link jsOperatorKeyword BackpackBrightRed
 hi! link jsGlobalObjects BackpackNeonBlue
 hi! link jsFuncCall BackpackExtraLightBlue
