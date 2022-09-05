@@ -1282,7 +1282,6 @@ hi! link jsOperatorKeyword BackpackBrightRed
 hi! link jsGlobalObjects BackpackNeonBlue
 hi! link jsFuncCall BackpackExtraLightBlue
 hi! link jsFuncArgs BackpackFg5
-hi! link jsOperator BackpackBabyBlue
 hi! link jsVariableDef BackpackFg1
 hi! link jsObjectKey BackpackFg2
 hi! link jsFuncBlock BackpackFg1
