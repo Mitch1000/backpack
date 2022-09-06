@@ -1,5 +1,5 @@
 " -----------------------------------------------------------------------------
-" File: backpack.vim
+" File: backpack.vim1
 " Description: Retro color scheme for Vim
 " Author: mitch1000 <mit.brohan@yahoo.ca>
 " Source: https://github.com/mitch1000/backpack
@@ -97,6 +97,9 @@ let s:bp.dark5 = ['#444444', 238]
 let s:bp.dark6 = ['#606060', 241]
 let s:bp.dark7 = ['#1c1c1c', 234]
 let s:bp.dark8 = ['#303030', 236]
+let s:bp.dark9 = ['#262626', 235]
+let s:bp.dark10 = ['#1c1c1c', 234]
+let s:bp.dark11 = ['#121212', 233]
 let s:bp.dark4_256 = ['#767676', 243]
 
 let s:bp.gray_246 = ['#949494', 246]
@@ -114,6 +117,8 @@ let s:bp.light5 = ['#b2b2b2', 249]
 let s:bp.light6 = ['#949494', 246]
 let s:bp.light7 = ['#dadada', 253]
 let s:bp.light8 = ['#c6c6c6', 251]
+let s:bp.light9 = ['#eeeeee', 255]
+let s:bp.light10 = ['#ffffff', 231]
 let s:bp.light4_256  = ['#eeeeee', 255]
 
 let s:bp.stain_yellow = ['#d7af87', 180]
@@ -128,15 +133,15 @@ let s:bp.baby_blue = ['#afffff', 159]
 let s:bp.extra_light_blue = ['#d7ffff', 195]
 let s:bp.rose = ['#ffd7d7', 224]
 
-let s:bp.dark_stain_yellow = ['#d78700', 172]
+let s:bp.dark_stain_yellow = ['#af005f', 125]
 let s:bp.dark_dark_gray = ['#1c1c1c', 234]
-let s:bp.dark_green  = ['#005f5f', 23]
+let s:bp.dark_green  = ['#0087ff', 33]
 let s:bp.dark_dark_red = ['#af5f5f', 131]
 let s:bp.dark_bright_red = ['#d75f87', 168]
-let s:bp.dark_forest_blue = ['#008787', 30]
+let s:bp.dark_forest_blue = ['#d70087', 162]
 let s:bp.dark_bright_purple = ['#5f00af', 55]
 let s:bp.dark_bright_neon_blue = ['#0087ff', 33]
-let s:bp.dark_baby_blue = ['#afffff', 159]
+let s:bp.dark_baby_blue = ['#d787ff', 177]
 let s:bp.dark_extra_light_blue = ['#444444', 238]
 let s:bp.dark_rose = ['#ff87d7', 212]
 
@@ -195,6 +200,8 @@ if s:is_dark
   let s:bg6  = s:bp.dark6
   let s:bg7  = s:bp.dark7
   let s:bg8  = s:bp.dark8
+  let s:bg9  = s:bp.dark9
+  let s:bg10  = s:bp.dark10
 
   let s:gray = s:bp.gray_244
   let s:light_gray = s:bp.gray_245
@@ -238,17 +245,19 @@ else
   let s:bg6  = s:bp.light6
   let s:bg7  = s:bp.light7
   let s:bg8  = s:bp.light8
+  let s:bg9  = s:bp.light9
+  let s:bg10  = s:bp.light10
 
   let s:gray = s:bp.gray_244
 
   let s:fg0 = s:bp.dark0
-  let s:fg1 = s:bp.dark1
-  let s:fg2 = s:bp.dark2
-  let s:fg3 = s:bp.dark3
-  let s:fg4 = s:bp.dark4
-  let s:fg5 = s:bp.dark5
-  let s:fg6 = s:bp.dark6
-  let s:fg7 = s:bp.dark7
+  let s:fg1 = s:bp.dark5
+  let s:fg2 = s:bp.dark6
+  let s:fg3 = s:bp.dark7
+  let s:fg4 = s:bp.dark8
+  let s:fg5 = s:bp.dark9
+  let s:fg6 = s:bp.dark10
+  let s:fg7 = s:bp.dark11
 
   let s:fg4_256 = s:bp.dark4_256
   let s:light_gray = s:bp.dark6
@@ -481,6 +490,8 @@ call s:HL('BackpackBg5', s:bg5)
 call s:HL('BackpackBg6', s:bg6)
 call s:HL('BackpackBg7', s:bg7)
 call s:HL('BackpackBg8', s:bg8)
+call s:HL('BackpackBg9', s:bg9)
+call s:HL('BackpackBg10', s:bg10)
 
 call s:HL('BackpackStainYellow', s:stain_yellow)
 call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
