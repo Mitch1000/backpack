@@ -543,7 +543,11 @@ endif
 
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine', s:none, s:bg8)
+  if s:is_dark
+    call s:HL('CursorLine', s:none, s:bg8)
+  else
+    call s:HL('CursorLine', s:none, s:bg3)
+  endif
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
@@ -566,7 +570,8 @@ if version >= 703
   call s:HL('Conceal', s:blue, s:none)
 
   " Line number of CursorLine
- call s:HL('CursorLineNr', s:fg4, s:bg0)
+  "
+  call s:HL('CursorLineNr', s:fg4, s:bg0)
 endif
 
 hi! link NonText BackpackBg4
@@ -633,8 +638,10 @@ call s:HL('FoldColumn', s:gray, s:bg1)
 " Character under cursor
 call s:HL('Cursor', s:fg2, s:fg2, s:inverse)
 " Visual mode cursor, selection
+"
 hi! link vCursor Cursor
 " Input moder cursor
+
 hi! link iCursor Cursor
 " Language mapping cursor
 hi! link lCursor Cursor
