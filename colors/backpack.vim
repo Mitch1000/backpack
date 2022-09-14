@@ -1,5 +1,5 @@
 " -----------------------------------------------------------------------------
-" File: backpack.vim1
+" File: backpack.vim
 " Description: Retro color scheme for Vim
 " Author: mitch1000 <mit.brohan@yahoo.ca>
 " Source: https://github.com/mitch1000/backpack
@@ -148,6 +148,7 @@ let s:bp.dark_rose = ['#ff87d7', 212]
 
 
 " }}}
+"
 "
 " Setup Emphasis: {{{
 
