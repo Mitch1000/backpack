@@ -324,22 +324,22 @@ if has('nvim')
   let g:terminal_color_0 = s:bg0[0]
   let g:terminal_color_8 = s:gray[0]
 
-  let g:terminal_color_1 = s:bp.neutral_red[0]
+  let g:terminal_color_1 = s:bp.dark_red[0]
   let g:terminal_color_9 = s:stain_yellow[0]
 
-  let g:terminal_color_2 = s:bp.neutral_green[0]
+  let g:terminal_color_2 = s:bp.dark_green[0]
   let g:terminal_color_10 = s:green[0]
 
-  let g:terminal_color_3 = s:bp.neutral_yellow[0]
+  let g:terminal_color_3 = s:bp.stain_yellow[0]
   let g:terminal_color_11 = s:green[0]
 
-  let g:terminal_color_4 = s:bp.neutral_blue[0]
+  let g:terminal_color_4 = s:bp.forest_blue[0]
   let g:terminal_color_12 = s:blue[0]
 
-  let g:terminal_color_5 = s:bp.neutral_purple[0]
+  let g:terminal_color_5 = s:bp.dark_bright_purple[0]
   let g:terminal_color_13 = s:purple[0]
 
-  let g:terminal_color_6 = s:bp.neutral_neon_blue[0]
+  let g:terminal_color_6 = s:bp.baby_blue[0]
   let g:terminal_color_14 = s:neon_blue[0]
 
   let g:terminal_color_7 = s:fg4[0]
