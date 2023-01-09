@@ -85,64 +85,70 @@ let s:is_dark=(&background == 'dark')
 " setup palette dictionary
 let s:bp = {}
 
-" fill it with absolute colors
-let s:bp.dark0_hard  = ['#1d2021', 234]     " 29-32-33
-let s:bp.dark0 = ['#282828', 235]     " 40-40-40
-let s:bp.dark0_soft = ['#32302f', 236]     " 50-48-47
-let s:bp.dark1 = ['#3c3836', 237]     " 60-56-54
-let s:bp.dark2 = ['#504945', 239]     " 80-73-69
-let s:bp.dark3 = ['#665c54', 241]     " 102-92-84
-let s:bp.dark4 = ['#7c6f64', 243]     " 124-111-100
-let s:bp.dark5 = ['#7c6f64', 238]     " 124-111-100
-let s:bp.dark6 = ['#7c6f64', 241]     " 124-111-100
-let s:bp.dark7 = ['#7c6f64', 234]     " 124-111-100
-let s:bp.dark8 = ['#7c6f64', 236]     " 124-111-100
-let s:bp.dark4_256 = ['#7c6f64', 243]     " 124-111-100
+" fill it with colors
+let s:bp.dark0_hard  = ['#1c1c1c', 234]
+let s:bp.dark0 = ['#262626', 235]
+let s:bp.dark0_soft = ['#303030', 236]
+let s:bp.dark1 = ['#3a3a3a', 237]
+let s:bp.dark2 = ['#4e4e4e', 239]
+let s:bp.dark3 = ['#606060', 241]
+let s:bp.dark4 = ['#767676', 243]
+let s:bp.dark5 = ['#444444', 238]
+let s:bp.dark6 = ['#606060', 241]
+let s:bp.dark7 = ['#1c1c1c', 234]
+let s:bp.dark8 = ['#303030', 236]
+let s:bp.dark9 = ['#262626', 235]
+let s:bp.dark10 = ['#1c1c1c', 234]
+let s:bp.dark11 = ['#121212', 233]
+let s:bp.dark4_256 = ['#767676', 243]
 
-let s:bp.gray_246 = ['#928374', 246]     " 146-131-116
-let s:bp.gray_245 = ['#928374', 245]     " 146-131-116
-let s:bp.gray_244 = ['#928374', 244]     " 146-131-116
+let s:bp.gray_246 = ['#949494', 246]
+let s:bp.gray_245 = ['#8a8a8a', 245]
+let s:bp.gray_244 = ['#808080', 244]
 
-let s:bp.light0_hard = ['#f9f5d7', 231]     " 249-245-215
-let s:bp.light0 = ['#fbf1c7', 231]     " 253-244-193
-let s:bp.light0_soft = ['#f2e5bc', 254]     " 242-229-188
-let s:bp.light1 = ['#ebdbb2', 255]     " 235-219-178
-let s:bp.light2 = ['#d5c4a1', 251]     " 213-196-161
-let s:bp.light3 = ['#bdae93', 254]     " 189-174-147
-let s:bp.light4 = ['#a89984', 252]     " 168-153-132
-let s:bp.light5 = ['#a89984', 249]     " 168-153-132
-let s:bp.light6 = ['#a89984', 246]     " 168-153-132
-let s:bp.light7 = ['#a89984', 253]     " 168-153-132
-let s:bp.light8 = ['#a89984', 251]     " 168-153-132
-let s:bp.light4_256  = ['#a89984', 255]     " 168-153-132
+let s:bp.light0_hard = ['#ffffff', 231]
+let s:bp.light0 = ['#eeeeee', 255]
+let s:bp.light0_soft = ['#e4e4e4', 254]
+let s:bp.light1 = ['#eeeeee', 255]
+let s:bp.light2 = ['#e4e4e4', 254]
+let s:bp.light3 = ['#dadada', 253]
+let s:bp.light4 = ['#d0d0d0', 252]
+let s:bp.light5 = ['#b2b2b2', 249]
+let s:bp.light6 = ['#949494', 246]
+let s:bp.light7 = ['#dadada', 253]
+let s:bp.light8 = ['#c6c6c6', 251]
+let s:bp.light9 = ['#eeeeee', 255]
+let s:bp.light10 = ['#ffffff', 231]
+let s:bp.light4_256  = ['#eeeeee', 255]
 
-let s:bp.stain_yellow = ['#fb4934', 180]
-let s:bp.dark_gray = ['#b8bb26', 235]
-let s:bp.green  = ['#fabd2f', 121]
-let s:bp.dark_red = ['#fb4934', 131]
-let s:bp.bright_red = ['#fb4934', 168]
-let s:bp.forest_blue = ['#83a598', 73]
-let s:bp.bright_purple = ['#d3869b', 139]
-let s:bp.bright_neon_blue = ['#8ec07c', 81]
-let s:bp.baby_blue = ['#fe8019', 159]
-let s:bp.extra_light_blue = ['#fe8019', 195]
-let s:bp.rose = ['#fe8019', 224]
+let s:bp.stain_yellow = ['#d7af87', 180]
+let s:bp.dark_gray = ['#262626', 235]
+let s:bp.green  = ['#87ffaf', 121]
+let s:bp.dark_red = ['#af5f5f', 131]
+let s:bp.bright_red = ['#d75f87', 168]
+let s:bp.forest_blue = ['#5fafaf', 73]
+let s:bp.bright_purple = ['#af87af', 139]
+let s:bp.bright_neon_blue = ['#5fd7ff', 81]
+let s:bp.baby_blue = ['#afffff', 159]
+let s:bp.extra_light_blue = ['#d7ffff', 195]
+let s:bp.rose = ['#ffd7d7', 224]
 
-let s:bp.dark_stain_yellow = ['#fb4934', 172]
-let s:bp.dark_dark_gray = ['#b8bb26', 234]
-let s:bp.dark_green  = ['#fabd2f', 23]
-let s:bp.dark_dark_red = ['#fb4934', 131]
-let s:bp.dark_bright_red = ['#fb4934', 168]
-let s:bp.dark_forest_blue = ['#83a598', 30]
-let s:bp.dark_bright_purple = ['#d3869b', 55]
-let s:bp.dark_bright_neon_blue = ['#8ec07c', 33]
-let s:bp.dark_baby_blue = ['#fe8019', 159]
-let s:bp.dark_extra_light_blue = ['#fe8019', 238]
-let s:bp.dark_rose = ['#fe8019', 212]
+let s:bp.dark_stain_yellow = ['#af005f', 125]
+let s:bp.dark_dark_gray = ['#1c1c1c', 234]
+let s:bp.dark_green  = ['#0087ff', 33]
+let s:bp.dark_dark_red = ['#af5f5f', 131]
+let s:bp.dark_bright_red = ['#d75f87', 168]
+let s:bp.dark_forest_blue = ['#d70087', 162]
+let s:bp.dark_bright_purple = ['#5f00af', 55]
+let s:bp.dark_bright_neon_blue = ['#0087ff', 33]
+let s:bp.dark_baby_blue = ['#d787ff', 177]
+let s:bp.dark_extra_light_blue = ['#444444', 238]
+let s:bp.dark_rose = ['#ff87d7', 212]
 
 
 
 " }}}
+"
 "
 " Setup Emphasis: {{{
 
@@ -195,6 +201,8 @@ if s:is_dark
   let s:bg6  = s:bp.dark6
   let s:bg7  = s:bp.dark7
   let s:bg8  = s:bp.dark8
+  let s:bg9  = s:bp.dark9
+  let s:bg10  = s:bp.dark10
 
   let s:gray = s:bp.gray_244
   let s:light_gray = s:bp.gray_245
@@ -238,17 +246,19 @@ else
   let s:bg6  = s:bp.light6
   let s:bg7  = s:bp.light7
   let s:bg8  = s:bp.light8
+  let s:bg9  = s:bp.light9
+  let s:bg10  = s:bp.light10
 
   let s:gray = s:bp.gray_244
 
   let s:fg0 = s:bp.dark0
-  let s:fg1 = s:bp.dark1
-  let s:fg2 = s:bp.dark2
-  let s:fg3 = s:bp.dark3
-  let s:fg4 = s:bp.dark4
-  let s:fg5 = s:bp.dark5
-  let s:fg6 = s:bp.dark6
-  let s:fg7 = s:bp.dark7
+  let s:fg1 = s:bp.dark5
+  let s:fg2 = s:bp.dark6
+  let s:fg3 = s:bp.dark7
+  let s:fg4 = s:bp.dark8
+  let s:fg5 = s:bp.dark9
+  let s:fg6 = s:bp.dark10
+  let s:fg7 = s:bp.dark11
 
   let s:fg4_256 = s:bp.dark4_256
   let s:light_gray = s:bp.dark6
@@ -314,22 +324,22 @@ if has('nvim')
   let g:terminal_color_0 = s:bg0[0]
   let g:terminal_color_8 = s:gray[0]
 
-  let g:terminal_color_1 = s:bp.neutral_red[0]
+  let g:terminal_color_1 = s:bp.dark_red[0]
   let g:terminal_color_9 = s:stain_yellow[0]
 
-  let g:terminal_color_2 = s:bp.neutral_green[0]
+  let g:terminal_color_2 = s:bp.dark_green[0]
   let g:terminal_color_10 = s:green[0]
 
-  let g:terminal_color_3 = s:bp.neutral_yellow[0]
+  let g:terminal_color_3 = s:bp.stain_yellow[0]
   let g:terminal_color_11 = s:green[0]
 
-  let g:terminal_color_4 = s:bp.neutral_blue[0]
+  let g:terminal_color_4 = s:bp.forest_blue[0]
   let g:terminal_color_12 = s:blue[0]
 
-  let g:terminal_color_5 = s:bp.neutral_purple[0]
+  let g:terminal_color_5 = s:bp.dark_bright_purple[0]
   let g:terminal_color_13 = s:purple[0]
 
-  let g:terminal_color_6 = s:bp.neutral_neon_blue[0]
+  let g:terminal_color_6 = s:bp.baby_blue[0]
   let g:terminal_color_14 = s:neon_blue[0]
 
   let g:terminal_color_7 = s:fg4[0]
@@ -481,6 +491,8 @@ call s:HL('BackpackBg5', s:bg5)
 call s:HL('BackpackBg6', s:bg6)
 call s:HL('BackpackBg7', s:bg7)
 call s:HL('BackpackBg8', s:bg8)
+call s:HL('BackpackBg9', s:bg9)
+call s:HL('BackpackBg10', s:bg10)
 
 call s:HL('BackpackStainYellow', s:stain_yellow)
 call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
@@ -524,9 +536,6 @@ call s:HL('BackpackBabyBlueSign', s:baby_blue, s:sign_column, s:invert_signs)
 " Normal text
 call s:HL('Normal', s:fg1, s:bg0)
 
-" Correct background (see issue #7):
-" --- Problem with changing between dark and light on 256 color terminal
-" --- https://github.com/morhetz/backpack/issues/7
 if s:is_dark
   set background=dark
 else
@@ -535,7 +544,11 @@ endif
 
 if version >= 700
   " Screen line that the cursor is
-  call s:HL('CursorLine', s:none, s:bg8)
+  if s:is_dark
+    call s:HL('CursorLine', s:none, s:bg8)
+  else
+    call s:HL('CursorLine', s:none, s:bg3)
+  endif
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
@@ -558,7 +571,8 @@ if version >= 703
   call s:HL('Conceal', s:blue, s:none)
 
   " Line number of CursorLine
- call s:HL('CursorLineNr', s:fg4, s:bg0)
+  "
+  call s:HL('CursorLineNr', s:fg4, s:bg0)
 endif
 
 hi! link NonText BackpackBg4
@@ -625,8 +639,10 @@ call s:HL('FoldColumn', s:gray, s:bg1)
 " Character under cursor
 call s:HL('Cursor', s:fg2, s:fg2, s:inverse)
 " Visual mode cursor, selection
+"
 hi! link vCursor Cursor
 " Input moder cursor
+
 hi! link iCursor Cursor
 " Language mapping cursor
 hi! link lCursor Cursor
@@ -648,7 +664,7 @@ call s:HL('Comment', s:gray, s:none, s:italicize_comments)
 call s:HL('Todo', s:dark_gray, s:fg3, s:bold . s:italic)
 call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 
-" Generic statement 
+" Generic statement
 hi! link Statement BackpackStainYellow
 " Function name
 hi! link Function BackpackPurpleBold
@@ -657,7 +673,7 @@ hi! link Conditional BackpackStainYellow
 " for, do, while, etc.
 hi! link Repeat BackpackStainYellow
 " case, default, etc.
-hi! link Label BackpackStainYellow 
+hi! link Label BackpackStainYellow
 " try, catch, throw
 hi! link Exception BackpackStainYellow
 " sizeof, "+", "*", etc.
@@ -1150,7 +1166,7 @@ hi! link javaScriptString BackpackPurple
 hi! link javaScriptNull BackpackPurple
 hi! link javaScriptParens BackpackFg3
 hi! link javaScriptReserved BackpackYellow
-hi! link javaScriptFunction BackpackBlue 
+hi! link javaScriptFunction BackpackBlue
 hi! link javaScriptIdentifier BackpackBlue
 hi! link javaScriptGlobal BackpackNeonBlue
 hi! link javaScriptStatement BackpackYellow
@@ -1161,9 +1177,9 @@ hi! link javaScriptType BackpackGreen
 " YAJS: {{{
 
 hi! link javascriptFuncName BackpackGreen
-hi! link javascriptFuncArg BackpackExtraLightBlue 
-hi! link javascriptFuncCall BackpackExtraLightBlue 
-hi! link javascriptMethod BackpackExtraLightBlue 
+hi! link javascriptFuncArg BackpackExtraLightBlue
+hi! link javascriptFuncCall BackpackExtraLightBlue
+hi! link javascriptMethod BackpackExtraLightBlue
 hi! link javascriptImport BackpackNeonBlue
 hi! link javascriptExport BackpackNeonBlue
 hi! link javascriptClassKeyword BackpackNeonBlue
@@ -1242,7 +1258,7 @@ hi! link javascriptImport BackpackYellow
 hi! link javascriptExport BackpackNeonBlue
 hi! link javascriptPropertyName BackpackYellow
 hi! link javascriptProp BackpackYellow
-hi! link javascriptClassKeyword BackpackGreen 
+hi! link javascriptClassKeyword BackpackGreen
 hi! link javascriptObjectMethodName BackpackExtraLightBlue
 hi! link javascriptObjectMethod     BackpackExtraLightBlue
 hi! link javascriptMethodName       BackpackExtraLightBlue
@@ -1258,7 +1274,7 @@ hi! link javascriptFuncCall       BackpackExtraLightBlue
 hi! link jsImport BackpackYellow
 hi! link jsExport BackpackYellow
 hi! link jsFrom BackpackNeonBlue
-hi! link jsObjectProp BackpackYellow
+hi! link jsObjectProp BackpackFg1
 hi! link jsArrowFunction BackpackRose
 hi! link jsClassKeyword BackpackYellow
 hi! link jsExtendsKeyword BackpackGreen
@@ -1269,24 +1285,26 @@ hi! link jsFuncParens BackpackFg3
 hi! link jsParens BackpackFg1
 hi! link jsNull BackpackPurple
 hi! link jsUndefined BackpackDarkRed
-hi! link jsObjectFuncName BackpackRose 
 hi! link jsFuncName BackpackPurple
 hi! link jsReturn BackpackYellow
 hi! link jsFuncName BackpackGreen
-hi! link jsClassKeyword  BackpackGreen 
-hi! link jsClassFuncName  BackpackGreen 
+hi! link jsClassKeyword  BackpackGreen
+hi! link jsClassFuncName  BackpackGreen
 hi! link jsLet BackpackBlue
 hi! link jsStorageClass BackpackYellow
 hi! link jsObject BackpackBabyBlue
-hi! link jsObjectFuncName BackpackFg1
+hi! link jsObjectFuncName BackpackGreen
 hi! link jsSpecial BackpackGreen
 hi! link jsThis BackpackBlue
-hi! link jsGlobalNodeObjects BackpackNeonBlue 
+hi! link jsGlobalNodeObjects BackpackNeonBlue
 hi! link jsOperatorKeyword BackpackBrightRed
 hi! link jsGlobalObjects BackpackNeonBlue
-hi! link jsIdentifierName BackpackDarkRed
-hi! link jsFuncCall BackpackFg5
-hi! link jsFuncArgs BackpackExtraLightBlue
+hi! link jsFuncCall BackpackExtraLightBlue
+hi! link jsFuncArgs BackpackFg5
+hi! link jsVariableDef BackpackFg1
+hi! link jsObjectKey BackpackFg2
+hi! link jsFuncBlock BackpackFg1
+"jsFuncBlocks is THREE.Scene()  the defined object before the .
 
 
 " }}}
