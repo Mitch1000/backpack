@@ -34,6 +34,7 @@ if exists('g:lightline')
   let s:red = s:getBackpackColor('BackpackBrightRed')
   let s:dark_red = s:getBackpackColor('BackpackDarkRed')
   let s:light_blue = s:getBackpackColor('BackpackExtraLightBlue')
+  let s:terminal_blue = s:getBackpackColor('BackpackTerminalBlue')
 
   let s:is_dark=(&background == 'dark')
 
@@ -48,9 +49,9 @@ if exists('g:lightline')
     let s:p.insert.left = [ [ s:bg0, s:purple, 'bold' ], [ s:fg1, s:bg2 ] ]
     let s:p.insert.right = [ [ s:bg0, s:fg2 ], [ s:fg1, s:bg2 ] ]
     let s:p.insert.middle = [ [ s:fg4, s:bg2 ] ]
-    let s:p.terminal.left = [ [ s:bg0, s:green, 'bold' ], [ s:fg1, s:bg2 ] ]
-    let s:p.terminal.right = [ [ s:bg0, s:green ], [ s:fg1, s:bg2 ] ]
-    let s:p.terminal.middle = [ [ s:fg4, s:bg2 ] ]
+    let s:p.terminal.left = [ [ s:bg0, s:terminal_blue, 'bold' ], [ s:bg0, s:purple ] ]
+    let s:p.terminal.right = [ [ s:bg0, s:terminal_blue ], [ s:bg0, s:purple ] ]
+    let s:p.terminal.middle = [ [ s:fg4, s:bg1 ] ]
     let s:p.replace.left = [ [ s:bg0, s:rose, 'bold' ], [ s:fg1, s:bg2 ] ]
     let s:p.replace.right = [ [ s:bg0, s:rose ], [ s:fg1, s:bg2 ] ]
     let s:p.replace.middle = [ [ s:fg4, s:bg2 ] ]

@@ -136,6 +136,8 @@ let s:bp.rose = ['#ffd7d7', 224]
 let s:bp.dark_stain_yellow = ['#af005f', 125]
 let s:bp.dark_dark_gray = ['#1c1c1c', 234]
 let s:bp.dark_green  = ['#0087ff', 33]
+let s:bp.terminal_green  = ['#96ba92', 115]
+let s:bp.terminal_blue  = ['#bdcfe4', 153]
 let s:bp.dark_dark_red = ['#af5f5f', 131]
 let s:bp.dark_bright_red = ['#d75f87', 168]
 let s:bp.dark_forest_blue = ['#d70087', 162]
@@ -225,6 +227,8 @@ if s:is_dark
   let s:bright_red = s:bp.bright_red
   let s:dark_gray = s:bp.dark_gray
   let s:green = s:bp.green
+  let s:terminal_green = s:bp.terminal_green
+  let s:terminal_blue = s:bp.terminal_blue
   let s:blue = s:bp.forest_blue
   let s:purple = s:bp.bright_purple
   let s:neon_blue = s:bp.bright_neon_blue
@@ -268,6 +272,7 @@ else
   let s:yellow = s:bp.dark_stain_yellow
   let s:rose = s:bp.dark_rose
   let s:red = s:bp.dark_dark_red
+  let s:terminal_green = s:bp.terminal_green
   let s:dark_gray = s:bp.dark_dark_gray
   let s:green = s:bp.dark_green
   let s:blue = s:bp.dark_forest_blue
@@ -325,21 +330,21 @@ if has('nvim')
   let g:terminal_color_8 = s:gray[0]
 
   let g:terminal_color_1 = s:bp.dark_red[0]
-  let g:terminal_color_9 = s:stain_yellow[0]
+  let g:terminal_color_9 = s:bp.fg3[0]
 
-  let g:terminal_color_2 = s:bp.dark_green[0]
-  let g:terminal_color_10 = s:green[0]
+  let g:terminal_color_2 = s:terminal_green[0]
+  let g:terminal_color_10 = s:fg2[0]
 
   let g:terminal_color_3 = s:bp.stain_yellow[0]
   let g:terminal_color_11 = s:green[0]
 
-  let g:terminal_color_4 = s:bp.forest_blue[0]
+  let g:terminal_color_4 = s:bg0[0]
   let g:terminal_color_12 = s:blue[0]
 
-  let g:terminal_color_5 = s:bp.dark_bright_purple[0]
-  let g:terminal_color_13 = s:purple[0]
+  let g:terminal_color_5 = s:bp.stain_yellow[0]
+  let g:terminal_color_13 = s:terminal_green[0]
 
-  let g:terminal_color_6 = s:bp.baby_blue[0]
+  let g:terminal_color_6 = s:terminal_blue[0]
   let g:terminal_color_14 = s:neon_blue[0]
 
   let g:terminal_color_7 = s:fg4[0]
@@ -501,6 +506,8 @@ call s:HL('BackpackDarkRedBold', s:red, s:none, s:bold)
 call s:HL('BackpackBrightRed', s:bright_red)
 call s:HL('BackpackBrightRedBold', s:bright_red, s:none, s:bold)
 call s:HL('BackpackGreen', s:green)
+call s:HL('BackpackTerminalGreen', s:terminal_green)
+call s:HL('BackpackTerminalBlue', s:terminal_blue)
 call s:HL('BackpackGreenBold', s:green, s:none, s:bold)
 call s:HL('BackpackDarkRedBold', s:red, s:none, s:bold)
 call s:HL('BackpackDarkGray', s:dark_gray)
