@@ -586,7 +586,7 @@ if version >= 700
   if s:is_dark
     call s:HL('CursorLine', s:none, s:bg8)
   else
-    call s:HL('CursorLine', s:none, s:bg2)
+    call s:HL('CursorLine', s:fg7, s:bg2)
   endif
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
