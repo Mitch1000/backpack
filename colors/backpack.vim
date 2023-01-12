@@ -106,11 +106,11 @@ let s:bp.gray_246 = ['#949494', 246]
 let s:bp.gray_245 = ['#8a8a8a', 245]
 let s:bp.gray_244 = ['#808080', 244]
 
-let s:bp.light0_hard = ['#ffffff', 231]
+let s:bp.light0_hard = ['#f7f0f7', 231]
 let s:bp.light0 = ['#eeeeee', 255]
-let s:bp.light0_soft = ['#e4e4e4', 254]
-let s:bp.light1 = ['#eeeeee', 255]
-let s:bp.light2 = ['#e4e4e4', 254]
+let s:bp.light0_soft = ['#fae3fa', 254]
+let s:bp.light1 = ['#fcf7fc', 255]
+let s:bp.light2 = ['#f7f0f7', 254]
 let s:bp.light3 = ['#dadada', 253]
 let s:bp.light4 = ['#d0d0d0', 252]
 let s:bp.light5 = ['#b2b2b2', 249]
@@ -132,6 +132,7 @@ let s:bp.bright_neon_blue = ['#5fd7ff', 81]
 let s:bp.baby_blue = ['#afffff', 159]
 let s:bp.extra_light_blue = ['#d7ffff', 195]
 let s:bp.rose = ['#ffd7d7', 224]
+let s:bp.soft_pink = ['#f5ebf5', 225]
 
 let s:bp.dark_stain_yellow = ['#af005f', 125]
 let s:bp.dark_dark_gray = ['#1c1c1c', 234]
@@ -217,6 +218,7 @@ if s:is_dark
   let s:fg5 = s:bp.light5
   let s:fg6 = s:bp.light6
   let s:fg7 = s:bp.light7
+  let s:fg8 = s:bp.light8
 
   let s:fg4_256 = s:bp.light4_256
 
@@ -235,7 +237,7 @@ if s:is_dark
   let s:baby_blue = s:bp.baby_blue
   let s:extra_light_blue = s:bp.extra_light_blue
 else
-  let s:bg0  = s:bp.light0
+  let s:bg0  = s:bp.soft_pink
   if g:backpack_contrast_light == 'soft'
     let s:bg0  = s:bp.light0_soft
   elseif g:backpack_contrast_light == 'hard'
@@ -257,12 +259,13 @@ else
 
   let s:fg0 = s:bp.dark0
   let s:fg1 = s:bp.dark5
-  let s:fg2 = s:bp.dark6
+  let s:fg2 = s:bp.dark8
   let s:fg3 = s:bp.dark7
-  let s:fg4 = s:bp.dark8
+  let s:fg4 = s:bp.dark6
   let s:fg5 = s:bp.dark9
   let s:fg6 = s:bp.dark10
   let s:fg7 = s:bp.dark11
+  let s:fg8 = s:bp.dark1
 
   let s:fg4_256 = s:bp.dark4_256
   let s:light_gray = s:bp.dark6
@@ -272,6 +275,7 @@ else
   let s:yellow = s:bp.dark_stain_yellow
   let s:rose = s:bp.dark_rose
   let s:red = s:bp.dark_dark_red
+  let s:terminal_blue = s:bp.terminal_blue
   let s:terminal_green = s:bp.terminal_green
   let s:dark_gray = s:bp.dark_dark_gray
   let s:green = s:bp.dark_green
@@ -281,6 +285,7 @@ else
   let s:baby_blue = s:bp.dark_baby_blue
   let s:extra_light_blue = s:bp.dark_extra_light_blue
 endif
+let g:background_color = s:bg0
 
 " reset to 16 colors fallback
 if g:backpack_termcolors == 16
@@ -326,29 +331,55 @@ let s:bp.extra_light_blue = s:extra_light_blue
 " Setup Terminal Colors For Neovim: {{{
 
 if has('nvim')
-  let g:terminal_color_0 = s:bg0[0]
-  let g:terminal_color_8 = s:gray[0]
+  if s:is_dark
+    let g:terminal_color_0 = s:bg0[0]
+    let g:terminal_color_8 = s:gray[0]
 
-  let g:terminal_color_1 = s:bp.dark_red[0]
-  let g:terminal_color_9 = s:bp.fg3[0]
+    let g:terminal_color_1 = s:bp.dark_red[0]
+    let g:terminal_color_9 = s:bp.fg3[0]
 
-  let g:terminal_color_2 = s:terminal_green[0]
-  let g:terminal_color_10 = s:fg2[0]
+    let g:terminal_color_2 = s:terminal_green[0]
+    let g:terminal_color_10 = s:fg2[0]
 
-  let g:terminal_color_3 = s:bp.stain_yellow[0]
-  let g:terminal_color_11 = s:green[0]
+    let g:terminal_color_3 = s:bp.stain_yellow[0]
+    let g:terminal_color_11 = s:green[0]
 
-  let g:terminal_color_4 = s:bg0[0]
-  let g:terminal_color_12 = s:blue[0]
+    let g:terminal_color_4 = s:bg0[0]
+    let g:terminal_color_12 = s:blue[0]
 
-  let g:terminal_color_5 = s:bp.stain_yellow[0]
-  let g:terminal_color_13 = s:terminal_green[0]
+    let g:terminal_color_5 = s:bp.stain_yellow[0]
+    let g:terminal_color_13 = s:terminal_green[0]
 
-  let g:terminal_color_6 = s:terminal_blue[0]
-  let g:terminal_color_14 = s:neon_blue[0]
+    let g:terminal_color_6 = s:terminal_blue[0]
+    let g:terminal_color_14 = s:neon_blue[0]
 
-  let g:terminal_color_7 = s:fg4[0]
-  let g:terminal_color_15 = s:fg1[0]
+    let g:terminal_color_7 = s:fg4[0]
+    let g:terminal_color_15 = s:fg1[0]
+  else
+    let g:terminal_color_0 = s:bg0[0]
+    let g:terminal_color_8 = s:gray[0]
+
+    let g:terminal_color_1 = s:bp.red[0]
+    let g:terminal_color_9 = s:bp.fg3[0]
+
+    let g:terminal_color_2 = s:bp.bright_red[0]
+    let g:terminal_color_10 = s:fg2[0]
+
+    let g:terminal_color_3 = s:bp.bright_purple[0]
+    let g:terminal_color_11 = s:bp.purple[0]
+
+    let g:terminal_color_4 = s:bg0[0]
+    let g:terminal_color_12 = s:blue[0]
+
+    let g:terminal_color_5 = s:bp.stain_yellow[0]
+    let g:terminal_color_13 = s:bp.dark_red[0]
+
+    let g:terminal_color_6 = s:bp.bright_red[0]
+    let g:terminal_color_14 = s:neon_blue[0]
+
+    let g:terminal_color_7 = s:fg4[0]
+    let g:terminal_color_15 = s:fg1[0]
+  endif
 endif
 
 " }}}
@@ -486,6 +517,7 @@ call s:HL('BackpackFg4Italic', s:fg4, s:none, s:italic)
 call s:HL('BackpackFg5', s:fg5)
 call s:HL('BackpackFg6', s:fg6)
 call s:HL('BackpackFg7', s:fg7)
+call s:HL('BackpackFg8', s:fg8)
 call s:HL('BackpackGray', s:gray)
 call s:HL('BackpackBg0', s:bg0)
 call s:HL('BackpackBg1', s:bg1)
@@ -554,7 +586,7 @@ if version >= 700
   if s:is_dark
     call s:HL('CursorLine', s:none, s:bg8)
   else
-    call s:HL('CursorLine', s:none, s:bg3)
+    call s:HL('CursorLine', s:none, s:bg2)
   endif
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
@@ -579,7 +611,11 @@ if version >= 703
 
   " Line number of CursorLine
   "
-  call s:HL('CursorLineNr', s:fg4, s:bg0)
+  if s:is_dark 
+    call s:HL('CursorLineNr', s:fg4, s:bg0)
+  else
+    call s:HL('CursorLineNr', s:fg7, s:bg2)
+  endif
 endif
 
 hi! link NonText BackpackBg4
@@ -629,7 +665,11 @@ endif
 if g:backpack_yellow_line_numbers == 1
   call s:HL('LineNr', s:stain_yellow, s:bg0)
 else
-  call s:HL('LineNr', s:light_gray, s:bg0)
+  if s:is_dark
+    call s:HL('LineNr', s:light_gray, s:bg0)
+  else
+    call s:HL('LineNr', s:fg1, s:bg0)
+  endif
 endif
 
 " Column where signs are displayed
