@@ -613,10 +613,14 @@ if version >= 703
   "
   if s:is_dark 
     call s:HL('CursorLineNr', s:fg4, s:bg0)
+    let g:cursor_line_nr = s:fg4
   else
     call s:HL('CursorLineNr', s:fg7, s:bg2)
+    let g:cursor_line_nr = s:fg7
   endif
+
 endif
+
 
 hi! link NonText BackpackBg4
 hi! link SpecialKey BackpackBg4
@@ -664,11 +668,15 @@ if !exists('g:backpack_yellow_line_numbers')
 endif
 if g:backpack_yellow_line_numbers == 1
   call s:HL('LineNr', s:stain_yellow, s:bg0)
+
+  let g:line_nr = s:stain_yellow
 else
   if s:is_dark
     call s:HL('LineNr', s:light_gray, s:bg0)
+    let g:line_nr = s:light_gray
   else
     call s:HL('LineNr', s:fg1, s:bg0)
+    let g:line_nr = s:fg1
   endif
 endif
 

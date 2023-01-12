@@ -74,7 +74,7 @@ if exists('g:lightline')
     let s:p = {'normal':{}, 'inactive':{}, 'insert':{}, 'replace':{}, 'visual':{}, 'tabline':{}, 'terminal':{}}
     let s:p.normal.left = [ [ s:bg9, s:fg2, 'bold' ], [ s:fg2, s:bg2 ] ]
     let s:p.normal.right = [ [ s:bg9, s:fg2 ], [ s:fg2, s:bg2 ] ]
-    let s:p.normal.middle = [ [ s:fg2, s:bg2 ] ]
+    let s:p.normal.middle = [ [ s:fg2, s:bg0 ] ]
     let s:p.inactive.right = [ [ s:bg4, s:bg1 ], [ s:bg4, s:bg1 ] ]
     let s:p.inactive.left =  [ [ s:bg4, s:bg1 ], [ s:bg4, s:bg1 ] ]
     let s:p.inactive.middle = [ [ s:bg10, s:bg1 ] ]
