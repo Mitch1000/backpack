@@ -344,7 +344,7 @@ if has('nvim')
     let g:terminal_color_3 = s:bp.stain_yellow[0]
     let g:terminal_color_11 = s:green[0]
 
-    let g:terminal_color_4 = s:bg0[0]
+    let g:terminal_color_4 = s:fg3[0]
     let g:terminal_color_12 = s:blue[0]
 
     let g:terminal_color_5 = s:bp.stain_yellow[0]
@@ -716,7 +716,7 @@ endif
 autocmd FileType vue hi! link Special BackpackRose
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
-call s:HL('Todo', s:dark_gray, s:fg3, s:bold . s:italic)
+call s:HL('Todo', s:neon_blue, s:bg0, s:bold . s:italic)
 call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 
 " Generic statement
