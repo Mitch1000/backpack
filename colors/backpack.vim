@@ -1038,15 +1038,15 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " coc.nvim: {{{
 
 hi! link CocErrorSign BackpackStainYellowSign
-hi! link CocWarningSign BackpackBabyBlueSign
+hi! link CocWarningSign BackpackFg2
 hi! link CocInfoSign BackpackYellowSign
 hi! link CocHintSign BackpackBlueSign
 hi! link CocErrorFloat BackpackStainYellow
-hi! link CocWarningFloat BackpackBabyBlue
+hi! link CocWarningFloat BackpackFg2
 hi! link CocInfoFloat BackpackYellow
 hi! link CocHintFloat BackpackBlue
 hi! link CocDiagnosticsError BackpackStainYellow
-hi! link CocDiagnosticsWarning BackpackBabyBlue
+hi! link CocDiagnosticsWarning BackpackFg2
 hi! link CocDiagnosticsInfo BackpackYellow
 hi! link CocDiagnosticsHint BackpackBlue
 
