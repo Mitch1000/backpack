@@ -1,11 +1,8 @@
 " -----------------------------------------------------------------------------
-" File: backpack.vim
-" Description: Retro color scheme for Vim
 " Author: mitch1000 <mit.brohan@yahoo.ca>
 " Source: https://github.com/mitch1000/backpack
 " Last Modified: 25 April 2022
 " -----------------------------------------------------------------------------
-
 " Supporting code -------------------------------------------------------------
 " Initialisation: {{{
 
@@ -153,6 +150,7 @@ let s:bp.dark_rose = ['#ff87d7', 212]
 " }}}
 "
 "
+"
 " Setup Emphasis: {{{
 
 let s:bold = 'bold,'
@@ -229,6 +227,7 @@ if s:is_dark
   let s:bright_red = s:bp.bright_red
   let s:dark_gray = s:bp.dark_gray
   let s:green = s:bp.green
+  let s:dark_green = s:bp.dark_green
   let s:terminal_green = s:bp.terminal_green
   let s:terminal_blue = s:bp.terminal_blue
   let s:blue = s:bp.forest_blue
@@ -328,6 +327,7 @@ let s:bp.baby_blue = s:baby_blue
 let s:bp.extra_light_blue = s:extra_light_blue
 
 " }}}
+"
 " Setup Terminal Colors For Neovim: {{{
 
 if has('nvim')
@@ -509,7 +509,8 @@ endfunction
 call s:HL('BackpackFg0', s:fg0)
 call s:HL('BackpackFg1', s:fg1)
 call s:HL('BackpackFg2', s:fg2)
-call s:HL('BackpackFg2Bold', s:fg2, s:none, s:bold)
+call s:HL('BackpackFg2Bold', s:fg2, s:none, s:invert_signs)
+call s:HL('BackpackPopup', s:fg2, s:none, s:bold)
 call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg4', s:fg4)
@@ -563,12 +564,11 @@ call s:HL('BackpackDarkRedSign', s:red, s:sign_column, s:invert_signs)
 call s:HL('BackpackGreenSign', s:green, s:sign_column, s:invert_signs)
 call s:HL('BackpackYellowSign', s:stain_yellow, s:sign_column, s:invert_signs)
 call s:HL('BackpackBlueSign', s:blue, s:sign_column, s:invert_signs)
+call s:HL('BackpackBlueSelect', s:dark_green, s:fg2, s:invert_signs)
 call s:HL('BackpackPurpleSign', s:purple, s:sign_column, s:invert_signs)
 call s:HL('BackpackNeonBlueSign', s:neon_blue, s:sign_column, s:invert_signs)
 call s:HL('BackpackBabyBlueSign', s:baby_blue, s:sign_column, s:invert_signs)
-
 " }}}
-
 " Vanilla colorscheme ---------------------------------------------------------
 " General UI: {{{
 
@@ -1040,7 +1040,7 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 hi! link CocErrorSign BackpackStainYellowSign
 hi! link CocWarningSign BackpackFg2
 hi! link CocInfoSign BackpackYellowSign
-hi! link CocHintSign BackpackBlueSign
+hi! link CocHintSign BackpackBlue
 hi! link CocErrorFloat BackpackStainYellow
 hi! link CocWarningFloat BackpackFg2
 hi! link CocInfoFloat BackpackYellow
@@ -1049,15 +1049,20 @@ hi! link CocDiagnosticsError BackpackStainYellow
 hi! link CocDiagnosticsWarning BackpackFg2
 hi! link CocDiagnosticsInfo BackpackYellow
 hi! link CocDiagnosticsHint BackpackBlue
-
-hi! link CocSelectedText BackpackStainYellow
-hi! link CocCodeLens BackpackGray
+hi! link CocFloatBorderHighlight BackpackStainYellow
+hi! link CocSelectedText BackpackRose 
+hi! link CocCodeLens BackpackPurple
+hi! link CocFloatingBackground BackpackFg1
+hi! link CocFloatActive BackpackPurple
+hi! link CocSearch BackpackBrightRed
+hi! link CocPumMenu BackpackRose
+hi! link CocMenuSel BackpackBlueSelect 
+hi! link NormalFloat BackpackPopup 
 
 call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:stain_yellow)
 call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:baby_blue)
-call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:fg2)
+call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:fg1)
 call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
-
 " }}}
 
 " Filetype specific -----------------------------------------------------------
