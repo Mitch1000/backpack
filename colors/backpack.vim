@@ -122,6 +122,7 @@ let s:bp.stain_yellow = ['#d7af87', 180]
 let s:bp.dark_gray = ['#262626', 235]
 let s:bp.green  = ['#87ffaf', 121]
 let s:bp.dark_red = ['#af5f5f', 131]
+let s:bp.error_red = ['#fc0404', 9]
 let s:bp.bright_red = ['#d75f87', 168]
 let s:bp.forest_blue = ['#5fafaf', 73]
 let s:bp.bright_purple = ['#af87af', 139]
@@ -224,6 +225,7 @@ if s:is_dark
   let s:yellow = s:bp.stain_yellow
   let s:rose = s:bp.rose
   let s:red = s:bp.dark_red
+  let s:error_red = s:bp.error_red
   let s:bright_red = s:bp.bright_red
   let s:dark_gray = s:bp.dark_gray
   let s:green = s:bp.green
@@ -271,6 +273,7 @@ else
 
   let s:stain_yellow = s:bp.dark_stain_yellow
   let s:bright_red = s:bp.dark_bright_red
+  let s:error_red = s:bp.error_red
   let s:yellow = s:bp.dark_stain_yellow
   let s:rose = s:bp.dark_rose
   let s:red = s:bp.dark_dark_red
@@ -510,7 +513,7 @@ call s:HL('BackpackFg0', s:fg0)
 call s:HL('BackpackFg1', s:fg1)
 call s:HL('BackpackFg2', s:fg2)
 call s:HL('BackpackFg2Bold', s:fg2, s:none, s:invert_signs)
-call s:HL('BackpackPopup', s:fg2, s:none, s:bold)
+call s:HL('BackpackPopup', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg4', s:fg4)
@@ -535,6 +538,7 @@ call s:HL('BackpackBg10', s:bg10)
 call s:HL('BackpackStainYellow', s:stain_yellow)
 call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
 call s:HL('BackpackDarkRed', s:red)
+call s:HL('BackpackErrorRed', s:error_red)
 call s:HL('BackpackDarkRedBold', s:red, s:none, s:bold)
 call s:HL('BackpackBrightRed', s:bright_red)
 call s:HL('BackpackBrightRedBold', s:bright_red, s:none, s:bold)
@@ -739,7 +743,7 @@ hi! link Keyword BackpackFg2
 hi! link Delimiter BackpackFg3
 
 " Variable name
-hi! link Identifier BackpackBlue
+hi! link Identifier BackpackFg2 
 
 " Generic preprocessor
 hi! link PreProc BackpackNeonBlue
@@ -1037,7 +1041,7 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " }}}
 " coc.nvim: {{{
 
-hi! link CocErrorSign BackpackStainYellowSign
+hi! link CocErrorSign BackpackErrorRed 
 hi! link CocWarningSign BackpackFg2
 hi! link CocInfoSign BackpackYellowSign
 hi! link CocHintSign BackpackBlue
@@ -1045,9 +1049,9 @@ hi! link CocErrorFloat BackpackStainYellow
 hi! link CocWarningFloat BackpackFg2
 hi! link CocInfoFloat BackpackYellow
 hi! link CocHintFloat BackpackBlue
-hi! link CocDiagnosticsError BackpackStainYellow
-hi! link CocDiagnosticsWarning BackpackFg2
-hi! link CocDiagnosticsInfo BackpackYellow
+hi! link CocDiagnosticsError BackpackDarkRed 
+hi! link CocDiagnosticsWarning BackpackYellow
+hi! link CocDiagnosticsInfo BackpackFg2 
 hi! link CocDiagnosticsHint BackpackBlue
 hi! link CocFloatBorderHighlight BackpackStainYellow
 hi! link CocSelectedText BackpackRose 
@@ -1064,7 +1068,11 @@ call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:baby_blue)
 call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:fg1)
 call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
 " }}}
+"
+" Diagnostics: {{{
 
+hi! link DiagnosticError BackpackErrorRed
+" }}}
 " Filetype specific -----------------------------------------------------------
 " Diff: {{{
 
@@ -1595,3 +1603,4 @@ endfunction
 " }}}
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
+"
