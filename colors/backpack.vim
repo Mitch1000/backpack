@@ -84,6 +84,7 @@ let s:bp = {}
 
 " fill it with colors
 let s:bp.dark0_hard  = ['#1c1c1c', 234]
+let s:bp.dark0_harder  = ['#0E0E0E', 234]
 let s:bp.dark0 = ['#262626', 235]
 let s:bp.dark0_soft = ['#303030', 236]
 let s:bp.dark1 = ['#3a3a3a', 237]
@@ -193,6 +194,8 @@ if s:is_dark
     let s:bg0  = s:bp.dark0_soft
   elseif g:backpack_contrast_dark == 'hard'
     let s:bg0  = s:bp.dark0_hard
+  elseif g:backpack_contrast_dark == 'harder'
+    let s:bg0  = s:bp.dark0_harder
   endif
 
   let s:bg1  = s:bp.dark1
@@ -281,6 +284,7 @@ else
   let s:terminal_green = s:bp.terminal_green
   let s:dark_gray = s:bp.dark_dark_gray
   let s:green = s:bp.dark_green
+  let s:dark_green = s:bp.dark_green
   let s:blue = s:bp.dark_forest_blue
   let s:purple = s:bp.dark_bright_purple
   let s:neon_blue = s:bp.dark_bright_neon_blue
@@ -513,7 +517,7 @@ call s:HL('BackpackFg0', s:fg0)
 call s:HL('BackpackFg1', s:fg1)
 call s:HL('BackpackFg2', s:fg2)
 call s:HL('BackpackFg2Bold', s:fg2, s:none, s:invert_signs)
-call s:HL('BackpackPopup', s:fg3, s:none, s:bold)
+call s:HL('BackpackPopup', s:fg1, s:none, s:bold)
 call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg4', s:fg4)
