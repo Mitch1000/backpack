@@ -1,6 +1,6 @@
 ## Backpack - A Vim Color Scheme
 
-Backpack is simple Vim color Scheme heavily inspired by [gruvbox](https://github.com/morhetz/gruvbox), and the Iterm2 color theme [Neutron](https://github.com/mbadolato/iTerm2-Color-Schemes)
+Backpack is simple bim and neovim color scheme heavily inspired by [gruvbox](https://github.com/morhetz/gruvbox), and the Iterm2 color theme [Neutron](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
 A simple Retro theme.
 
