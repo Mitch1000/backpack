@@ -31,6 +31,9 @@ Installation Method
 
     vim-plug
         Add Plug 'Mitch1000/backpack to your .vimrc and run :PlugInstall
+        
+    Packer
+        use {'mitch1000/backpack' }
 
     Vim-8
         git clone https://github.com/Mitch1000/backpack.git ~/.vim/pack/default/start/backpack
