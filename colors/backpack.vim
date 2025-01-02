@@ -1037,6 +1037,12 @@ hi! link NERDTreeToggleOn BackpackPurple
 hi! link NERDTreeToggleOff BackpackStainYellow
 
 " }}}
+
+" NeoTree: {{{
+hi! link NeoTreeDirectoryIcon BackpackNeonBlue 
+hi! link NeoTreeDirectoryName BackpackFg1 
+" }}}
+
 " Vim Multiple Cursors: {{{
 
 call s:HL('multiple_cursors_cursor', s:none, s:none, s:inverse)
