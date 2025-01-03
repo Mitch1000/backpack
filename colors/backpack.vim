@@ -619,7 +619,7 @@ if version >= 703
 
   " Line number of CursorLine
   "
-  if s:is_dark 
+  if s:is_dark
     call s:HL('CursorLineNr', s:fg4, s:bg0)
     let g:cursor_line_nr = s:fg4
   else
@@ -747,7 +747,7 @@ hi! link Keyword BackpackFg2
 hi! link Delimiter BackpackFg3
 
 " Variable name
-hi! link Identifier BackpackFg2 
+hi! link Identifier BackpackFg2
 
 " Generic preprocessor
 hi! link PreProc BackpackNeonBlue
@@ -1039,8 +1039,20 @@ hi! link NERDTreeToggleOff BackpackStainYellow
 " }}}
 
 " NeoTree: {{{
-hi! link NeoTreeDirectoryIcon BackpackNeonBlue 
-hi! link NeoTreeDirectoryName BackpackFg1 
+hi! link NeoTreeDirectoryIcon BackpackNeonBlue
+hi! link NeoTreeDirectoryName BackpackFg1
+hi! NeoTreeNormal guibg='#1c1c1c'
+hi! NeoTreeNormalNC guibg='#1c1c1c'
+hi! link NeoTreeWinSeparator BackpackBg0
+hi! link NeoTreeGitAdded  BackpackNeonBlue
+hi! link NeoTreeGitConflict  BackpackNeonBlue
+hi! link NeoTreeGitDeleted  BackpackNeonBlue
+hi! link NeoTreeGitIgnored  BackpackNeonBlue
+hi! link NeoTreeGitModified  BackpackNeonBlue
+hi! link NeoTreeGitStaged  BackpackNeonBlue
+hi! link NeoTreeGitRenamed  BackpackNeonBlue
+hi! link NeoTreeGitUntracked  BackpackNeonBlue
+
 " }}}
 
 " Vim Multiple Cursors: {{{
@@ -1051,7 +1063,7 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " }}}
 " coc.nvim: {{{
 
-hi! link CocErrorSign BackpackErrorRed 
+hi! link CocErrorSign BackpackErrorRed
 hi! link CocWarningSign BackpackFg2
 hi! link CocInfoSign BackpackYellowSign
 hi! link CocHintSign BackpackBlue
@@ -1059,19 +1071,19 @@ hi! link CocErrorFloat BackpackStainYellow
 hi! link CocWarningFloat BackpackFg2
 hi! link CocInfoFloat BackpackYellow
 hi! link CocHintFloat BackpackBlue
-hi! link CocDiagnosticsError BackpackDarkRed 
+hi! link CocDiagnosticsError BackpackDarkRed
 hi! link CocDiagnosticsWarning BackpackYellow
-hi! link CocDiagnosticsInfo BackpackFg2 
+hi! link CocDiagnosticsInfo BackpackFg2
 hi! link CocDiagnosticsHint BackpackBlue
 hi! link CocFloatBorderHighlight BackpackStainYellow
-hi! link CocSelectedText BackpackRose 
+hi! link CocSelectedText BackpackRose
 hi! link CocCodeLens BackpackPurple
 hi! link CocFloatingBackground BackpackFg1
 hi! link CocFloatActive BackpackPurple
 hi! link CocSearch BackpackBrightRed
 hi! link CocPumMenu BackpackRose
-hi! link CocMenuSel BackpackBlueSelect 
-hi! link NormalFloat BackpackPopup 
+hi! link CocMenuSel BackpackBlueSelect
+hi! link NormalFloat BackpackPopup
 
 call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:stain_yellow)
 call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:baby_blue)
@@ -1342,9 +1354,9 @@ hi! link javascriptObjectMethod     BackpackExtraLightBlue
 hi! link javascriptMethodName       BackpackExtraLightBlue
 hi! link javascriptMethodName       BackpackExtraLightBlue
 hi! link javascriptMethodAccessor   BackpackExtraLightBlue
-hi! link javascriptMethodName       BackpackExtraLightBlue 
+hi! link javascriptMethodName       BackpackExtraLightBlue
 hi! link javascriptMethod       BackpackExtraLightBlue
-hi! link javascriptFuncCall  BackpackExtraLightBlue     
+hi! link javascriptFuncCall  BackpackExtraLightBlue
 
 
 " }}}
@@ -1443,7 +1455,7 @@ hi! link rubyStringDelimiter BackpackPurple
 hi! link rubyFunction BackpackBlue
 hi! link rubyInterpolationDelimiter BackpackNeonBlue
 hi! link rubyInstanceVariable BackpackBlue
-hi! link rubyBlockParameterList BackpackBabyBlue 
+hi! link rubyBlockParameterList BackpackBabyBlue
 
 " }}}
 " ObjectiveC: {{{
