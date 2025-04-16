@@ -1368,13 +1368,13 @@ hi! link javascriptFuncCall  BackpackExtraLightBlue
 " }}}
 " PanglossJS: {{{
 hi! link jsImport BackpackYellow
-hi! link jsExport BackpackYellow
+hi! link jsExport BackpackBrightRedItalic
 hi! link jsFrom BackpackNeonBlue
 hi! link jsObjectProp BackpackFg1
 hi! link jsArrowFunction BackpackRose
 hi! link jsClassKeyword BackpackYellow
 hi! link jsExtendsKeyword BackpackGreen
-hi! link jsExportDefault BackpackYellow
+hi! link jsExportDefault BackpackExtraLightBlueItalic
 hi! link jsTemplateBraces BackpackNeonBlue
 hi! link jsFunction BackpackBlue
 hi! link jsFuncParens BackpackFg3
@@ -1394,7 +1394,7 @@ hi! link jsSpecial BackpackGreen
 hi! link jsThis BackpackBlue
 hi! link jsGlobalNodeObjects BackpackNeonBlue
 hi! link jsOperatorKeyword BackpackBrightRed
-hi! link jsGlobalObjects BackpackNeonBlue
+hi! link jsGlobalObjects BackpackNeonBlueItalic
 hi! link jsFuncCall BackpackExtraLightBlue
 hi! link jsFuncArgs BackpackFg5
 hi! link jsVariableDef BackpackFg1
