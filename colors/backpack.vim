@@ -1458,6 +1458,8 @@ hi! link coffeeBracket BackpackBabyBlue
 " Ruby: {{{
 
 hi! link rubyStringDelimiter BackpackPurple
+hi! link rubyTestMacro BackpackBrightRedItalic
+hi! link rubyAssertion BackpackExtraLightBlueItalic
 hi! link rubyFunction BackpackBlue
 hi! link rubyInterpolationDelimiter BackpackNeonBlue
 hi! link rubyInstanceVariable BackpackBlue
