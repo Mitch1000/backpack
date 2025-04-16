@@ -719,7 +719,6 @@ hi! link lCursor Cursor
 " }}}
 " Syntax Highlighting: {{{
 
-filetype detect
 if &filetype != 'vue' && &filetype != 'html'
   if g:backpack_improved_strings == 0
       hi! link Special BackpackBabyBlue
