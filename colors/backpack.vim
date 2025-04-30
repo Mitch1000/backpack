@@ -1464,6 +1464,7 @@ hi! link rubyFunction BackpackBlue
 hi! link rubyInterpolationDelimiter BackpackNeonBlue
 hi! link rubyInstanceVariable BackpackBlue
 hi! link rubyBlockParameterList BackpackBabyBlue
+hi! link rubyClassBlock BackpackBrightRed
 
 " }}}
 " ObjectiveC: {{{
