@@ -6,7 +6,7 @@ A simple Retro theme.
 
 Feedback is appreciated!
 
-1. Typeface from screenshots below is [Monaco Nerd Font](https://github.com/Karmenzind/monaco-nerd-fonts)
+Typeface from screenshots below is [Monaco Nerd Font](https://github.com/Karmenzind/monaco-nerd-fonts)
 
 
 ### Dark mode
@@ -35,15 +35,25 @@ Installation Method
     Packer
         use {'mitch1000/backpack' }
 
-    Vim-8
-        git clone https://github.com/Mitch1000/backpack.git ~/.vim/pack/default/start/backpack
+    Lazy
+        {
+          'mitch1000/backpack',
+          config = function ()
+            vim.g.italicize_comments = 1
+            vim.g.backpack_contrast_dark = "medium" -- soft hard medium
+          end
+        },
 
-    VIM - Vi IMproved 8.x MS-Windows 64-bit console version
-        git clone https://github.com/Mitch1000/backpack.git "~\vimfiles\pack\default\start\backpack"
+Then add `colorscheme backpack` to your `vimrc` file.
 
+OR
 
-Then add `colorscheme backpack` to your vimrc file.
+```lua
+ vim.g.my_color_scheme = 'backpack'
+ vim.cmd('colorscheme ' .. vim.g.my_color_scheme)
+```
 
+to your `init.lua` file.
 
 License
 -------
