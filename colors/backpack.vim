@@ -696,7 +696,7 @@ else
 endif
 
 " Column where signs are displayed
-call s:HL('SignColumn', s:none, s:bg7)
+call s:HL('SignColumn', s:none, s:bg0)
 
 " Line used for closed folds
 call s:HL('Folded', s:gray, s:bg1, s:italic)
