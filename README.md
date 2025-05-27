@@ -60,8 +60,8 @@ to your `init.lua` file.
 ```lua
  vim.o.background = 'dark'
  vim.g.italicize_comments = 1
- vim.g.backpack_contrast_dark = "medium" -- soft hard medium
- vim.g.backpack_contrast_light = "medium" -- soft hard medium
+ vim.g.backpack_contrast_dark = "medium" -- soft medium hard harder
+ vim.g.backpack_contrast_light = "medium" -- soft medium hard harder 
  vim.g.backpack_italic = 1
 ```
 
