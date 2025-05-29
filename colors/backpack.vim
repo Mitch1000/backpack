@@ -80,78 +80,8 @@ let s:is_dark=(&background == 'dark')
 " Palette: {{{
 
 " setup palette dictionary
-let s:bp = {}
-
-" fill it with colors
-let s:bp.dark0_hard  = ['#1c1c1c', 234]
-let s:bp.dark0_harder  = ['#0E0E0E', 234]
-let s:bp.dark0 = ['#262626', 235]
-let s:bp.dark0_soft = ['#303030', 236]
-let s:bp.dark1 = ['#3a3a3a', 237]
-let s:bp.dark2 = ['#4e4e4e', 239]
-let s:bp.dark3 = ['#606060', 241]
-let s:bp.dark4 = ['#767676', 243]
-let s:bp.dark5 = ['#444444', 238]
-let s:bp.dark6 = ['#606060', 241]
-let s:bp.dark7 = ['#1c1c1c', 234]
-let s:bp.dark8 = ['#303030', 236]
-let s:bp.dark9 = ['#262626', 235]
-let s:bp.dark10 = ['#1c1c1c', 234]
-let s:bp.dark11 = ['#121212', 233]
-let s:bp.dark4_256 = ['#767676', 243]
-
-let s:bp.gray_246 = ['#949494', 246]
-let s:bp.gray_245 = ['#8a8a8a', 245]
-let s:bp.gray_244 = ['#808080', 244]
-
-let s:bp.light0_hard = ['#f7f0f7', 231]
-let s:bp.light0 = ['#eeeeee', 255]
-let s:bp.light0_soft = ['#fae3fa', 254]
-let s:bp.light1 = ['#fcf7fc', 255]
-let s:bp.light2 = ['#f7f0f7', 254]
-let s:bp.light3 = ['#dadada', 253]
-let s:bp.light4 = ['#d0d0d0', 252]
-let s:bp.light5 = ['#b2b2b2', 249]
-let s:bp.light6 = ['#949494', 246]
-let s:bp.light7 = ['#dadada', 253]
-let s:bp.light8 = ['#c6c6c6', 251]
-let s:bp.light9 = ['#eeeeee', 255]
-let s:bp.light10 = ['#ffffff', 231]
-let s:bp.light4_256  = ['#eeeeee', 255]
-
-let s:bp.stain_yellow = ['#d7af87', 180]
-let s:bp.dark_gray = ['#262626', 235]
-let s:bp.green  = ['#87ffaf', 121]
-let s:bp.dark_red = ['#af5f5f', 131]
-let s:bp.error_red = ['#fc0404', 9]
-let s:bp.bright_red = ['#d75f87', 168]
-let s:bp.forest_blue = ['#5fafaf', 73]
-let s:bp.bright_purple = ['#af87af', 139]
-let s:bp.bright_neon_blue = ['#5fd7ff', 81]
-let s:bp.baby_blue = ['#afffff', 159]
-let s:bp.extra_light_blue = ['#d7ffff', 195]
-let s:bp.rose = ['#ffd7d7', 224]
-let s:bp.soft_pink = ['#f5ebf5', 225]
-
-let s:bp.dark_stain_yellow = ['#af005f', 125]
-let s:bp.dark_dark_gray = ['#1c1c1c', 234]
-let s:bp.dark_green  = ['#0087ff', 33]
-let s:bp.terminal_green  = ['#96ba92', 115]
-let s:bp.terminal_blue  = ['#bdcfe4', 153]
-let s:bp.dark_dark_red = ['#af5f5f', 131]
-let s:bp.dark_bright_red = ['#d75f87', 168]
-let s:bp.dark_forest_blue = ['#d70087', 162]
-let s:bp.dark_bright_purple = ['#5f00af', 55]
-let s:bp.dark_bright_neon_blue = ['#0087ff', 33]
-let s:bp.dark_baby_blue = ['#d787ff', 177]
-let s:bp.dark_extra_light_blue = ['#444444', 238]
-let s:bp.dark_rose = ['#ff87d7', 212]
-
-
-
+let s:bp = backpack#GetColors()
 " }}}
-"
-"
 "
 " Setup Emphasis: {{{
 
@@ -1167,7 +1097,6 @@ hi! link xmlEntityPunct BackpackBabyBlue
 " Vim: {{{
 
 call s:HL('vimCommentTitle', s:fg4_256, s:none, s:bold . s:italicize_comments)
-
 
 hi! link vimLet BackpackGreen
 hi! link vimNotation BackpackBabyBlue
