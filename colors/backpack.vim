@@ -516,7 +516,7 @@ endfunction
 call s:HL('BackpackFg0', s:fg0)
 call s:HL('BackpackFg1', s:fg1)
 call s:HL('BackpackFg2', s:fg2)
-call s:HL('BackpackFg2Bold', s:fg2, s:none, s:invert_signs)
+call s:HL('BackpackFg2Bold', s:fg2, s:none, s:bold)
 call s:HL('BackpackPopup', s:fg1, s:none, s:bold)
 call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
@@ -748,7 +748,7 @@ hi! link Exception BackpackStainYellow
 " sizeof, "+", "*", etc.
 hi! link Operator Normal
 " Any other keyword
-hi! link Keyword BackpackFg2
+hi! link Keyword BackpackFg2Bold
 
 hi! link Delimiter BackpackFg3
 
