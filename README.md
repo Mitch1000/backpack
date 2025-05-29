@@ -1,4 +1,4 @@
-#BackpackBabyBlueItalic# Backpack - A Vim Color Scheme
+# Backpack - A Vim Color Scheme
 
 Backpack is simple vim and neovim color scheme heavily inspired by [gruvbox](https://github.com/morhetz/gruvbox), and the Iterm2 color theme [Neutron](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
@@ -9,7 +9,8 @@ Feedback is appreciated!
 Typeface from screenshots below is [Monaco Nerd Font](https://github.com/Karmenzind/monaco-nerd-fonts)
 
 
-### Dark mode
+Dark mode
+-------------
 
 <img width="1781" alt="Screen Shot 2022-04-27 at 11 24 28 AM" src="https://user-images.githubusercontent.com/19654528/165554966-64e02997-4993-4024-868d-a3ba8c7d0d52.png">
 
@@ -67,8 +68,14 @@ to your `init.lua` file.
  vim.g.backpack_italic = 1
 ```
 
+### 256 Color Support!
+
+To use 256 colors use `vim.cmd([[ set notermguicolors ]])` after the color scheme has loaded.
+
+
 License
 -------
 [MIT/X11][]
 
    [MIT/X11]: https://en.wikipedia.org/wiki/MIT_License
+
