@@ -118,14 +118,19 @@ let s:vim_fg = ['fg', 'fg']
 let s:none = ['NONE', 'NONE']
 
 " determine relative colors
+"
 if s:is_dark
   let s:bg0  = s:bp.dark0
+  let s:bg_popup  = s:bp.dark9
   if g:backpack_contrast_dark == 'soft'
     let s:bg0  = s:bp.dark0_soft
+    let s:bg_popup  = s:bp.dark0_harder
   elseif g:backpack_contrast_dark == 'hard'
     let s:bg0  = s:bp.dark0_hard
+    let s:bg_popup  = s:bp.dark0_hard
   elseif g:backpack_contrast_dark == 'harder'
     let s:bg0  = s:bp.dark0_harder
+    let s:bg_popup  = s:bp.dark0_soft
   endif
 
   let s:bg1  = s:bp.dark1
@@ -174,7 +179,9 @@ else
   let s:bg0  = s:bp.soft_pink
   if g:backpack_contrast_light == 'soft'
     let s:bg0  = s:bp.light0_soft
+    let s:bg_popup  = s:bp.light0_hard
   elseif g:backpack_contrast_light == 'hard'
+    let s:bg_popup  = s:bp.light0_soft
     let s:bg0  = s:bp.light0_hard
   endif
 
@@ -447,7 +454,7 @@ call s:HL('BackpackFg0', s:fg0)
 call s:HL('BackpackFg1', s:fg1)
 call s:HL('BackpackFg2', s:fg2)
 call s:HL('BackpackFg2Bold', s:fg2, s:none, s:bold)
-call s:HL('BackpackPopup', s:fg1, s:none, s:bold)
+call s:HL('BackpackPopup', s:fg2, s:bg_popup)
 call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg4', s:fg4)
@@ -1020,6 +1027,7 @@ hi! link CocSearch BackpackBrightRed
 hi! link CocPumMenu BackpackRose
 hi! link CocMenuSel BackpackBlueSelect
 hi! link NormalFloat BackpackPopup
+hi! link FloatBorder BackpackBg4
 
 call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:stain_yellow)
 call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:baby_blue)
