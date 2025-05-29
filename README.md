@@ -1,4 +1,4 @@
-## Backpack - A Vim Color Scheme
+#BackpackBabyBlueItalic# Backpack - A Vim Color Scheme
 
 Backpack is simple vim and neovim color scheme heavily inspired by [gruvbox](https://github.com/morhetz/gruvbox), and the Iterm2 color theme [Neutron](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
@@ -40,6 +40,7 @@ Installation Method
           'mitch1000/backpack',
           config = function ()
             vim.g.italicize_comments = 1
+            vim.g.backpack_italic = 1
             vim.g.backpack_contrast_dark = "medium" -- soft hard medium
           end
         },
@@ -60,6 +61,7 @@ to your `init.lua` file.
 ```lua
  vim.o.background = 'dark'
  vim.g.italicize_comments = 1
+ vim.g.backpack_italic = 1
  vim.g.backpack_contrast_dark = "medium" -- soft medium hard harder
  vim.g.backpack_contrast_light = "medium" -- soft medium hard harder 
  vim.g.backpack_italic = 1
