@@ -12,35 +12,33 @@ function! s:getBackpackColor(group)
   return [ guiColor, termColor ]
 endfunction
 
+let s:colors = backpack#GetColors()
+
 if exists('g:lightline')
+  let s:bg0  = s:.colors.dark0
+  let s:bg1  = s:.colors.dark1
+  let s:bg2  = s:.colors.dark2
+  let s:bg3  = s:.colors.dark3
+  let s:bg4  = s:.colors.dark4
+  let s:bg9  = s:colors.dark9
+  let s:bg10  = s:colors.dark10
+  let s:fg1  = s:colors.light1
+  let s:fg2  = s:colors.light2
+  let s:fg3  = s:colors.light3
+  let s:fg4  = s:colors.light4
+  let s:fg7  = s:colors.light7
+  let s:fg8  = s:colors.light8
 
-  let s:bg0  = s:getBackpackColor('BackpackBg0')
-  let s:bg1  = s:getBackpackColor('BackpackBg1')
-  let s:bg2  = s:getBackpackColor('BackpackBg2')
-  let s:bg3  = s:getBackpackColor('BackpackBg3')
-  let s:bg4  = s:getBackpackColor('BackpackBg4')
-  let s:bg9  = s:getBackpackColor('BackpackBg9')
-  let s:bg8  = s:getBackpackColor('BackpackBg8')
-  let s:bg10  = s:getBackpackColor('BackpackBg10')
-  let s:fg1  = s:getBackpackColor('BackpackFg1')
-  let s:fg2  = s:getBackpackColor('BackpackFg2')
-  let s:fg3  = s:getBackpackColor('BackpackFg3')
-  let s:fg4  = s:getBackpackColor('BackpackFg4')
-  let s:fg5  = s:getBackpackColor('BackpackFg5')
-  let s:fg6  = s:getBackpackColor('BackpackFg6')
-  let s:fg7  = s:getBackpackColor('BackpackFg7')
-  let s:fg8  = s:getBackpackColor('BackpackFg8')
-
-  let s:yellow = s:getBackpackColor('BackpackStainYellow')
-  let s:purple = s:getBackpackColor('BackpackPurple')
-  let s:blue   = s:getBackpackColor('BackpackBlue')
-  let s:baby_blue   = s:getBackpackColor('BackpackBabyBlue')
-  let s:rose = s:getBackpackColor('BackpackRose')
-  let s:green = s:getBackpackColor('BackpackGreen')
-  let s:red = s:getBackpackColor('BackpackBrightRed')
-  let s:dark_red = s:getBackpackColor('BackpackDarkRed')
-  let s:light_blue = s:getBackpackColor('BackpackExtraLightBlue')
-  let s:terminal_blue = s:getBackpackColor('BackpackTerminalBlue')
+  let s:yellow = s:colors.stain_yellow
+  let s:purple = s:colors.purple
+  let s:blue   = s:colors.blue
+  let s:baby_blue  = s:colors.baby_blue
+  let s:rose = s:colors.rose
+  let s:green = s:colors.green
+  let s:red = s:colors.bright_red
+  let s:dark_red = s:colors.dark_red
+  let s:light_blue = s:colors.extra_light_blue
+  let s:terminal_blue = s:colors.terminal_blue
 
   let s:is_dark=(&background == 'dark')
 
