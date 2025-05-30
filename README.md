@@ -57,6 +57,11 @@ OR
 
 to your `init.lua` file.
 
+Palette
+-------------
+
+<img width="731" alt="Palette" src="https://github.com/user-attachments/assets/49742b80-9e18-47e3-acae-d434d3161df5" />
+
 ### Options
 
 ```lua
