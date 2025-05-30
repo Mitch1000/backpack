@@ -15,11 +15,15 @@ endfunction
 let s:colors = backpack#GetColors()
 
 if exists('g:lightline')
+  let s:bg_dark = s:colors.dark0_hard
+  let s:bg_darker = s:colors.dark0_harder
+  let s:bg_soft = s:colors.dark0_soft
   let s:bg0  = s:colors.dark0
   let s:bg1  = s:colors.dark1
   let s:bg2  = s:colors.dark2
   let s:bg3  = s:colors.dark3
   let s:bg4  = s:colors.dark4
+  let s:bg5  = s:colors.dark5
   let s:bg9  = s:colors.dark9
   let s:bg10  = s:colors.dark10
   let s:fg1  = s:colors.light1
@@ -62,9 +66,9 @@ if exists('g:lightline')
     let s:p.visual.left = [ [ s:bg0, s:yellow, 'bold' ], [ s:bg0, s:bg4 ] ]
     let s:p.visual.right = [ [ s:bg0, s:yellow ], [ s:bg0, s:bg4 ] ]
     let s:p.visual.middle = [ [ s:fg4, s:bg1 ] ]
-    let s:p.tabline.left = [ [ s:fg4, s:bg2 ] ]
-    let s:p.tabline.tabsel = [ [ s:bg0, s:fg4 ] ]
-    let s:p.tabline.middle = [ [ s:bg0, s:bg0 ] ]
+    let s:p.tabline.left = [ [ s:fg2, s:bg_soft ] ]
+    let s:p.tabline.tabsel = [ [ s:fg2, s:bg2 ] ]
+    let s:p.tabline.middle = [ [ s:bg_dark, s:bg_dark ] ]
     let s:p.tabline.right = [ [ s:bg0, s:blue ] ]
     let s:p.normal.error = [ [ s:bg0, s:red ] ]
     let s:p.normal.warning = [ [ s:bg2, s:yellow ] ]
