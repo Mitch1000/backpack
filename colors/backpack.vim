@@ -123,7 +123,7 @@ if s:is_dark
   let s:bg0  = s:bp.dark0
   let s:bg_popup  = s:bp.dark9
   if g:backpack_contrast_dark == 'soft'
-    let s:bg0  = s:bp.dark0_soft
+    let s:bg0 = s:bp.dark0_soft
     let s:bg_popup  = s:bp.dark0_harder
   elseif g:backpack_contrast_dark == 'hard'
     let s:bg0  = s:bp.dark0_hard
