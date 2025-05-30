@@ -42,7 +42,7 @@ endfunction
 let s:colors = {
       \ "dark0_hard": ['#1b1b1b', 234],
       \ "dark0_harder": ['#0e0e0e', 234],
-      \ "dark0": ['#252525', 235],
+      \ "dark0": ['#222222', 235],
       \ "dark0_soft": ['#303030', 236],
       \ "dark1": ['#3a3a3a', 237],
       \ "dark2": ['#4d4d4d', 239],
@@ -62,7 +62,7 @@ let s:colors = {
       \ "light0_hard": ['#f8eff7', 231],
       \ "light0": ['#eeeeee', 255],
       \ "light0_soft": ['#fee1fb', 254],
-      \ "light1": ['#fdf6fc', 255],
+      \ "light1": ['#f7f0f6', 255],
       \ "light2": ['#f8eff7', 254],
       \ "light3": ['#dadada', 253],
       \ "light4": ['#d0d0d0', 252],
