@@ -177,6 +177,7 @@ if s:is_dark
   let s:extra_light_blue = s:bp.extra_light_blue
 else
   let s:bg0  = s:bp.soft_pink
+  let s:bg_popup  = s:bp.light1
   if g:backpack_contrast_light == 'soft'
     let s:bg0  = s:bp.light0_soft
     let s:bg_popup  = s:bp.light0_hard
