@@ -73,7 +73,7 @@ let s:colors = {
       \ "light9": ['#eeeeee', 255],
       \ "light10": ['#ffffff', 231],
       \ "light4_256": ['#eeeeee', 255],
-      \ "stain_yellow": ['#d5a579', 180],
+      \ "stain_yellow": ['#D2A174', 180],
       \ "dark_gray": ['#252525', 235],
       \ "green": ['#2cf392', 85],
       \ "dark_red": ['#bb595c', 131],
