@@ -63,6 +63,9 @@ to your `init.lua` file.
 
 ### Options
 
+NOTE: If you are using iTerm2, you may want to use the sRGB color space for more accurate color reproduction. 
+There is an option to disable P3 colors in the Advanced Settings tab.
+
 ```lua
  vim.o.background = 'dark'
  vim.g.italicize_comments = 1
