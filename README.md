@@ -60,7 +60,7 @@ to your `init.lua` file.
 Palette
 -------------
 
-<img width="726" alt="Palette" src="https://github.com/user-attachments/assets/234e8d6f-0e3d-4709-b137-7497cf9840ab" />
+<img width="724" alt="Palette" src="https://github.com/user-attachments/assets/6ac5b697-a97e-4681-8ee6-7b62b57d95af" />
 
 ### Options
 
