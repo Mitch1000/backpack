@@ -75,7 +75,7 @@ let s:colors = {
       \ "light4_256": ['#eeeeee', 255],
       \ "stain_yellow": ['#d5a579', 180],
       \ "dark_gray": ['#252525', 235],
-      \ "green": ['#39ff9e', 85],
+      \ "green": ['#2cf392', 85],
       \ "dark_red": ['#bb595c', 131],
       \ "bright_red": ['#e7477e', 168],
       \ "error_red": ['#ff0000', 9],
