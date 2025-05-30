@@ -15,11 +15,11 @@ endfunction
 let s:colors = backpack#GetColors()
 
 if exists('g:lightline')
-  let s:bg0  = s:.colors.dark0
-  let s:bg1  = s:.colors.dark1
-  let s:bg2  = s:.colors.dark2
-  let s:bg3  = s:.colors.dark3
-  let s:bg4  = s:.colors.dark4
+  let s:bg0  = s:colors.dark0
+  let s:bg1  = s:colors.dark1
+  let s:bg2  = s:colors.dark2
+  let s:bg3  = s:colors.dark3
+  let s:bg4  = s:colors.dark4
   let s:bg9  = s:colors.dark9
   let s:bg10  = s:colors.dark10
   let s:fg1  = s:colors.light1
