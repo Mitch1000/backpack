@@ -50,7 +50,7 @@ let s:colors = {
       \ "dark4": ['#757575', 243],
       \ "dark5": ['#444444', 238],
       \ "dark6": ['#5f5f5f', 241],
-      \ "dark7": ['#1b1b1b', 234],
+      \ "dark7": ['#181818', 234],
       \ "dark8": ['#303030', 236],
       \ "dark9": ['#212121', 235],
       \ "dark10": ['#1b1b1b', 234],
@@ -110,5 +110,4 @@ let s:colors = {
 function! backpack#GetColors()
   return s:colors
 endfunction 
-
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:

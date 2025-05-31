@@ -143,6 +143,8 @@ if s:is_dark
   let s:bg8  = s:bp.dark8
   let s:bg9  = s:bp.dark9
   let s:bg10  = s:bp.dark10
+  let s:bg11  = s:bp.dark11
+  let s:bg12  = s:bp.dark0_hard
 
   let s:gray = s:bp.gray_244
   let s:light_gray = s:bp.gray_245
@@ -196,6 +198,8 @@ else
   let s:bg8  = s:bp.light8
   let s:bg9  = s:bp.light9
   let s:bg10  = s:bp.light10
+  let s:bg11  = s:bp.light10
+  let s:bg12  = s:bp.light10
 
   let s:gray = s:bp.gray_244
 
@@ -464,6 +468,8 @@ call s:HL('BackpackGray', s:gray)
 call s:HL('BackpackBg0', s:bg0)
 call s:HL('BackpackBg2', s:bg2)
 call s:HL('BackpackBg4', s:bg4)
+call s:HL('BackpackBg11', s:fg2, s:bg11)
+call s:HL('BackpackTab', s:fg2, s:bg1)
 
 call s:HL('BackpackStainYellow', s:stain_yellow)
 call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
@@ -913,10 +919,16 @@ let g:vimshell_escape_colors = [
 " }}}
 " BufTabLine: {{{
 
-call s:HL('BufTabLineCurrent', s:bg0, s:fg4)
-call s:HL('BufTabLineActive', s:fg4, s:bg2)
-call s:HL('BufTabLineHidden', s:bg4, s:bg1)
+call s:HL('BufTabLineCurrent', s:fg2, s:bg0)
+call s:HL('BufTabModCurrent', s:rose, s:bg0)
+call s:HL('BufTabLineActive', s:fg4, s:bg7)
+call s:HL('BufTabLineHidden', s:bg3, s:bg1)
 call s:HL('BufTabLineFill', s:bg0, s:bg0)
+call s:HL('BufTabFill', s:bg11, s:bg0)
+call s:HL('BufActiveFill', s:bg11, s:bg7)
+call s:HL('BufActiveMod', s:rose, s:bg7)
+call s:HL('BufTabIndex', s:fg3, s:bg0)
+call s:HL('BufFill', s:bg11, s:bg11)
 
 " }}}
 " esynchronous Lint Engine: {{{
@@ -949,6 +961,34 @@ hi! link netrwHelpCmd BackpackNeonBlue
 hi! link netrwCmdSep BackpackFg3
 hi! link netrwVersion BackpackPurple
 
+" }}}
+"
+" Barbar: {{{
+"
+hi! link BufferTabpageFill BackpackBg11
+hi! link BufferCurrent BufTabLineCurrent
+hi! link BufferCurrentIndex BufTabIndex
+hi! link BufferCurrentMod BufTabModCurrent
+hi! link BufferCurrentSign BufTabFill
+hi! link BufferCurrentTarget BufTabFill
+
+hi! link BufferVisible BufTabLineActive
+hi! link BufferVisibleIndex BufTabIndex
+hi! link BufferVisibleMod BufActiveMod
+hi! link BufferVisibleSign BufActiveFill
+hi! link BufferVisibleTarget BufTabFill
+
+hi! link BufferInactive BufTabLineActive
+hi! link BufferInactiveIndex BufTabIndex
+hi! link BufferInactiveMod BufActiveMod
+hi! link BufferInactiveSign BufActiveFill
+hi! link BufferInactiveTarget BufTabFill
+
+hi! link BufferAlternate BufTabLineActive
+hi! link BufferAlternateSign BufActiveFill
+hi! link BufferAlternateIndex BufTabIndex
+hi! link BufferAlternateMod BufActiveMod
+hi! link BufferAlternateTarget BufTabFill
 " }}}
 " NERDTree: {{{
 
