@@ -464,6 +464,8 @@ call s:HL('BackpackFg3', s:fg3)
 call s:HL('BackpackFg3Bold', s:fg3, s:none, s:bold)
 call s:HL('BackpackFg4', s:fg4)
 call s:HL('BackpackFg5', s:fg5)
+call s:HL('BackpackFg7', s:fg7, s:bg2)
+
 call s:HL('BackpackGray', s:gray)
 call s:HL('BackpackBg0', s:bg0)
 call s:HL('BackpackBg2', s:bg2)
@@ -554,7 +556,7 @@ if version >= 703
   call s:HL('ColorColumn',  s:none, s:color_column)
 
   " Concealed element: \lambda → λ
-  call s:HL('Conceal', s:blue, s:none)
+  call s:HL('Conceal', s:bg2, s:none)
 
   " Line number of CursorLine
   "
@@ -756,16 +758,16 @@ call s:HL('DiffText',   s:green, s:bg0, s:inverse)
 if has("spell")
   " Not capitalised word, or compile warnings
   if g:backpack_improved_warnings == 0
-    call s:HL('SpellCap',   s:none, s:none, s:undercurl, s:stain_yellow)
+    call s:HL('SpellCap',   s:none, s:none, s:underline, s:stain_yellow)
   else
     call s:HL('SpellCap',   s:green, s:none, s:bold . s:italic)
   endif
   " Not recognized word
-  call s:HL('SpellBad',   s:none, s:none, s:undercurl, s:blue)
+  call s:HL('SpellBad',   s:none, s:none, s:underline, s:blue)
   " Wrong spelling for selected region
-  call s:HL('SpellLocal', s:none, s:none, s:undercurl, s:neon_blue)
+  call s:HL('SpellLocal', s:none, s:none, s:underline, s:neon_blue)
   " Rare word
-  call s:HL('SpellRare',  s:none, s:none, s:undercurl, s:purple)
+  call s:HL('SpellRare',  s:none, s:none, s:underline, s:purple)
 endif
 
 " }}}
@@ -860,8 +862,8 @@ hi! link SignifySignDelete BackpackStainYellowSign
 " }}}
 " Syntastic: {{{
 
-call s:HL('SyntasticError', s:none, s:none, s:undercurl, s:red)
-call s:HL('SyntasticWarning', s:none, s:none, s:undercurl, s:green)
+call s:HL('SyntasticError', s:none, s:none, s:underline, s:red)
+call s:HL('SyntasticWarning', s:none, s:none, s:underline, s:green)
 
 hi! link SyntasticErrorSign BackpackStainYellowSign
 hi! link SyntasticWarningSign BackpackYellowSign
@@ -933,9 +935,9 @@ call s:HL('BufFill', s:bg11, s:bg11)
 " }}}
 " esynchronous Lint Engine: {{{
 
-call s:HL('ALEError', s:none, s:none, s:undercurl, s:red)
-call s:HL('ALEWarning', s:none, s:none, s:undercurl, s:green)
-call s:HL('ALEInfo', s:none, s:none, s:undercurl, s:blue)
+call s:HL('ALEError', s:none, s:none, s:underline, s:red)
+call s:HL('ALEWarning', s:none, s:none, s:underline, s:green)
+call s:HL('ALEInfo', s:none, s:none, s:underline, s:blue)
 
 hi! link ALEErrorSign BackpackStainYellowSign
 hi! link ALEWarningSign BackpackYellowSign
@@ -1035,10 +1037,11 @@ call s:HL('multiple_cursors_visual', s:none, s:bg2)
 " }}}
 " coc.nvim: {{{
 
-hi! link CocErrorSign BackpackErrorRed
-hi! link CocWarningSign BackpackFg2
-hi! link CocInfoSign BackpackYellowSign
-hi! link CocHintSign BackpackBlue
+hi! link CocErrorSign BackpackDarkRedBold
+hi! link CocUnusedHighlight BackpackBlue
+hi! link CocWarningSign BackpackYellow
+hi! link CocInfoSign BackpackFg4
+hi! link CocHintSign BackpackTerminalBlue
 hi! link CocErrorFloat BackpackStainYellow
 hi! link CocWarningFloat BackpackFg2
 hi! link CocInfoFloat BackpackYellow
@@ -1058,10 +1061,10 @@ hi! link CocMenuSel BackpackBlueSelect
 hi! link NormalFloat BackpackPopup
 hi! link FloatBorder BackpackBg4
 
-call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:stain_yellow)
-call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:baby_blue)
-call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:fg1)
-call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
+call s:HL('CocErrorHighlight', s:none, s:none, s:underline, s:blue)
+call s:HL('CocWarningHighlight', s:none, s:none, s:underline, s:bg0)
+call s:HL('CocInfoHighlight', s:none, s:none, s:underline, s:fg4)
+call s:HL('CocHintHighlight', s:none, s:none, s:underline, s:blue)
 " }}}
 "
 " Diagnostics: {{{
