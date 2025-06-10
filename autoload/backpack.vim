@@ -36,10 +36,25 @@ function! backpack#hls_toggle()
   endif
 endfunction
 
+if !exists('g:backpack_transparent')
+  let g:backpack_transparent=0
+endif
+
+
+if !exists('g:backpack_contrast_dark')
+  let g:backpack_contrast_dark='medium'
+endif
+
+if !exists('g:backpack_contrast_light')
+  let g:backpack_contrast_light='medium'
+endif
+
 " }}}
 "
 " setup palette dictionary
 let s:colors = {
+      \ "background": ['#222222', 235],
+      \ "bg_popup": ['#212121', 235],
       \ "dark0_hard": ['#1b1b1b', 234],
       \ "dark0_harder": ['#0e0e0e', 234],
       \ "dark0": ['#222222', 235],
@@ -100,6 +115,23 @@ let s:colors = {
       \ "dark_extra_light_blue": ['#444444', 238],
       \ "dark_rose": ['#ff7eda', 212],
       \ }
+
+if g:backpack_contrast_dark == 'soft'
+  let s:colors.background = s:colors.dark0_soft
+  let s:colors.bg_popup = s:colors.dark0_harder
+elseif g:backpack_contrast_dark == 'hard'
+  let s:colors.background = s:colors.dark0_hard
+  let s:colors.bg_popup = s:colors.dark0_hard
+elseif g:backpack_contrast_dark == 'harder'
+  let s:colors.background = s:colors.dark0_harder
+  let s:colors.bg_popup = s:colors.dark0_soft
+endif
+
+if g:backpack_transparent == 1
+  let s:colors.background = ['NONE', 'NONE']
+endif
+
+
 "bright_red": ['#e75487', 168],
 "bright_purple": ['#b684b1', 139],
 "bright_neon_blue": ['#00daff', 81],
