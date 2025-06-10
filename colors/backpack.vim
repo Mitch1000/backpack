@@ -120,8 +120,10 @@ let s:none = ['NONE', 'NONE']
 " determine relative colors
 "
 if s:is_dark
-  let s:bg0  = s:bp.dark0
-  let s:bg_popup  = s:bp.dark9
+  let s:bg0 = s:bp.background
+  let s:bg00 = s:bp.dark0
+  let s:bg_popup = s:bp.bg_popup
+
   if g:backpack_contrast_dark == 'soft'
     let s:bg0 = s:bp.dark0_soft
     let s:bg_popup  = s:bp.dark0_harder
@@ -470,8 +472,7 @@ call s:HL('BackpackGray', s:gray)
 call s:HL('BackpackBg0', s:bg0)
 call s:HL('BackpackBg2', s:bg2)
 call s:HL('BackpackBg4', s:bg4)
-call s:HL('BackpackBg11', s:fg2, s:bg11)
-call s:HL('BackpackTab', s:fg2, s:bg1)
+call s:HL('BackpackBufferTabpageFill', s:fg2, s:none)
 
 call s:HL('BackpackStainYellow', s:stain_yellow)
 call s:HL('BackpackStainYellowBold', s:stain_yellow, s:none, s:bold)
@@ -923,11 +924,11 @@ let g:vimshell_escape_colors = [
 
 call s:HL('BufTabLineCurrent', s:fg2, s:bg0)
 call s:HL('BufTabModCurrent', s:rose, s:bg0)
-call s:HL('BufTabLineActive', s:fg4, s:bg7)
+call s:HL('BufTabLineActive', s:fg8, s:bg7)
 call s:HL('BufTabLineHidden', s:bg3, s:bg1)
 call s:HL('BufTabLineFill', s:bg0, s:bg0)
-call s:HL('BufTabFill', s:bg11, s:bg0)
-call s:HL('BufActiveFill', s:bg11, s:bg7)
+call s:HL('BufTabFill', s:bg00, s:bg00)
+call s:HL('BufActiveFill', s:bg7, s:bg7)
 call s:HL('BufActiveMod', s:rose, s:bg7)
 call s:HL('BufTabIndex', s:fg3, s:bg0)
 call s:HL('BufFill', s:bg11, s:bg11)
@@ -967,7 +968,7 @@ hi! link netrwVersion BackpackPurple
 "
 " Barbar: {{{
 "
-hi! link BufferTabpageFill BackpackBg11
+hi! link BufferTabpageFill BackpackBufferTabpageFill
 hi! link BufferCurrent BufTabLineCurrent
 hi! link BufferCurrentIndex BufTabIndex
 hi! link BufferCurrentMod BufTabModCurrent
