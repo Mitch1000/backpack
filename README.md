@@ -72,7 +72,7 @@ There is an option to disable P3 colors in the Advanced Settings tab.
  vim.g.backpack_italic = 1
  vim.g.backpack_contrast_dark = "medium" -- soft medium hard harder
  vim.g.backpack_contrast_light = "medium" -- soft medium hard harder 
- vim.g.backpack_italic = 1
+ vim.g.backpack_transparent = true  -- true or false
 ```
 
 ### 256 Color Support!
