@@ -41,6 +41,9 @@ endif
 if !exists('g:backpack_inverse')
   let g:backpack_inverse=1
 endif
+if !exists('g:backpack_transparent')
+  let g:backpack_transparent=0
+endif
 
 if !exists('g:backpack_guisp_fallback') || index(['fg', 'bg'], g:backpack_guisp_fallback) == -1
   let g:backpack_guisp_fallback='NONE'
@@ -113,9 +116,15 @@ endif
 " }}}
 " Setup Colors: {{{
 
-let s:vim_bg = ['bg', 'bg']
-let s:vim_fg = ['fg', 'fg']
 let s:none = ['NONE', 'NONE']
+
+let s:vim_fg = ['fg', 'fg']
+
+if g:backpack_transparent == 1
+  let s:vim_bg = s:none
+else
+  let s:vim_bg = ['bg', 'bg']
+endif
 
 " determine relative colors
 "
@@ -541,10 +550,18 @@ if version >= 700
   " Screen column that the cursor is
   hi! link CursorColumn CursorLine
 
-  " Tab pages line filler
-  call s:HL('TabLineFill', s:fg0, s:bg1, s:invert_tabline)
-  " Active tab page label
-  call s:HL('TabLineSel', s:fg2, s:bg5, s:invert_tabline)
+  if g:backpack_transparent == 1
+    " Tab pages line filler
+    call s:HL('TabLineFill', s:none, s:none, s:invert_tabline)
+    " Active tab page label
+    call s:HL('TabLineSel', s:none, s:none, s:invert_tabline)
+  else
+    " Tab pages line filler
+    call s:HL('TabLineFill', s:fg0, s:bg0, s:invert_tabline)
+    " Active tab page label
+    call s:HL('TabLineSel', s:fg2, s:bg5, s:invert_tabline)
+  endif
+
   " Not active tab page label
   hi! link TabLine TabLineFill
 
