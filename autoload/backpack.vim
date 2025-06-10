@@ -69,7 +69,7 @@ let s:colors = {
       \ "light5": ['#b2b2b2', 249],
       \ "light6": ['#949494', 246],
       \ "light7": ['#dadada', 253],
-      \ "light8": ['#c6c6c6', 251],
+      \ "light8": ['#c2c2c2', 251],
       \ "light9": ['#eeeeee', 255],
       \ "light10": ['#ffffff', 231],
       \ "light4_256": ['#eeeeee', 255],
