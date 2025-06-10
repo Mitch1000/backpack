@@ -67,9 +67,9 @@ NOTE: If you are using iTerm2, you may want to use the sRGB color space for more
 There is an option to disable P3 colors in the Advanced Settings tab.
 
 ```lua
- vim.o.background = 'dark'
- vim.g.italicize_comments = 1
- vim.g.backpack_italic = 1
+ vim.o.background = 'dark' -- 'dark' or 'light'
+ vim.g.italicize_comments = true -- true or false
+ vim.g.backpack_italic = true -- true or false
  vim.g.backpack_contrast_dark = "medium" -- soft medium hard harder
  vim.g.backpack_contrast_light = "medium" -- soft medium hard harder 
  vim.g.backpack_transparent = true  -- true or false
