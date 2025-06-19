@@ -1067,7 +1067,7 @@ hi! link CocHintFloat BackpackBlue
 hi! link CocDiagnosticsError BackpackDarkRed
 hi! link CocDiagnosticsWarning BackpackYellow
 hi! link CocDiagnosticsInfo BackpackFg2
-hi! link CocDiagnosticsHint BackpackBlue
+hi! link CocDiagnosticsHint BackpackTerminalBlue
 hi! link CocFloatBorderHighlight BackpackStainYellow
 hi! link CocSelectedText BackpackRose
 hi! link CocCodeLens BackpackPurple
@@ -1087,7 +1087,10 @@ call s:HL('CocHintHighlight', s:none, s:none, s:underline, s:blue)
 "
 " Diagnostics: {{{
 
-hi! link DiagnosticError BackpackErrorRed
+hi! link DiagnosticError BackpackDarkRed 
+hi! link DiagnosticSignWarn BackpackYellow 
+hi! link DiagnosticSignInfo BackpackFg2 
+hi! link DiagnosticSignHint BackpackTerminalBlue 
 " }}}
 " Filetype specific -----------------------------------------------------------
 " Diff: {{{
