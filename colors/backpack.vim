@@ -1218,18 +1218,18 @@ hi! link cStructure BackpackBabyBlue
 " }}}
 " Python: {{{
 
-hi! link pythonBuiltin BackpackGreen
+hi! link pythonBuiltin BackpackExtraLightBlue
 hi! link pythonStatement BackpackYellow
 hi! link pythonBuiltinObj BackpackBabyBlue
 hi! link pythonBuiltinFunc BackpackBabyBlue
-hi! link pythonFunction BackpackNeonBlue
+hi! link pythonFunction BackpackGreen
 hi! link pythonDecorator BackpackBabyBlue
 hi! link pythonDecoratorName BackpackBabyBlue
 hi! link pythonInclude BackpackBlue
 hi! link pythonImport BackpackBlue
 hi! link pythonRun BackpackBlue
 hi! link pythonCoding BackpackBlue
-hi! link pythonOperator BackpackStainYellow
+hi! link pythonOperator BackpackBrightRed
 hi! link pythonException BackpackStainYellow
 hi! link pythonExceptions BackpackPurple
 hi! link pythonBoolean BackpackPurple
